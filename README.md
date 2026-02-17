@@ -18,8 +18,12 @@ Enterprise Telegram Bot Framework • Secure • Scalable • Zero-Trust Ready
 ![Async](https://img.shields.io/badge/async-native-orange?style=flat-square)
 ![Webhook](https://img.shields.io/badge/webhook-supported-blueviolet?style=flat-square)
 ![tgcore](https://img.shields.io/badge/TGCore-SDK-black)
+
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
-![License](https://img.shields.io/badge/License-Apache%202.0-green)
+![PyPI](https://img.shields.io/pypi/v/tgcore?style=for-the-badge)
+![Downloads](https://img.shields.io/pypi/dm/tgcore?style=for-the-badge)
+![Python](https://img.shields.io/pypi/pyversions/tgcore?style=for-the-badge)
+![License](https://img.shields.io/github/license/TeamKillerX/tgcore?style=for-the-badge)
 
 The most secure Telegram Bot SDK ever built.
 
