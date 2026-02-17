@@ -1,6 +1,8 @@
 import os
 import re
+
 import setuptools
+
 
 def read(fname, version=False):
     path = os.path.join(os.path.dirname(__file__), fname)

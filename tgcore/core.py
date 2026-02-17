@@ -14,9 +14,10 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Any, Dict, Generic, TypeVar, Optional, Callable
 import re
+from dataclasses import dataclass
+from typing import Any, Callable, Dict, Generic, Optional, TypeVar
+
 import httpx
 
 T = TypeVar("T")
