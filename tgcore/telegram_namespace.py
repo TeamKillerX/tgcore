@@ -1,3 +1,6 @@
+# Copyright 2026 Randy W
+# Licensed under the Apache License, Version 2.0
+
 """
 Github Author: https://github.com/TeamKillerX/
 Code: @zxyeor
