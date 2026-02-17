@@ -13,10 +13,13 @@ http://www.apache.org/licenses/LICENSE-2.0
 """
 
 from __future__ import annotations
+
 import os
 from typing import Optional
+
 from .core import CoreBotAuth
 from .telegram_namespace import TelegramNamespace
+
 
 class Client(CoreBotAuth):
     def __init__(self, api_key: Optional[str] = None, **kwargs):
