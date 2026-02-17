@@ -31,9 +31,14 @@ Or install locally:
 
 Create client instance:
 ```py
-from tgcore import CoreBotAuth
+from tgcore import Client
 
-client = CoreBotAuth("fw_live_xxx")
+client = Client("fw_live_xxx")
+
+await client.telegram.send_message(
+    chat_id="@channel",
+    text="hello"
+)
 ```
 ---
 
