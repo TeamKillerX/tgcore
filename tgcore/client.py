@@ -14,11 +14,21 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 from __future__ import annotations
 
+import os
+from typing import Optional
+
 from .core import CoreBotAuth
 from .telegram_namespace import TelegramNamespace
 
 
 class Client(CoreBotAuth):
-    def __init__(self, api_key: str, **kw):
-        super().__init__(api_key, **kw)
+    def __init__(self, api_key: Optional[str] = None, **kwargs):
+        api_key = api_key or os.getenv("TGCORE_API_KEY")
+
+        if not api_key:
+            raise ValueError(
+                "TGCore API key required. "
+                "Pass api_key= or set TGCORE_API_KEY env."
+            )
+        super().__init__(api_key, **kwargs)
         self.telegram = TelegramNamespace(self)
