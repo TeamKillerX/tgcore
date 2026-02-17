@@ -108,6 +108,22 @@ Benefits:
 
 ---
 
+## Why TGCore?
+
+Unlike traditional Telegram SDKs, TGCore is built as a **secure middleware layer** that prevents token leaks, enforces API-key auth, and supports enterprise-grade scaling.
+
+Designed for production, not demos.
+
+## Compared to Native Telegram API
+
+| Feature | Telegram API | TGCore |
+|-------|--------------|--------|
+Token Exposure | Yes | No |
+Auth Layer | None | API Key + Secret |
+Proxy Support | Manual | Built-in |
+Multi Bot | Limited | Yes |
+Webhook Security | Basic | Zero-Trust |
+
 ## 🧾 License
 
 Licensed under Apache License 2.0
