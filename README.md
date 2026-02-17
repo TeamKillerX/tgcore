@@ -1,8 +1,27 @@
-# TgCoreSDK • Async Telegram API Client Framework
+<h1 align="center">TGCore SDK</h1>
+<p align="center">
+Enterprise Telegram Bot Framework • Secure • Scalable • Zero-Trust Ready
+</p>
 
-TgCoreSDK is a modern, asynchronous-based, developer-friendly SDK designed to interact with the Telegram Bot API through a secure gateway layer.
-Built for performance, extensibility
+<p align="center">
+<img src="https://img.shields.io/badge/Framework-TGCore-black?style=for-the-badge">
+<img src="https://img.shields.io/badge/API-Services%20Pro-purple?style=for-the-badge">
+<img src="https://img.shields.io/badge/Security-AES--256%20GCM-green?style=for-the-badge">
+</p>
 
+![Maintained](https://img.shields.io/badge/maintained-yes-success?style=flat-square)
+![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)
+![Security](https://img.shields.io/badge/security-audited-blue?style=flat-square)
+![Architecture](https://img.shields.io/badge/architecture-clean-lightgrey?style=flat-square)
+![FastAPI](https://img.shields.io/badge/backend-FastAPI-05998b?style=flat-square)
+![MongoDB](https://img.shields.io/badge/database-MongoDB-4ea94b?style=flat-square)
+![Async](https://img.shields.io/badge/async-native-orange?style=flat-square)
+![Webhook](https://img.shields.io/badge/webhook-supported-blueviolet?style=flat-square)
+![tgcore](https://img.shields.io/badge/TGCore-SDK-black)
+![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![License](https://img.shields.io/badge/License-Apache%202.0-green)
+
+The most secure Telegram Bot SDK ever built.
 
 ##  ✨ Features
 
