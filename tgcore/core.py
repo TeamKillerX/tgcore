@@ -73,9 +73,9 @@ class CoreBotAuth:
             try:
                 r = await c.post(self.base_url + path, json=payload, headers={**self._headers(), "Content-Type": "application/json"})
                 if r.status_code == 500:
-                    raise Exception(f"Internal Server Status: {r.status_code} Error") from e
+                    raise Exception(f"Internal Server Status: {r.status_code} Error")
                 return r.json()
-            except httpx.HTTPStatusError:
+            except httpx.HTTPStatusError as e:
                 raise Exception("Internal Server Error") from e
 
     async def _get(self, path: str, params: Dict[str, Any]) -> Dict[str, Any]:
