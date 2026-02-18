@@ -49,16 +49,42 @@ class KeyboardBuilder:
     def url(self, text: str, url: str):
         return self._add({"text": text, "url": url})
 
+    def style(self, text: str, style: str, **kw):
+        return self._add({"text": text, "style": style, **kw})
+
     def callback(self, text: str, data: str):
         if len(data.encode()) > 64:
             raise ValueError("callback_data max 64 bytes")
         return self._add({"text": text, "callback_data": data})
+
+    def copy_text(self, text: str, copy_text: str):
+        return self._add({
+            "text": text,
+            "copy_text": {"text": copy_text}
+        })
+
+    def switch_inline_query_chosen_chat(self, text: str, **kw):
+        _ALLOWED = {
+            "query",
+            "allow_user_chats",
+            "allow_bot_chats",
+            "allow_group_chats",
+            "allow_channel_chats"
+        }
+        data = {k: v for k, v in kw.items() if k in _ALLOWED}
+        return self._add({
+            "text": text,
+            "switch_inline_query_chosen_chat": data
+        })
 
     def login(self, text: str, url: str):
         return self._add({
             "text": text,
             "login_url": {"url": url}
         })
+
+    def pay(self, text: str, pay=False):
+        return self._add({"text": text, "pay": pay})
 
     def webapp(self, text: str, url: str):
         return self._add({
