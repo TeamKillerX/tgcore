@@ -38,6 +38,17 @@ def _format_path_and_pop_params(path: str, params: Dict[str, Any]) -> str:
     return path
 
 @dataclass
+class KeyboardBuilder:
+    _rows = []
+    
+    def row(self, text, **kw):
+        self._rows.append([{"text": text, **kw}])
+        return self
+        
+    def build(self):
+        return {"inline_keyboard": self._rows}
+
+@dataclass
 class RequestCall(Generic[T]):
     _client: "CoreBotAuth"
     _method: str
