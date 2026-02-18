@@ -14,8 +14,8 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 from __future__ import annotations
 
-import re
 import json
+import re
 from dataclasses import dataclass
 from typing import Any, Callable, Dict, Generic, Optional, TypeVar
 
