@@ -13,5 +13,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 """
 
 from .client import Client
+from .core import KeyboardBuilder
 
-__all__ = ["Client"]
+__all__ = ["Client", "KeyboardBuilder"]
