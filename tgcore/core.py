@@ -16,8 +16,8 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass
-from typing import Any, Callable, Dict, Generic, Optional, TypeVar
+from dataclasses import dataclass, field
+from typing import Any, Callable, Dict, Generic, Optional, TypeVar, List
 
 import httpx
 
@@ -39,13 +39,17 @@ def _format_path_and_pop_params(path: str, params: Dict[str, Any]) -> str:
 
 @dataclass
 class KeyboardBuilder:
-    _rows: list
+    _rows: List[List[Dict[str, Any]]] = field(default_factory=list)
 
-    def row(self, text, **kw):
+    def row(self, text: str, **kw) -> "KeyboardBuilder":
         self._rows.append([{"text": text, **kw}])
         return self
 
-    def build(self):
+    def add(self, *buttons: Dict[str, Any]) -> "KeyboardBuilder":
+        self._rows.append(list(buttons))
+        return self
+
+    def build(self) -> Dict[str, Any]:
         return {"inline_keyboard": self._rows}
 
 @dataclass
