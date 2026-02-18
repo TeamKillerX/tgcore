@@ -17,7 +17,7 @@ from __future__ import annotations
 import os
 from typing import Optional
 
-from .core import CoreBotAuth, KeyboardBuilder
+from .core import CoreBotAuth
 from .telegram_namespace import TelegramNamespace
 
 
@@ -32,4 +32,3 @@ class Client(CoreBotAuth):
             )
         super().__init__(api_key, **kwargs)
         self.telegram = TelegramNamespace(self)
-        self.keyboard = KeyboardBuilder(self)
