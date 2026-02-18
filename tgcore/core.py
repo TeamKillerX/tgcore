@@ -70,9 +70,13 @@ class CoreBotAuth:
         path = _format_path_and_pop_params(path, payload)
 
         async with httpx.AsyncClient(timeout=self.timeout) as c:
-            r = await c.post(self.base_url + path, json=payload, headers={**self._headers(), "Content-Type": "application/json"})
-            r.raise_for_status()
-            return r.json()
+            try:
+                r = await c.post(self.base_url + path, json=payload, headers={**self._headers(), "Content-Type": "application/json"})
+                if r.status_code == 500:
+                    raise Exception(f"Internal Server Status: {r.status_code} Error")
+                return r.json()
+            except httpx.HTTPStatusError as e:
+                raise Exception("Internal Server Error") from e
 
     async def _get(self, path: str, params: Dict[str, Any]) -> Dict[str, Any]:
         params = dict(params or {})
