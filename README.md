@@ -67,7 +67,26 @@ await client.telegram.send_message(
 
 ## 👾 Usage
 
-Simple Call
+### New button
+```py
+from tgcore import Client, KeyboardBuilder
+
+tg = Client()
+
+async def use_pyrogram(m):
+    await tg.telegram.send_message(
+        chat_id=str(m.chat.id),
+        text="This Button",
+        reply_markup=(
+            KeyboardBuilder()
+            .row("GitHub", url="https://github.com")
+            .row("Docs", url="https://www.learnpython.org/")
+            .row("Pypi", url="https://pypi.org/project/tgcore/")
+            .build()
+        )
+```
+
+### Simple Call
 ```py
 await client.telegram.send_message(
     chat_id="@channel",
@@ -76,7 +95,7 @@ await client.telegram.send_message(
 ```
 ---
 
-Builder Pattern
+### Builder Pattern
 ```py
 await (
     client.telegram
