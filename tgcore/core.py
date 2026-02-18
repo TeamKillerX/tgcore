@@ -40,16 +40,41 @@ def _format_path_and_pop_params(path: str, params: Dict[str, Any]) -> str:
 @dataclass
 class KeyboardBuilder:
     _rows: List[List[Dict[str, Any]]] = field(default_factory=list)
+    _current_row: List[Dict[str, Any]] = field(default_factory=list)
 
-    def row(self, text: str, **kw) -> "KeyboardBuilder":
-        self._rows.append([{"text": text, **kw}])
+    def _add(self, btn: Dict[str, Any]):
+        self._current_row.append(btn)
         return self
 
-    def add(self, *buttons: Dict[str, Any]) -> "KeyboardBuilder":
-        self._rows.append(list(buttons))
+    def url(self, text: str, url: str):
+        return self._add({"text": text, "url": url})
+
+    def callback(self, text: str, data: str):
+        if len(data.encode()) > 64:
+            raise ValueError("callback_data max 64 bytes")
+        return self._add({"text": text, "callback_data": data})
+
+    def login(self, text: str, url: str):
+        return self._add({
+            "text": text,
+            "login_url": {"url": url}
+        })
+
+    def webapp(self, text: str, url: str):
+        return self._add({
+            "text": text,
+            "web_app": {"url": url}
+        })
+
+    def row(self):
+        if self._current_row:
+            self._rows.append(self._current_row)
+            self._current_row = []
         return self
 
-    def build(self) -> Dict[str, Any]:
+    def build(self):
+        if self._current_row:
+            self.row()
         return {"inline_keyboard": self._rows}
 
 @dataclass
