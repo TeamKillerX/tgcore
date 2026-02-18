@@ -40,11 +40,11 @@ def _format_path_and_pop_params(path: str, params: Dict[str, Any]) -> str:
 @dataclass
 class KeyboardBuilder:
     _rows: list
-    
+
     def row(self, text, **kw):
         self._rows.append([{"text": text, **kw}])
         return self
-        
+
     def build(self):
         return {"inline_keyboard": self._rows}
 
