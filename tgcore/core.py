@@ -14,6 +14,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass
 from typing import Any, Callable, Dict, Generic, Optional, TypeVar
@@ -47,6 +48,13 @@ class RequestCall(Generic[T]):
         if self._method == "GET":
             return await self._client._get(self._path, self._params)  # type: ignore
         return await self._client._post(self._path, self._params)  # type: ignore
+
+    async def pretty(self, indent: int = 2) -> str:
+        data = await self.execute()
+        try:
+            return json.dumps(data, indent=indent, ensure_ascii=False)
+        except TypeError:
+            return str(data)
 
 @dataclass
 class CoreBotAuth:
