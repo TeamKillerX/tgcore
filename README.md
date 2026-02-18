@@ -69,6 +69,7 @@ await client.telegram.send_message(
 
 ### New button
 ```py
+# old version: 1.0.14
 from tgcore import Client, KeyboardBuilder
 
 tg = Client()
