@@ -11,100 +11,133 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 
 from .base import BaseMethod
+from ..core import RequestCall
 
 class Message(BaseMethod):
-    async def sendMessage(self, **data):
-        return await self._client._post(
+    def sendMessage(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/sendMessage",
-            data
+            kw
         )
 
-    async def sendPhoto(self, **data):
-        return await self._client._post(
+    def sendPhoto(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/sendPhoto",
-            data
+            kw
         )
 
-    async def sendVideo(self, **data):
-        return await self._client._post(
+    def sendVideo(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/sendVideo",
-            data
+            kw
         )
 
-    async def sendMediaGroup(self, **data):
-        return await self._client._post(
+    def sendMediaGroup(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/sendMediaGroup",
-            data
+            kw
         )
 
-    async def pinChatMessage(self, **data):
-        return await self._client._post(
+    def pinChatMessage(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/pinChatMessage",
-            data
+            kw
         )
-  
-    async def sendAnimation(self, **data):
-        return await self._client._post(
+
+    def sendAnimation(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/sendAnimation",
-            data
+            kw
         )
-  
-    async def forwardMessages(self, **data):
-        return await self._client._post(
+        
+    def forwardMessages(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/forwardMessages",
-            data
+            kw
         )
 
-    async def forwardMessage(self, **data):
-        return await self._client._post(
+    def forwardMessage(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/forwardMessage",
-            data
+            kw
         )
 
-    async def deleteMessages(self, **data):
-        return await self._client._post(
+    def deleteMessages(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/deleteMessages",
-            data
+            kw
         )
 
-    async def deleteMessage(self, **data):
-        return await self._client._post(
+    def deleteMessage(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/deleteMessage",
-            data
+            kw
         )
 
-    async def declineChatJoinRequest(self, **data):
-        return await self._client._post(
+    def declineChatJoinRequest(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/declineChatJoinRequest",
-            data
+            kw
         )
 
-    async def copyMessages(self, **data):
-        return await self._client._post(
+    def copyMessages(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/copyMessages",
-            data
+            kw
         )
   
-    async def copyMessage(self, **data):
-        return await self._client._post(
+    def copyMessage(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/copyMessage",
-            data
+            kw
         )
 
-    async def banChatSenderChat(self, **data):
-        return await self._client._post(
+    def banChatSenderChat(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/banChatSenderChat",
-            data
+            kw
         )
 
-    async def banChatMember(self, **data):
-        return await self._client._post(
+    def banChatMember(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/banChatMember",
-            data
+            kw
         )
   
-    async def approveChatJoinRequest(self, **data):
-        return await self._client._post(
+    def approveChatJoinRequest(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/approveChatJoinRequest",
-            data
+            kw
         )
