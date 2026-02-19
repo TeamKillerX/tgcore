@@ -11,16 +11,17 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 
 from ..core import RequestCall
+from ..models import GetMeResponse
 from .base import BaseMethod
 
-
 class Message(BaseMethod):
-    def GetMe(self, **kw):
+    def getMe(self) -> RequestCall[GetMeResponse]:
         return RequestCall(
-            self._client,
-            "GET",
-            "/api/v2/getme",
-            kw
+            _client=self._client,
+            _method="GET",
+            _path="/getMe",
+            _params={},
+            _response_model=GetMeResponse
         )
 
     def sendMessage(self, **kw):
