@@ -18,17 +18,16 @@ import os
 from typing import Optional
 
 from .core import CoreBotAuth
+from .methods import Methods
 from .telegram_namespace import TelegramNamespace
 
 
 class Client(CoreBotAuth):
-    def __init__(self, api_key: Optional[str] = None, **kwargs):
+    def __init__(self, api_key: str | None = None, **kwargs):
         api_key = api_key or os.getenv("TGCORE_API_KEY")
-
         if not api_key:
-            raise ValueError(
-                "TGCore API key required. "
-                "Pass api_key= or set TGCORE_API_KEY env."
-            )
+            raise ValueError("TGCore API key required. Pass api_key= or set TGCORE_API_KEY env.")
         super().__init__(api_key, **kwargs)
+
+        self.raw = Methods(self)
         self.telegram = TelegramNamespace(self)
