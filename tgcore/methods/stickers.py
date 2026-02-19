@@ -14,7 +14,7 @@ from .base import BaseMethod
 from ..core import RequestCall
 
 class Stickers(BaseMethod):
-    async def addStickerToSet(self, **kw):
+    def addStickerToSet(self, **kw):
         return RequestCall(
             self._client,
             "POST",
@@ -22,7 +22,7 @@ class Stickers(BaseMethod):
             kw
         )
 
-    async def deleteStickerFromSet(self, **kw):
+    def deleteStickerFromSet(self, **kw):
         return RequestCall(
             self._client,
             "POST",
@@ -30,7 +30,7 @@ class Stickers(BaseMethod):
             kw
         )
   
-    async def deleteStickerSet(self, **kw):
+    def deleteStickerSet(self, **kw):
         return RequestCall(
             self._client,
             "POST",
@@ -38,7 +38,7 @@ class Stickers(BaseMethod):
             kw
         )
   
-    async def createNewStickerSet(self, **kw):
+    def createNewStickerSet(self, **kw):
         return RequestCall(
             self._client,
             "POST",
@@ -46,7 +46,7 @@ class Stickers(BaseMethod):
             kw
         )
 
-    async def getCustomEmojiStickers(self, **kw):
+    def getCustomEmojiStickers(self, **kw):
         return RequestCall(
             self._client,
             "POST",
@@ -54,7 +54,7 @@ class Stickers(BaseMethod):
             kw
         )
 
-    async def getStickerSet(self, **kw):
+    def getStickerSet(self, **kw):
         return RequestCall(
             self._client,
             "POST",
@@ -62,7 +62,7 @@ class Stickers(BaseMethod):
             kw
         )
 
-    async def replaceStickerInSet(self, **kw):
+    def replaceStickerInSet(self, **kw):
         return RequestCall(
             self._client,
             "POST",
@@ -70,7 +70,7 @@ class Stickers(BaseMethod):
             kw
         )
 
-    async def setCustomEmojiStickerSetThumbnail(self, **kw):
+    def setCustomEmojiStickerSetThumbnail(self, **kw):
         return RequestCall(
             self._client,
             "POST",
@@ -78,7 +78,7 @@ class Stickers(BaseMethod):
             kw
         )
 
-    async def sendSticker(self, **kw):
+    def sendSticker(self, **kw):
         return RequestCall(
             self._client,
             "POST",
