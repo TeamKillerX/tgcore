@@ -14,6 +14,14 @@ from .base import BaseMethod
 from ..core import RequestCall
 
 class Message(BaseMethod):
+    def GetMe(self, **kw):
+        return RequestCall(
+            self._client,
+            "GET",
+            "/api/v2/getme",
+            kw
+        )
+
     def sendMessage(self, **kw):
         return RequestCall(
             self._client,
