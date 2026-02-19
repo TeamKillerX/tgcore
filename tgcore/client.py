@@ -17,7 +17,7 @@ from __future__ import annotations
 import os
 from typing import Optional
 
-from .core import CoreBotAuth
+from .core import CoreBotAuth, MediaFactory
 from .methods import Methods
 from .telegram_namespace import TelegramNamespace
 
@@ -31,4 +31,5 @@ class Client(CoreBotAuth):
         super().__init__(api_key, **kw)
 
         self.raw = Methods(self)
+        self.media = MediaFactory(self)
         self.telegram = TelegramNamespace(self)
