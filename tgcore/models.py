@@ -20,6 +20,15 @@ class User(BaseModel):
     is_bot: bool
     first_name: str
     username: Optional[str] = None
+    language_code: Optional[str] = None
+    is_premium: Optional[bool] = None
+    can_join_groups: Optional[bool] = None
+    can_read_all_group_messages: Optional[bool] = None
+    supports_inline_queries: Optional[bool] = None
+    can_connect_to_business: Optional[bool] = None
+    has_main_web_app: Optional[bool] = None
+    has_topics_enabled: Optional[bool] = None
+    allows_users_to_create_topics: Optional[bool] = None
 
 class BetterResponse(BaseModel, Generic[T]):
     ok: bool
