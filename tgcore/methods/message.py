@@ -19,7 +19,7 @@ class Message(BaseMethod):
         return RequestCall(
             _client=self._client,
             _method="GET",
-            _path="/getMe",
+            _path="/api/v2/getMe",
             _params={},
             _response_model=GetMeResponse
         )
