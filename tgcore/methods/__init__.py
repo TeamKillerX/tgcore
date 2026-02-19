@@ -1,4 +1,4 @@
-from .core import CoreBotAuth
+from ..core import CoreBotAuth
 from .stickers import Stickers
 # from .messages import Messages
 
