@@ -1,4 +1,5 @@
 from .stickers import Stickers
+from .message import Message
 
-class Methods(Stickers):
+class Methods(Stickers, Message):
     pass
