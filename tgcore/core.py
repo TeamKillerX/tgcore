@@ -121,7 +121,7 @@ class RequestCall(Generic[T]):
         import json
         data = await self.execute()
         try:
-            return json.dumps(await self.execute(), indent=indent)
+            return json.dumps(data, indent=indent, ensure_ascii=False)
         except TypeError:
             return str(data)
 
