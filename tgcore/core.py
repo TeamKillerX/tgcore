@@ -16,13 +16,23 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, Generic, List, Optional, Type, TypeVar
-
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    Generic,
+    List,
+    Optional,
+    Type,
+    TypeVar,
+    Literal
+)
 import httpx
 
 T = TypeVar("T")
 
 _PATH_PARAM_RE = re.compile(r"\{([a-zA-Z_][a-zA-Z0-9_]*)\}")
+MediaType = Literal["photo", "video", "animation", "document"]
 
 def _extract_path_param_keys(path: str) -> list[str]:
     return _PATH_PARAM_RE.findall(path)
@@ -35,6 +45,38 @@ def _format_path_and_pop_params(path: str, params: Dict[str, Any]) -> str:
         path = path.replace("{" + k + "}", str(params[k]))
         params.pop(k, None)
     return path
+
+class InputMedia:
+    def __init__(self):
+        self._data: dict = {}
+
+    def type(self, value: MediaType):
+        self._data["type"] = value
+        return self
+
+    def media(self, value: str):
+        if not value:
+            raise ValueError("media cannot be empty")
+        self._data["media"] = value
+        return self
+
+    def caption(self, value: str):
+        self._data["caption"] = value
+        return self
+
+    def build(self):
+        if "type" not in self._data:
+            raise ValueError("type required")
+        if "media" not in self._data:
+            raise ValueError("media required")
+        return self._data
+
+class MediaFactory:
+    def photo(self, file):
+        return InputMedia().type("photo").media(file)
+
+    def video(self, file):
+        return InputMedia().type("video").media(file)
 
 @dataclass
 class KeyboardBuilder:
