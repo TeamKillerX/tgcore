@@ -10,7 +10,8 @@
 
 # http://www.apache.org/licenses/LICENSE-2.0
 
-from typing import Generic, TypeVar, Optional
+from typing import Generic, Optional, TypeVar
+
 from pydantic import BaseModel
 
 T = TypeVar("T")

@@ -14,6 +14,7 @@ from ..core import RequestCall
 from ..models import BetterResponse, User
 from .base import BaseMethod
 
+
 class Message(BaseMethod):
     def getMe(self) -> RequestCall[BetterResponse[User]]:
         return RequestCall(
