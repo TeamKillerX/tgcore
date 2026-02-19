@@ -11,57 +11,77 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 
 from .base import BaseMethod
+from ..core import RequestCall
 
 class Stickers(BaseMethod):
-    async def addStickerToSet(self, **data):
-        return await self._client._post(
+    async def addStickerToSet(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/addStickerToSet",
-            data
+            kw
         )
-    async def deleteStickerFromSet(self, **data):
-        return await self._client._post(
+
+    async def deleteStickerFromSet(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/deleteStickerFromSet",
-            data
+            kw
         )
   
-    async def deleteStickerSet(self, **data):
-        return await self._client._post(
+    async def deleteStickerSet(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/deleteStickerSet",
-            data
+            kw
         )
   
-    async def createNewStickerSet(self, **data):
-        return await self._client._post(
+    async def createNewStickerSet(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/createNewStickerSet",
-            data
+            kw
         )
 
-    async def getCustomEmojiStickers(self, **data):
-        return await self._client._post(
+    async def getCustomEmojiStickers(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/getCustomEmojiStickers",
-            data
+            kw
         )
 
-    async def getStickerSet(self, **data):
-        return await self._client._post(
+    async def getStickerSet(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/getStickerSet",
-            data
+            kw
         )
 
-    async def replaceStickerInSet(self, **data):
-        return await self._client._post(
+    async def replaceStickerInSet(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/replaceStickerInSet",
-            data
+            kw
         )
 
-    async def setCustomEmojiStickerSetThumbnail(self, **data):
-        return await self._client._post(
+    async def setCustomEmojiStickerSetThumbnail(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/setCustomEmojiStickerSetThumbnail",
-            data
+            kw
         )
 
-    async def sendSticker(self, **data):
-        return await self._client._post(
+    async def sendSticker(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
             "/api/v2/sendSticker",
-            data
+            kw
         )
