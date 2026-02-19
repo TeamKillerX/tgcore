@@ -31,5 +31,5 @@ class Client(CoreBotAuth):
         super().__init__(api_key, **kw)
 
         self.raw = Methods(self)
-        self.media = MediaFactory(self)
+        self.media: MediaFactory = MediaFactory(self)
         self.telegram = TelegramNamespace(self)
