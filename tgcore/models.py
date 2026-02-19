@@ -10,14 +10,21 @@
 
 # http://www.apache.org/licenses/LICENSE-2.0
 
+from typing import Generic, TypeVar, Optional
 from pydantic import BaseModel
-from typing import Optional
+
+T = TypeVar("T")
 
 class User(BaseModel):
     id: int
     is_bot: bool
     first_name: str
     username: Optional[str] = None
+
+class BetterResponse(BaseModel, Generic[T]):
+    ok: bool
+    data: Optional[T] = None
+    error: Optional[str] = None
 
 class GetMeResponse(BaseModel):
     ok: bool
