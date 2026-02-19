@@ -25,6 +25,14 @@ class Message(BaseMethod):
             _response_model=BetterResponse[User]
         )
 
+    def getChat(self, **kw):
+        return RequestCall(
+            _client=self._client,
+            _method="GET",
+            _path="/api/v2/getChat",
+            _params=kw
+        )
+
     def sendMessage(self, **kw):
         return RequestCall(
             self._client,
@@ -150,5 +158,29 @@ class Message(BaseMethod):
             self._client,
             "POST",
             "/api/v2/approveChatJoinRequest",
+            kw
+        )
+
+    def exportChatInviteLink(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/exportChatInviteLink",
+            kw
+        )
+
+    def getChatAdministrators(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/getChatAdministrators",
+            kw
+        )
+
+    def getChatMember(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/getChatMember",
             kw
         )
