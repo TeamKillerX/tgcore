@@ -14,7 +14,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 from __future__ import annotations
 
-import json
 import re
 from dataclasses import dataclass, field
 from typing import Any, Callable, Dict, Generic, List, Optional, TypeVar
@@ -115,7 +114,11 @@ class RequestCall(Generic[T]):
             return await self._client._get(self._path, self._params)  # type: ignore
         return await self._client._post(self._path, self._params)  # type: ignore
 
-    async def pretty(self, indent: int = 2) -> str:
+    async def json(self):
+        return await self.execute()
+
+    async def pretty(self, indent: int = 2):
+        import json
         data = await self.execute()
         try:
             return json.dumps(data, indent=indent, ensure_ascii=False)
