@@ -10,7 +10,9 @@
 
 # http://www.apache.org/licenses/LICENSE-2.0
 
-class Stickers:
+from .base import BaseMethod
+
+class Stickers(BaseMethod):
     async def addStickerToSet(self, **data):
         return await self._client._post(
             "/api/v2/addStickerToSet",
