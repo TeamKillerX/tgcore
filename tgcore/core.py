@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, Generic, List, Optional, TypeVar
+from typing import Any, Callable, Dict, Generic, List, Optional, Type, TypeVar
 
 import httpx
 
@@ -108,22 +108,26 @@ class RequestCall(Generic[T]):
     _method: str
     _path: str
     _params: Dict[str, Any]
+    _response_model: Optional[Type[T]] = None
 
     async def execute(self) -> T:
-        if self._method == "GET":
-            return await self._client._get(self._path, self._params)  # type: ignore
-        return await self._client._post(self._path, self._params)  # type: ignore
+        raw = await (self._client._get(self._path, self._params)
+                     if self._method == "GET"
+                     else self._client._post(self._path, self._params))
+
+        if self._response_model is None:
+            return raw  # type: ignore
+
+        return self._response_model.model_validate(raw)  # type: ignore
 
     async def json(self):
         return await self.execute()
 
-    async def pretty(self, indent: int = 2):
-        import json
+    async def pretty(self, indent=2) -> str:
         data = await self.execute()
-        try:
-            return json.dumps(data, indent=indent, ensure_ascii=False)
-        except TypeError:
-            return str(data)
+        if hasattr(data, "model_dump"):
+            return json.dumps(data.model_dump(), indent=indent, ensure_ascii=False)
+        return json.dumps(data, indent=indent, ensure_ascii=False)
 
 @dataclass
 class CoreBotAuth:
