@@ -33,7 +33,8 @@ setuptools.setup(
         "ryzenth"
     ],
     install_requires=[
-        "httpx>=0.24.0"
+        "httpx>=0.24.0",
+        "pydantic"
     ],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
