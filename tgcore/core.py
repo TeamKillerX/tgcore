@@ -123,13 +123,11 @@ class RequestCall(Generic[T]):
     async def json(self):
         return await self.execute()
 
-    async def pretty(self, indent: int = 2):
-        import json
+    async def pretty(self, indent=2) -> str:
         data = await self.execute()
-        try:
-            return json.dumps(data, indent=indent, ensure_ascii=False)
-        except TypeError:
-            return str(data)
+        if hasattr(data, "model_dump"):
+            return json.dumps(data.model_dump(), indent=indent, ensure_ascii=False)
+        return json.dumps(data, indent=indent, ensure_ascii=False)
 
 @dataclass
 class CoreBotAuth:
