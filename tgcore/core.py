@@ -38,36 +38,33 @@ def _format_path_and_pop_params(path: str, params: Dict[str, Any]) -> str:
     return path
 
 class InputMedia:
-    def __init__(self):
-        self._data: dict = {}
+    def __init__(self, client, type_, media):
+        self._client = client
+        self._data = {
+            "type": type_,
+            "media": media
+        }
 
-    def type(self, value: MediaType):
-        self._data["type"] = value
+    def caption(self, text: str):
+        self._data["caption"] = text
         return self
 
-    def media(self, value: str):
-        if not value:
-            raise ValueError("media cannot be empty")
-        self._data["media"] = value
-        return self
-
-    def caption(self, value: str):
-        self._data["caption"] = value
+    def parse_mode(self, mode: str):
+        self._data["parse_mode"] = mode
         return self
 
     def build(self):
-        if "type" not in self._data:
-            raise ValueError("type required")
-        if "media" not in self._data:
-            raise ValueError("media required")
         return self._data
 
 class MediaFactory:
-    def photo(self, file):
-        return InputMedia().type("photo").media(file)
+    def __init__(self, client: "CoreBotAuth"):
+        self._client = client
 
-    def video(self, file):
-        return InputMedia().type("video").media(file)
+    def photo(self, file: str | bytes):
+        return InputMedia(self._client, "photo", file)
+
+    def video(self, file: str | bytes):
+        return InputMedia(self._client, "video", file)
 
 @dataclass
 class KeyboardBuilder:
