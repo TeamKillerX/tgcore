@@ -16,17 +16,8 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from typing import (
-    Any,
-    Callable,
-    Dict,
-    Generic,
-    List,
-    Optional,
-    Type,
-    TypeVar,
-    Literal
-)
+from typing import Any, Callable, Dict, Generic, List, Literal, Optional, Type, TypeVar
+
 import httpx
 
 T = TypeVar("T")
