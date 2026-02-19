@@ -10,8 +10,9 @@
 
 # http://www.apache.org/licenses/LICENSE-2.0
 
-from .base import BaseMethod
 from ..core import RequestCall
+from .base import BaseMethod
+
 
 class Message(BaseMethod):
     def GetMe(self, **kw):
@@ -69,7 +70,7 @@ class Message(BaseMethod):
             "/api/v2/sendAnimation",
             kw
         )
-        
+
     def forwardMessages(self, **kw):
         return RequestCall(
             self._client,
@@ -117,7 +118,7 @@ class Message(BaseMethod):
             "/api/v2/copyMessages",
             kw
         )
-  
+
     def copyMessage(self, **kw):
         return RequestCall(
             self._client,
@@ -141,7 +142,7 @@ class Message(BaseMethod):
             "/api/v2/banChatMember",
             kw
         )
-  
+
     def approveChatJoinRequest(self, **kw):
         return RequestCall(
             self._client,

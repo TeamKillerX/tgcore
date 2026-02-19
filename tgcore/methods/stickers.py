@@ -10,8 +10,9 @@
 
 # http://www.apache.org/licenses/LICENSE-2.0
 
-from .base import BaseMethod
 from ..core import RequestCall
+from .base import BaseMethod
+
 
 class Stickers(BaseMethod):
     def addStickerToSet(self, **kw):
@@ -29,7 +30,7 @@ class Stickers(BaseMethod):
             "/api/v2/deleteStickerFromSet",
             kw
         )
-  
+
     def deleteStickerSet(self, **kw):
         return RequestCall(
             self._client,
@@ -37,7 +38,7 @@ class Stickers(BaseMethod):
             "/api/v2/deleteStickerSet",
             kw
         )
-  
+
     def createNewStickerSet(self, **kw):
         return RequestCall(
             self._client,
