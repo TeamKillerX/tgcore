@@ -397,12 +397,12 @@ Source: https://core.telegram.org/bots/api#getstickerset
 
         Simple call for GET /api/v2/getme.
         """
-        return await self._c._get("/api/v2/getme", kw)
+        return await self._c._get("/api/v2/getMe", kw)
 
     def getme_call(self, **kw: Any) -> RequestCall[Dict[str, Any]]:
         """Getme
 
-        Builder call for GET /api/v2/getme.
+        Builder call for GET /api/v2/getMe.
         """
         return RequestCall(self._c, "GET", "/api/v2/getme", kw)
 
