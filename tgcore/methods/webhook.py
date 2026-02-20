@@ -11,14 +11,16 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 
 from ..core import RequestCall
+from ..models import BetterResponse, WebhookInfo
 from .base import BaseMethod
 
 
 class Webhook(BaseMethod):
-    def getWebhookInfo(self):
+    def getWebhookInfo(self) -> RequestCall[BetterResponse[WebhookInfo]]:
         return RequestCall(
             _client=self._client,
             _method="GET",
             _path="/api/v2/getWebhookInfo",
-            _params={}
+            _params={},
+            _response_model=BetterResponse[WebhookInfo]
         )

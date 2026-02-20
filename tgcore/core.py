@@ -55,8 +55,10 @@ def _extract_files(payload: Dict[str, Any]) -> Dict[str, Any]:
             files[k] = (f"{k}.bin", bytes(v))
             to_pop.append(k)
         elif isinstance(v, tuple) and len(v) in (2, 3):
-            files[k] = v
-            to_pop.append(k)
+            second = v[1]
+            if hasattr(second, "read") or isinstance(second, (bytes, bytearray)):
+                files[k] = v
+                to_pop.append(k)
 
     for k in to_pop:
         payload.pop(k, None)
