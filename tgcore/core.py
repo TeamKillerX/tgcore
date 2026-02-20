@@ -17,7 +17,7 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass, field
-from typing import Any, Tuple, Callable, Dict, Generic, List, Literal, Optional, Type, TypeVar
+from typing import Any, Callable, Dict, Generic, List, Literal, Optional, Tuple, Type, TypeVar
 
 import httpx
 
