@@ -24,15 +24,6 @@ class Message(BaseMethod):
             _params={},
             _response_model=BetterResponse[User]
         )
-
-    def getWebhookInfo(self):
-        return RequestCall(
-            _client=self._client,
-            _method="GET",
-            _path="/api/v2/getWebhookInfo",
-            _params={}
-        )
-
     def sendMessage(self, **kw):
         return RequestCall(
             self._client,
