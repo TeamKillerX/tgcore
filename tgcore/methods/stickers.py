@@ -86,3 +86,11 @@ class Stickers(BaseMethod):
             "/api/v2/sendSticker",
             kw
         )
+
+    def uploadStickerFile(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/uploadStickerFile",
+            kw
+        )
