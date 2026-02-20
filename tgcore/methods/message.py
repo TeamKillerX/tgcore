@@ -40,11 +40,27 @@ class Message(BaseMethod):
             kw
         )
 
+    def sendPhotoUpload(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/sendPhoto/upload",
+            kw
+        )
+
     def sendVideo(self, **kw):
         return RequestCall(
             self._client,
             "POST",
             "/api/v2/sendVideo",
+            kw
+        )
+
+    def sendVideoUpload(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/sendVideo/upload",
             kw
         )
 
