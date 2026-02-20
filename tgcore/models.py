@@ -10,7 +10,7 @@
 
 # http://www.apache.org/licenses/LICENSE-2.0
 
-from typing import Generic, Optional, TypeVar
+from typing import Generic, List, Optional, TypeVar
 
 from pydantic import BaseModel
 
@@ -38,7 +38,8 @@ class WebhookInfo(BaseModel):
     last_error_date: Optional[int] = None
     last_error_message: Optional[str] = None
     max_connections: Optional[int] = None
-    allowed_updates: Optional[list] = None
+    allowed_updates: Optional[List[str]] = None
+
 
 class BetterResponse(BaseModel, Generic[T]):
     ok: bool
