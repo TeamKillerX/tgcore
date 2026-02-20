@@ -200,11 +200,3 @@ class Message(BaseMethod):
             "/api/v2/getChatMember",
             kw
         )
-
-    def exportChatInviteLink(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/exportChatInviteLink",
-            kw
-        )
