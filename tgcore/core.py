@@ -17,7 +17,7 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, Generic, List, Literal, Optional, Type, TypeVar
+from typing import Any, Callable, Dict, Generic, List, Literal, Optional, Tuple, Type, TypeVar
 
 import httpx
 
@@ -43,15 +43,38 @@ def _is_file_like(x: Any) -> bool:
 
 def _extract_files(payload: Dict[str, Any]) -> Dict[str, Any]:
     files: Dict[str, Any] = {}
-    for k in list(payload.keys()):
-        v = payload[k]
-        if isinstance(v, (bytes, bytearray)):
+    to_pop = []
+
+    for k, v in payload.items():
+        if v is None:
+            continue
+        if _is_file_like(v):
             files[k] = v
-            payload.pop(k, None)
-        elif _is_file_like(v):
+            to_pop.append(k)
+        elif isinstance(v, (bytes, bytearray)):
+            files[k] = (f"{k}.bin", bytes(v))
+            to_pop.append(k)
+        elif isinstance(v, tuple) and len(v) in (2, 3):
             files[k] = v
-            payload.pop(k, None)
+            to_pop.append(k)
+
+    for k in to_pop:
+        payload.pop(k, None)
+
     return files
+
+def _normalize_form_data(payload: Dict[str, Any]) -> Dict[str, str]:
+    out: Dict[str, str] = {}
+    for k, v in payload.items():
+        if v is None:
+            continue
+        if isinstance(v, (dict, list)):
+            out[k] = json.dumps(v, ensure_ascii=False)
+        elif isinstance(v, bool):
+            out[k] = "true" if v else "false"
+        else:
+            out[k] = str(v)
+    return out
 
 class InputMedia:
     def __init__(self, client, type_, media):
@@ -204,7 +227,7 @@ class CoreBotAuth:
             "user-agent": self.user_agent,
         }
         for k, v in self._extra_headers.items():
-            h[k] = v
+            h[k.lower()] = v
         if extra:
             for k, v in extra.items():
                 h[k.lower()] = v
@@ -220,7 +243,7 @@ class CoreBotAuth:
         try:
             payload = r.json()
         except Exception:
-            payload = r.text[:500]
+            payload = r.text[:800]
         raise RuntimeError(f"HTTP {r.status_code}: {payload}")
 
     async def _post(
@@ -232,13 +255,14 @@ class CoreBotAuth:
         payload = dict(payload or {})
         path = _format_path_and_pop_params(path, payload)
 
-        files = _extract_files(payload)
-
         c = self._ensure_client()
         url = self.base_url.rstrip("/") + path
 
+        files = _extract_files(payload)
+
         if files:
-            r = await c.post(url, data=payload, files=files, headers=self._headers(headers))
+            data = _normalize_form_data(payload)
+            r = await c.post(url, data=data, files=files, headers=self._headers(headers))
         else:
             r = await c.post(url, json=payload, headers=self._headers(headers))
 
