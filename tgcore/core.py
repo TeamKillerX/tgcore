@@ -17,11 +17,28 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, Generic, List, Literal, Optional, Tuple, Type, TypeVar
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    Generic,
+    List,
+    Literal,
+    Optional,
+    Tuple,
+    Type,
+    TypeVar,
+    Union,
+)
 
 import httpx
 
 T = TypeVar("T")
+
+FileTuple = Union[
+    Tuple[str, Any],
+    Tuple[str, Any, str],
+]
 
 _PATH_PARAM_RE = re.compile(r"\{([a-zA-Z_][a-zA-Z0-9_]*)\}")
 MediaType = Literal["photo", "video", "animation", "document"]
@@ -41,29 +58,43 @@ def _format_path_and_pop_params(path: str, params: Dict[str, Any]) -> str:
 def _is_file_like(x: Any) -> bool:
     return hasattr(x, "read") and callable(x.read)
 
-def _extract_files(payload: Dict[str, Any]) -> Dict[str, Any]:
-    files: Dict[str, Any] = {}
-    to_pop = []
+def _is_uploadfile(x: Any) -> bool:
+    return hasattr(x, "filename") and (hasattr(x, "file") or hasattr(x, "read"))
 
-    for k, v in payload.items():
-        if v is None:
-            continue
-        if _is_file_like(v):
-            files[k] = v
-            to_pop.append(k)
-        elif isinstance(v, (bytes, bytearray)):
-            files[k] = (f"{k}.bin", bytes(v))
-            to_pop.append(k)
-        elif isinstance(v, tuple) and len(v) in (2, 3):
-            second = v[1]
-            if hasattr(second, "read") or isinstance(second, (bytes, bytearray)):
-                files[k] = v
-                to_pop.append(k)
+def _guess_content_type(filename: str) -> Optional[str]:
+    ctype, _ = mimetypes.guess_type(filename)
+    return ctype
 
-    for k in to_pop:
-        payload.pop(k, None)
+def _normalize_tuple_file(v: FileTuple, key: str) -> FileTuple:
+    if len(v) not in (2, 3):
+        raise ValueError(f"Invalid file tuple length for '{key}': {len(v)}")
 
-    return files
+    filename = v[0] or f"{key}.bin"
+    content = v[1]
+
+    if len(v) == 2:
+        ctype = _guess_content_type(filename)
+        return (filename, content, ctype) if ctype else (filename, content)
+
+    # len == 3
+    ctype = v[2]
+    return (filename, content, ctype)
+
+def _try_path_to_file_tuple(path: Union[str, Path], key: str) -> Optional[FileTuple]:
+    p = Path(path)
+    if not p.exists() or not p.is_file():
+        return None
+
+    filename = p.name or f"{key}.bin"
+    ctype = _guess_content_type(filename) or "application/octet-stream"
+    f = p.open("rb")
+    return (filename, f, ctype)
+
+def _bytes_to_file_tuple(data: Union[bytes, bytearray, memoryview], key: str, filename: Optional[str] = None) -> FileTuple:
+    b = bytes(data) if not isinstance(data, (bytes,)) else data
+    fname = filename or f"{key}.bin"
+    ctype = _guess_content_type(fname) or "application/octet-stream"
+    return (fname, b, ctype)
 
 def _normalize_form_data(payload: Dict[str, Any]) -> Dict[str, str]:
     out: Dict[str, str] = {}
@@ -77,6 +108,67 @@ def _normalize_form_data(payload: Dict[str, Any]) -> Dict[str, str]:
         else:
             out[k] = str(v)
     return out
+
+def _extract_files(payload: Dict[str, Any]) -> Dict[str, Any]:
+    files: Dict[str, Any] = {}
+    to_pop: list[str] = []
+
+    for k, v in list(payload.items()):
+        if v is None:
+            continue
+
+        if isinstance(v, tuple):
+            try:
+                norm = _normalize_tuple_file(v, k)  # type: ignore[arg-type]
+            except Exception:
+                continue
+
+            content = norm[1]
+            if _is_file_like(content) or isinstance(content, (bytes, bytearray, memoryview)):
+                files[k] = norm
+                to_pop.append(k)
+            continue
+
+        if _is_uploadfile(v):
+            fileobj = getattr(v, "file", None)
+            filename = getattr(v, "filename", None) or f"{k}.bin"
+            ctype = _guess_content_type(filename) or "application/octet-stream"
+
+            if fileobj is not None and _is_file_like(fileobj):
+                files[k] = (filename, fileobj, ctype)
+                to_pop.append(k)
+                continue
+
+            raise TypeError(
+                f"UploadFile '{k}' must provide a sync .file handle, "
+                f"or read it to bytes before calling _post."
+            )
+
+        if _is_file_like(v):
+            filename = getattr(v, "name", None)
+            filename = os.path.basename(filename) if isinstance(filename, str) else None
+            filename = filename or f"{k}.bin"
+            ctype = _guess_content_type(filename) or "application/octet-stream"
+            files[k] = (filename, v, ctype)
+            to_pop.append(k)
+            continue
+
+        if isinstance(v, (bytes, bytearray, memoryview)):
+            files[k] = _bytes_to_file_tuple(v, k)
+            to_pop.append(k)
+            continue
+
+        if isinstance(v, (str, Path)):
+            maybe = _try_path_to_file_tuple(v, k)
+            if maybe is not None:
+                files[k] = maybe
+                to_pop.append(k)
+            continue
+
+    for k in to_pop:
+        payload.pop(k, None)
+
+    return files
 
 class InputMedia:
     def __init__(self, client, type_, media):
