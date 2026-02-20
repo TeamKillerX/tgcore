@@ -31,6 +31,16 @@ class User(BaseModel):
     has_topics_enabled: Optional[bool] = None
     allows_users_to_create_topics: Optional[bool] = None
 
+class WebhookInfo(BaseModel):
+    url: str
+    has_custom_certificate: Optional[bool] = None
+    pending_update_count: Optional[int] = None
+    ip_address: Optional[str] = None
+    last_error_date: Optional[int] = None
+    last_error_message: Optional[str] = None
+    max_connections: Optional[int] = None
+    allowed_updates: Optional[list] = None
+    
 class BetterResponse(BaseModel, Generic[T]):
     ok: bool
     data: Optional[T] = None
