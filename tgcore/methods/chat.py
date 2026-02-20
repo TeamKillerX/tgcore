@@ -46,11 +46,3 @@ class Chat(BaseMethod):
             "/api/v2/exportChatInviteLink",
             kw
         )
-
-    def approveChatJoinRequest(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/approveChatJoinRequest",
-            kw
-        )
