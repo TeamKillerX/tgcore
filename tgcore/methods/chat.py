@@ -11,55 +11,38 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 
 from ..core import RequestCall
-from ..models import BetterResponse, User
 from .base import BaseMethod
 
 
-class Message(BaseMethod):
-    def getMe(self) -> RequestCall[BetterResponse[User]]:
+class Chat(BaseMethod):
+    def getChat(self, **kw):
         return RequestCall(
             _client=self._client,
             _method="GET",
-            _path="/api/v2/getMe",
-            _params={},
-            _response_model=BetterResponse[User]
+            _path="/api/v2/getChat",
+            _params=kw
         )
-    def sendMessage(self, **kw):
+
+    def getChatAdministrators(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/sendMessage",
+            "/api/v2/getChatAdministrators",
             kw
         )
 
-    def sendPhoto(self, **kw):
+    def getChatMember(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/sendPhoto",
+            "/api/v2/getChatMember",
             kw
         )
 
-    def sendVideo(self, **kw):
+    def exportChatInviteLink(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/sendVideo",
-            kw
-        )
-
-    def sendMediaGroup(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/sendMediaGroup",
-            kw
-        )
-
-    def sendAnimation(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/sendAnimation",
+            "/api/v2/exportChatInviteLink",
             kw
         )
