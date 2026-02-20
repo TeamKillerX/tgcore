@@ -46,29 +46,6 @@ class Chat(BaseMethod):
             "/api/v2/exportChatInviteLink",
             kw
         )
-    def banChatMember(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/banChatMember",
-            kw
-        )
-
-    def banChatSenderChat(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/banChatSenderChat",
-            kw
-        )
-
-    def restrictChatMember(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/restrictChatMember",
-            kw
-        )
 
     def approveChatJoinRequest(self, **kw):
         return RequestCall(
