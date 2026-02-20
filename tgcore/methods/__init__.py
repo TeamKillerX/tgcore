@@ -8,6 +8,7 @@ from .deletemsg import DeleteMsg
 from .forward import Forward
 from .mute import Mute
 from .webhook import Webhook
+from .pinned import Pinned
 
 class Methods(
     Message,
@@ -19,6 +20,7 @@ class Methods(
     DeleteMsg,
     Forward,
     Mute,
-    Webhook
+    Webhook,
+    Pinned
 ):
     pass
