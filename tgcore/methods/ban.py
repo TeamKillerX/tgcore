@@ -30,3 +30,19 @@ class Ban(BaseMethod):
             "/api/v2/banChatSenderChat",
             kw
         )
+
+    def unbanChatMember(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/unbanChatMember",
+            kw
+        )
+
+    def unbanChatSenderChat(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/unbanChatSenderChat",
+            kw
+        )

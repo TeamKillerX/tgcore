@@ -14,6 +14,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass, field
 from typing import Any, Callable, Dict, Generic, List, Literal, Optional, Type, TypeVar
@@ -36,6 +37,21 @@ def _format_path_and_pop_params(path: str, params: Dict[str, Any]) -> str:
         path = path.replace("{" + k + "}", str(params[k]))
         params.pop(k, None)
     return path
+
+def _is_file_like(x: Any) -> bool:
+    return hasattr(x, "read") and callable(x.read)
+
+def _extract_files(payload: Dict[str, Any]) -> Dict[str, Any]:
+    files: Dict[str, Any] = {}
+    for k in list(payload.keys()):
+        v = payload[k]
+        if isinstance(v, (bytes, bytearray)):
+            files[k] = v
+            payload.pop(k, None)
+        elif _is_file_like(v):
+            files[k] = v
+            payload.pop(k, None)
+    return files
 
 class InputMedia:
     def __init__(self, client, type_, media):
@@ -141,19 +157,21 @@ class RequestCall(Generic[T]):
     _response_model: Optional[Type[T]] = None
 
     async def execute(self) -> T:
-        raw = await (self._client._get(self._path, self._params)
-                     if self._method == "GET"
-                     else self._client._post(self._path, self._params))
+        raw = await (
+            self._client._get(self._path, self._params)
+            if self._method.upper() == "GET"
+            else self._client._post(self._path, self._params)
+        )
 
         if self._response_model is None:
             return raw  # type: ignore
 
         return self._response_model.model_validate(raw)  # type: ignore
 
-    async def json(self):
+    async def json(self) -> Any:
         return await self.execute()
 
-    async def pretty(self, indent=2) -> str:
+    async def pretty(self, indent: int = 2) -> str:
         data = await self.execute()
         if hasattr(data, "model_dump"):
             return json.dumps(data.model_dump(), indent=indent, ensure_ascii=False)
@@ -163,29 +181,82 @@ class RequestCall(Generic[T]):
 class CoreBotAuth:
     api_key: str
     base_url: str = "https://services-pro.ryzenths.dpdns.org"
+    user_agent: str = "tgcore/1.0"
     timeout: float = 30.0
 
-    def _headers(self) -> Dict[str, str]:
-        return {"x-api-key": self.api_key}
+    _extra_headers: Dict[str, str] = field(default_factory=dict)
+    _client: Optional[httpx.AsyncClient] = field(default=None, init=False, repr=False)
 
-    async def _post(self, path: str, payload: Dict[str, Any]) -> Dict[str, Any]:
+    def _ensure_client(self) -> httpx.AsyncClient:
+        if self._client is None:
+            self._client = httpx.AsyncClient(timeout=self.timeout)
+        return self._client
+
+    async def aclose(self) -> None:
+        if self._client is not None:
+            await self._client.aclose()
+            self._client = None
+
+    def _headers(self, extra: Optional[Dict[str, str]] = None) -> Dict[str, str]:
+        h = {
+            "x-api-key": self.api_key,
+            "accept": "application/json",
+            "user-agent": self.user_agent,
+        }
+        for k, v in self._extra_headers.items():
+            h[k] = v
+        if extra:
+            for k, v in extra.items():
+                h[k.lower()] = v
+        return h
+
+    def set_header(self, key: str, value: str) -> "CoreBotAuth":
+        self._extra_headers[key.lower()] = value
+        return self
+
+    def _raise_http_error(self, r: httpx.Response) -> None:
+        if r.is_success:
+            return
+        try:
+            payload = r.json()
+        except Exception:
+            payload = r.text[:500]
+        raise RuntimeError(f"HTTP {r.status_code}: {payload}")
+
+    async def _post(
+        self,
+        path: str,
+        payload: Dict[str, Any],
+        headers: Dict[str, str] | None = None,
+    ) -> Dict[str, Any]:
         payload = dict(payload or {})
         path = _format_path_and_pop_params(path, payload)
 
-        async with httpx.AsyncClient(timeout=self.timeout) as c:
-            try:
-                r = await c.post(self.base_url + path, json=payload, headers={**self._headers(), "Content-Type": "application/json"})
-                if r.status_code == 500:
-                    raise Exception(f"Internal Server Status: {r.status_code} Error")
-                return r.json()
-            except httpx.HTTPStatusError as e:
-                raise Exception("Internal Server Error") from e
+        files = _extract_files(payload)
 
-    async def _get(self, path: str, params: Dict[str, Any]) -> Dict[str, Any]:
+        c = self._ensure_client()
+        url = self.base_url.rstrip("/") + path
+
+        if files:
+            r = await c.post(url, data=payload, files=files, headers=self._headers(headers))
+        else:
+            r = await c.post(url, json=payload, headers=self._headers(headers))
+
+        self._raise_http_error(r)
+        return r.json()
+
+    async def _get(
+        self,
+        path: str,
+        params: Dict[str, Any],
+        headers: Dict[str, str] | None = None,
+    ) -> Dict[str, Any]:
         params = dict(params or {})
         path = _format_path_and_pop_params(path, params)
 
-        async with httpx.AsyncClient(timeout=self.timeout) as c:
-            r = await c.get(self.base_url + path, params=params, headers=self._headers())
-            r.raise_for_status()
-            return r.json()
+        c = self._ensure_client()
+        url = self.base_url.rstrip("/") + path
+        r = await c.get(url, params=params, headers=self._headers(headers))
+
+        self._raise_http_error(r)
+        return r.json()

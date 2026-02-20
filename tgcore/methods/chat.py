@@ -46,3 +46,19 @@ class Chat(BaseMethod):
             "/api/v2/exportChatInviteLink",
             kw
         )
+
+    def revokeChatInviteLink(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/revokeChatInviteLink",
+            kw
+        )
+
+    def setChatPermissions(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/setChatPermissions",
+            kw
+        )

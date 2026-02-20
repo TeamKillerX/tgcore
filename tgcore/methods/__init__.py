@@ -3,6 +3,7 @@ from .ban import Ban
 from .chat import Chat
 from .copy import Copy
 from .deletemsg import DeleteMsg
+from .files import File
 from .forward import Forward
 from .message import Message
 from .mute import Mute
@@ -22,6 +23,7 @@ class Methods(
     Forward,
     Mute,
     Webhook,
-    Pinned
+    Pinned,
+    File
 ):
     pass
