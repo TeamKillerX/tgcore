@@ -163,12 +163,29 @@ class RequestCall(Generic[T]):
 class CoreBotAuth:
     api_key: str
     base_url: str = "https://services-pro.ryzenths.dpdns.org"
+    user_agent: str = "tgcore/1.0"
     timeout: float = 30.0
+    _extra_headers: Dict[str, str] = {}
 
-    def _headers(self) -> Dict[str, str]:
-        return {"x-api-key": self.api_key}
+    def _headers(self, extra: Optional[Dict[str, str]] = None) -> Dict[str, str]:
+        h = {
+            "x-api-key": self.api_key,
+            "accept": "application/json",
+            "user-agent": self.user_agent,
+        }
+        for k, v in self._extra_headers.items():
+            h[k] = v
 
-    async def _post(self, path: str, payload: Dict[str, Any]) -> Dict[str, Any]:
+        if extra:
+            for k, v in extra.items():
+                h[k.lower()] = v
+        return h
+
+    def set_header(self, key: str, value: str) -> "CoreBotAuth":
+        self._extra_headers[key.lower()] = value
+        return self
+
+    async def _post(self, path: str, payload: Dict[str, Any], headers: Dict[str, str] | None = None) -> Dict[str, Any]:
         payload = dict(payload or {})
         path = _format_path_and_pop_params(path, payload)
 
@@ -181,11 +198,11 @@ class CoreBotAuth:
             except httpx.HTTPStatusError as e:
                 raise Exception("Internal Server Error") from e
 
-    async def _get(self, path: str, params: Dict[str, Any]) -> Dict[str, Any]:
+    async def _get(self, path: str, params: Dict[str, Any], headers: Dict[str, str] | None = None) -> Dict[str, Any]:
         params = dict(params or {})
         path = _format_path_and_pop_params(path, params)
 
         async with httpx.AsyncClient(timeout=self.timeout) as c:
-            r = await c.get(self.base_url + path, params=params, headers=self._headers())
+            r = await c.get(self.base_url + path, params=params, headers=self._headers(headers))
             r.raise_for_status()
             return r.json()
