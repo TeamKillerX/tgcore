@@ -27,8 +27,8 @@ from typing import (
     Optional,
     Tuple,
     Type,
+    TypeVar,
     Union,
-    TypeVar
 )
 
 import httpx
@@ -79,7 +79,7 @@ def _normalize_tuple_file(v: FileTuple, key: str) -> FileTuple:
     # len == 3
     ctype = v[2]
     return (filename, content, ctype)
-                                                     
+
 def _try_path_to_file_tuple(path: Union[str, Path], key: str) -> Optional[FileTuple]:
     p = Path(path)
     if not p.exists() or not p.is_file():
