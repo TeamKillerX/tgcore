@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from .base import BaseMethod
 
+
 class Pinned(BaseMethod):
     def pinChatMessage(self, **kw):
         return RequestCall(

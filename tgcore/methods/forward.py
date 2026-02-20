@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from .base import BaseMethod
 
+
 class Forward(BaseMethod):
     def forwardMessages(self, **kw):
         return RequestCall(

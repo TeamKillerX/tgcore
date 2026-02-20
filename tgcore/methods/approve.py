@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from .base import BaseMethod
 
+
 class Approve(BaseMethod):
     def approveChatJoinRequest(self, **kw):
         return RequestCall(

@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from .base import BaseMethod
 
+
 class Ban(BaseMethod):
     def banChatMember(self, **kw):
         return RequestCall(

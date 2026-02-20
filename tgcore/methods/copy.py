@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from .base import BaseMethod
 
+
 class Copy(BaseMethod):
     def copyMessages(self, **kw):
         return RequestCall(

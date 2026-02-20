@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from .base import BaseMethod
 
+
 class Mute(BaseMethod):
     def restrictChatMember(self, **kw):
         return RequestCall(

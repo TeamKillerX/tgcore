@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from .base import BaseMethod
 
+
 class Webhook(BaseMethod):
     def getWebhookInfo(self):
         return RequestCall(

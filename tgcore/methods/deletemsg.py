@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from .base import BaseMethod
 
+
 class DeleteMsg(BaseMethod):
     def deleteMessages(self, **kw):
         return RequestCall(
