@@ -7,6 +7,7 @@ from .copy import Copy
 from .deletemsg import DeleteMsg
 from .forward import Forward
 from .mute import Mute
+from .webhook import Webhook
 
 class Methods(
     Message,
@@ -17,6 +18,7 @@ class Methods(
     Copy,
     DeleteMsg,
     Forward,
-    Mute
+    Mute,
+    Webhook
 ):
     pass
