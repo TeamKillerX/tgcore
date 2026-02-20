@@ -9,7 +9,7 @@ from .mute import Mute
 from .pinned import Pinned
 from .stickers import Stickers
 from .webhook import Webhook
-
+from .files import File
 
 class Methods(
     Message,
@@ -22,6 +22,7 @@ class Methods(
     Forward,
     Mute,
     Webhook,
-    Pinned
+    Pinned,
+    File
 ):
     pass
