@@ -56,14 +56,6 @@ class Message(BaseMethod):
             kw
         )
 
-    def pinChatMessage(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/pinChatMessage",
-            kw
-        )
-
     def sendAnimation(self, **kw):
         return RequestCall(
             self._client,
