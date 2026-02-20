@@ -33,6 +33,14 @@ class Message(BaseMethod):
             _params=kw
         )
 
+    def getWebhookInfo(self):
+        return RequestCall(
+            _client=self._client,
+            _method="GET",
+            _path="/api/v2/getWebhookInfo",
+            _params={}
+        )
+
     def sendMessage(self, **kw):
         return RequestCall(
             self._client,
@@ -153,6 +161,14 @@ class Message(BaseMethod):
             kw
         )
 
+    def restrictChatMember(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/restrictChatMember",
+            kw
+        )
+
     def approveChatJoinRequest(self, **kw):
         return RequestCall(
             self._client,
@@ -182,5 +198,13 @@ class Message(BaseMethod):
             self._client,
             "POST",
             "/api/v2/getChatMember",
+            kw
+        )
+
+    def exportChatInviteLink(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/exportChatInviteLink",
             kw
         )
