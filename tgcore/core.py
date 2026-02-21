@@ -189,6 +189,21 @@ class InputMedia:
     def build(self):
         return self._data
 
+class ChatPermissions:
+    def __init__(self):
+        self._data = {}
+
+    def __getattr__(self, name):
+        if name.startswith("can_"):
+            def setter(value: bool):
+                self._data[name] = value
+                return self
+            return setter
+        raise AttributeError(name)
+
+    def build(self):
+        return self._data
+
 class MediaFactory:
     def __init__(self, client: "CoreBotAuth"):
         self._client = client
