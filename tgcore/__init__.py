@@ -13,6 +13,10 @@ http://www.apache.org/licenses/LICENSE-2.0
 """
 
 from .client import Client
-from .core import KeyboardBuilder
+from .core import ChatPermissions, KeyboardBuilder
 
-__all__ = ["Client", "KeyboardBuilder"]
+__all__ = [
+  "Client",
+  "KeyboardBuilder",
+  "ChatPermissions"
+]

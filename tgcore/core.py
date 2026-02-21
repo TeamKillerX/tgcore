@@ -17,8 +17,10 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import (
     Any,
+    BinaryIO,
     Callable,
     Dict,
     Generic,
@@ -189,6 +191,21 @@ class InputMedia:
     def build(self):
         return self._data
 
+class ChatPermissions:
+    def __init__(self):
+        self._data = {}
+
+    def __getattr__(self, name):
+        if name.startswith("can_"):
+            def setter(value: bool):
+                self._data[name] = value
+                return self
+            return setter
+        raise AttributeError(name)
+
+    def build(self):
+        return self._data
+
 class MediaFactory:
     def __init__(self, client: "CoreBotAuth"):
         self._client = client
@@ -301,6 +318,7 @@ class CoreBotAuth:
     user_agent: str = "tgcore/1.0"
     timeout: float = 30.0
 
+    _parse_mode: str | None = None
     _extra_headers: Dict[str, str] = field(default_factory=dict)
     _client: Optional[httpx.AsyncClient] = field(default=None, init=False, repr=False)
 
@@ -327,6 +345,25 @@ class CoreBotAuth:
                 h[k.lower()] = v
         return h
 
+    def escape(self, text: str):
+        escape_chars = r"_*[]()~`>#+-=|{}.!"
+        for c in escape_chars:
+            text = text.replace(c, f"\\{c}")
+        return text
+
+    def escape_md(self, text: str) -> str:
+        _MD_V2_ESCAPE = r"_*[]()~`>#+-=|{}.!"
+        return re.sub(f"([{re.escape(_MD_V2_ESCAPE)}])", r"\\\1", text)
+
+    def set_markdown(self, mode: str | bool = True):
+        if mode is True:
+            self._parse_mode = "MarkdownV2"
+        elif mode is False:
+            self._parse_mode = None
+        else:
+            self._parse_mode = mode
+        return self
+
     def set_header(self, key: str, value: str) -> "CoreBotAuth":
         self._extra_headers[key.lower()] = value
         return self
@@ -351,6 +388,9 @@ class CoreBotAuth:
 
         c = self._ensure_client()
         url = self.base_url.rstrip("/") + path
+
+        if self._parse_mode and "parse_mode" not in payload:
+            payload["parse_mode"] = self._parse_mode
 
         files = _extract_files(payload)
 
