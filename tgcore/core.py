@@ -318,6 +318,7 @@ class CoreBotAuth:
     user_agent: str = "tgcore/1.0"
     timeout: float = 30.0
 
+    _parse_mode: str | None = None
     _extra_headers: Dict[str, str] = field(default_factory=dict)
     _client: Optional[httpx.AsyncClient] = field(default=None, init=False, repr=False)
 
@@ -344,6 +345,21 @@ class CoreBotAuth:
                 h[k.lower()] = v
         return h
 
+    def escape(self, text: str):
+        escape_chars = r"_*[]()~`>#+-=|{}.!"
+        for c in escape_chars:
+            text = text.replace(c, f"\\{c}")
+        return text
+
+    def set_markdown(self, mode: str | bool = True):
+        if mode is True:
+            self._parse_mode = "MarkdownV2"
+        elif mode is False:
+            self._parse_mode = None
+        else:
+            self._parse_mode = mode
+        return self
+
     def set_header(self, key: str, value: str) -> "CoreBotAuth":
         self._extra_headers[key.lower()] = value
         return self
@@ -369,6 +385,9 @@ class CoreBotAuth:
         c = self._ensure_client()
         url = self.base_url.rstrip("/") + path
 
+        if self._parse_mode and "parse_mode" not in payload:
+            payload["parse_mode"] = self._parse_mode
+    
         files = _extract_files(payload)
 
         if files:
