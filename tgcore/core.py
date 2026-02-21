@@ -15,6 +15,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 from __future__ import annotations
 
 import json
+import mimetypes
 import os
 import re
 from dataclasses import dataclass, field
