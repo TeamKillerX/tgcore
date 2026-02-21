@@ -346,10 +346,7 @@ class CoreBotAuth:
         return h
 
     def escape(self, text: str):
-        escape_chars = r"_*[]()~`>#+-=|{}.!"
-        for c in escape_chars:
-            text = text.replace(c, f"\\{c}")
-        return text
+        return self.escape_md
 
     def escape_md(self, text: str) -> str:
         _MD_V2_ESCAPE = r"_*[]()~`>#+-=|{}.!"
