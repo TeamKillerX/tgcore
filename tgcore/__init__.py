@@ -13,7 +13,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 """
 
 from .client import Client
-from .core import KeyboardBuilder, ChatPermissions
+from .core import ChatPermissions, KeyboardBuilder
 
 __all__ = [
   "Client",

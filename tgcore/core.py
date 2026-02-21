@@ -16,10 +16,11 @@ from __future__ import annotations
 
 import json
 import re
-from pathlib import Path
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import (
     Any,
+    BinaryIO,
     Callable,
     Dict,
     Generic,
@@ -30,7 +31,6 @@ from typing import (
     Type,
     TypeVar,
     Union,
-    BinaryIO
 )
 
 import httpx
@@ -391,7 +391,7 @@ class CoreBotAuth:
 
         if self._parse_mode and "parse_mode" not in payload:
             payload["parse_mode"] = self._parse_mode
-    
+
         files = _extract_files(payload)
 
         if files:
