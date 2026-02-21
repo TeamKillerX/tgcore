@@ -15,6 +15,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 from __future__ import annotations
 
 import json
+import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -346,10 +347,7 @@ class CoreBotAuth:
         return h
 
     def escape(self, text: str):
-        escape_chars = r"_*[]()~`>#+-=|{}.!"
-        for c in escape_chars:
-            text = text.replace(c, f"\\{c}")
-        return text
+        return self.escape_md(text)
 
     def escape_md(self, text: str) -> str:
         _MD_V2_ESCAPE = r"_*[]()~`>#+-=|{}.!"
