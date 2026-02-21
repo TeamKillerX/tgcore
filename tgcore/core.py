@@ -351,6 +351,10 @@ class CoreBotAuth:
             text = text.replace(c, f"\\{c}")
         return text
 
+    def escape_md(self, text: str) -> str:
+        _MD_V2_ESCAPE = r"_*[]()~`>#+-=|{}.!"
+        return re.sub(f"([{re.escape(_MD_V2_ESCAPE)}])", r"\\\1", text)
+
     def set_markdown(self, mode: str | bool = True):
         if mode is True:
             self._parse_mode = "MarkdownV2"
