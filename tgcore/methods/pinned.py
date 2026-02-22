@@ -22,3 +22,11 @@ class Pinned(BaseMethod):
             "/api/v2/pinChatMessage",
             kw
         )
+
+    def unpinChatMessage(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/unpinChatMessage",
+            kw
+        )
