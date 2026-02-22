@@ -246,7 +246,7 @@ class LinkPreviewBuilder:
         if "prefer_small_media" in self._data and "prefer_large_media" in self._data:
             raise ValueError("Cannot set both small and large media preference")
         return self._data
-    
+
 @dataclass
 class KeyboardBuilder:
     _rows: List[List[Dict[str, Any]]] = field(default_factory=list)
