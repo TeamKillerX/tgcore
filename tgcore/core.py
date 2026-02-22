@@ -248,6 +248,33 @@ class LinkPreviewBuilder:
         return self._data
 
 @dataclass
+class ReplyParametersBuilder:
+    _data: Dict[str, Any] = field(default_factory=dict)
+
+    def message_id(self, value: int):
+        self._data["message_id"] = value
+        return self
+
+    def chat_id(self, value: Union[str, int]):
+        self._data["chat_id"] = value
+        return self
+
+    def allow_sending_without_reply(self, value: bool):
+        self._data["allow_sending_without_reply"] = value
+        return self
+
+    def quote(self, value: str):
+        self._data["quote"] = value
+        return self
+
+    def quote_parse_mode(self, value: str = "MarkdownV2"):
+        self._data["quote_parse_mode"] = value
+        return self
+
+    def build(self):
+        return self._data
+
+@dataclass
 class KeyboardBuilder:
     _rows: List[List[Dict[str, Any]]] = field(default_factory=list)
     _current_row: List[Dict[str, Any]] = field(default_factory=list)
