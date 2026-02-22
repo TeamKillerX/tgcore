@@ -39,6 +39,14 @@ class Chat(BaseMethod):
             kw
         )
 
+    def leaveChat(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/leaveChat",
+            kw
+        )
+
     def exportChatInviteLink(self, **kw):
         return RequestCall(
             self._client,
