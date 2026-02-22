@@ -255,7 +255,7 @@ class ReplyParametersBuilder:
         self._data["message_id"] = value
         return self
 
-    def chat_id(self, value: int):
+    def chat_id(self, value: Union[str, int]):
         self._data["chat_id"] = value
         return self
 
