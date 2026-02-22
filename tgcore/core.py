@@ -219,6 +219,35 @@ class MediaFactory:
         return InputMedia(self._client, "video", file)
 
 @dataclass
+class LinkPreviewBuilder:
+    _data: Dict[str, Any] = field(default_factory=dict)
+
+    def is_disabled(self, value: bool):
+        self._data["is_disabled"] = value
+        return self
+
+    def url(self, value: str):
+        self._data["url"] = value
+        return self
+
+    def prefer_small_media(self, value: bool):
+        self._data["prefer_small_media"] = value
+        return self
+
+    def prefer_large_media(self, value: bool):
+        self._data["prefer_large_media"] = value
+        return self
+
+    def show_above_text(self, value: bool):
+        self._data["show_above_text"] = value
+        return self
+
+    def build(self):
+        if "prefer_small_media" in self._data and "prefer_large_media" in self._data:
+            raise ValueError("Cannot set both small and large media preference")
+        return self._data
+
+@dataclass
 class KeyboardBuilder:
     _rows: List[List[Dict[str, Any]]] = field(default_factory=list)
     _current_row: List[Dict[str, Any]] = field(default_factory=list)
