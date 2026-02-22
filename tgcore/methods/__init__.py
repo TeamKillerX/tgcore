@@ -10,6 +10,7 @@ from .mute import Mute
 from .pinned import Pinned
 from .stickers import Stickers
 from .webhook import Webhook
+from .edit import Edit
 
 
 class Methods(
@@ -24,6 +25,7 @@ class Methods(
     Mute,
     Webhook,
     Pinned,
-    File
+    File,
+    Edit
 ):
     pass
