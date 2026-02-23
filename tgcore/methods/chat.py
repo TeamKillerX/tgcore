@@ -47,19 +47,11 @@ class Chat(BaseMethod):
             kw
         )
 
-    def exportChatInviteLink(self, **kw):
+    def setChatTitle(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/exportChatInviteLink",
-            kw
-        )
-
-    def revokeChatInviteLink(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/revokeChatInviteLink",
+            "/api/v2/setChatTitle",
             kw
         )
 

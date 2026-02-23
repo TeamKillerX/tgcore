@@ -6,6 +6,7 @@ from .deletemsg import DeleteMsg
 from .edit import Edit
 from .files import File
 from .forward import Forward
+from .invite import Invite
 from .message import Message
 from .mute import Mute
 from .pinned import Pinned
@@ -26,6 +27,7 @@ class Methods(
     Webhook,
     Pinned,
     File,
-    Edit
+    Edit,
+    Invite
 ):
     pass
