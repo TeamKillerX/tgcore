@@ -17,7 +17,7 @@ async def chat_group(chat_id):
     can_change_info
     can_pin_messages
     can_manage_topics
-    
+
     Pass True if chat permissions are set independently.
     use_independent_chat_permissions=True
     """
