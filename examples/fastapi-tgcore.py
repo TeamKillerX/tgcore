@@ -4,6 +4,7 @@
 # Easy beginner python
 
 from fastapi import FastAPI
+
 from tgcore import Client
 
 app = FastAPI()
