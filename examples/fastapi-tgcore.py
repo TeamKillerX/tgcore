@@ -13,7 +13,7 @@ tg = Client()
 def read_root():
     return {"Hello": "Word"}
 
-@app.post("/sendMessage")
+@app.post("/api/v2/sendMessage")
 async def send(chat_id: int, text: str):
     return await tg.raw.sendMessage(
         chat_id=chat_id,
