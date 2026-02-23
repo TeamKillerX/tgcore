@@ -20,5 +20,5 @@ __all__ = [
   "KeyboardBuilder",
   "LinkPreviewBuilder",
   "ReplyParametersBuilder",
-  "ChatPermissions"
+  "ChatPermissionsBuilder"
 ]
