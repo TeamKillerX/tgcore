@@ -6,12 +6,13 @@ from .deletemsg import DeleteMsg
 from .edit import Edit
 from .files import File
 from .forward import Forward
+from .invite import Invite
 from .message import Message
 from .mute import Mute
 from .pinned import Pinned
 from .stickers import Stickers
 from .webhook import Webhook
-from .invite import Invite
+
 
 class Methods(
     Message,
