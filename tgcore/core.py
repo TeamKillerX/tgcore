@@ -193,7 +193,7 @@ class InputMedia:
     def build(self):
         return self._data
 
-class ChatPermissions:
+class ChatPermissionsBuilder:
     def __init__(self):
         self._data = {}
 
