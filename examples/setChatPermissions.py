@@ -1,6 +1,7 @@
 # version: 1.0.29
 
-from tgcore import Client, ChatPermissions as ChatPermissionsBuilder
+from tgcore import ChatPermissions as ChatPermissionsBuilder
+from tgcore import Client
 
 tg = Client()
 
