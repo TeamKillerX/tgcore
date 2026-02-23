@@ -14,35 +14,27 @@ from ..core import RequestCall
 from .base import BaseMethod
 
 
-class Edit(BaseMethod):
-    def editMessageMedia(self, **kw):
+class Topic(BaseMethod):
+    def editForumTopic(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/editMessageMedia",
+            "/api/v2/editForumTopic",
             kw
         )
 
-    def editMessageText(self, **kw):
+    def editGeneralForumTopic(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/editMessageText",
+            "/api/v2/editGeneralForumTopic",
             kw
         )
 
-    def editMessageReplyMarkup(self, **kw):
+    def hideGeneralForumTopic(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/editMessageReplyMarkup",
-            kw
-        )
-
-    def editMessageChecklist(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/editMessageChecklist",
+            "/api/v2/hideGeneralForumTopic",
             kw
         )

@@ -38,3 +38,11 @@ class Invite(BaseMethod):
             "/api/v2/editChatInviteLink",
             kw
         )
+
+    def editChatSubscriptionInviteLink(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/editChatSubscriptionInviteLink",
+            kw
+        )
