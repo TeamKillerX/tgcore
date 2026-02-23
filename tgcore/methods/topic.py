@@ -22,7 +22,7 @@ class Topic(BaseMethod):
             "/api/v2/editForumTopic",
             kw
         )
-        
+
     def editGeneralForumTopic(self, **kw):
         return RequestCall(
             self._client,
