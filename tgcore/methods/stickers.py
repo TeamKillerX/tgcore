@@ -94,3 +94,11 @@ class Stickers(BaseMethod):
             "/api/v2/uploadStickerFile",
             kw
         )
+
+    def setStickerEmojiList(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/setStickerEmojiList",
+            kw
+        )
