@@ -19,6 +19,7 @@ Enterprise Telegram Bot Framework • Secure • Scalable • Zero-Trust Ready
 ![Webhook](https://img.shields.io/badge/webhook-supported-blueviolet?style=flat-square)
 ![tgcore](https://img.shields.io/badge/TGCore-SDK-black)
 
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
 ![PyPI](https://img.shields.io/pypi/v/tgcore?style=for-the-badge)
 ![Downloads](https://img.shields.io/pypi/dm/tgcore?style=for-the-badge)
