@@ -22,3 +22,19 @@ class Edit(BaseMethod):
             "/api/v2/editMessageMedia",
             kw
         )
+
+    def editMessageText(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/editMessageText",
+            kw
+        )
+
+    def editMessageReplyMarkup(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/editMessageReplyMarkup",
+            kw
+        )
