@@ -38,3 +38,11 @@ class Edit(BaseMethod):
             "/api/v2/editMessageReplyMarkup",
             kw
         )
+
+    def editMessageChecklist(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/editMessageChecklist",
+            kw
+        )
