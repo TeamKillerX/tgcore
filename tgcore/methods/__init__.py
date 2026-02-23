@@ -12,6 +12,7 @@ from .mute import Mute
 from .pinned import Pinned
 from .stickers import Stickers
 from .webhook import Webhook
+from .topic import Topic
 
 
 class Methods(
@@ -28,6 +29,7 @@ class Methods(
     Pinned,
     File,
     Edit,
-    Invite
+    Invite,
+    Topic
 ):
     pass
