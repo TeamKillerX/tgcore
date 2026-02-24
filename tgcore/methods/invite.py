@@ -15,6 +15,14 @@ from .base import BaseMethod
 
 
 class Invite(BaseMethod):
+    def createChatInviteLink(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/createChatInviteLink",
+            kw
+        )
+
     def exportChatInviteLink(self, **kw):
         return RequestCall(
             self._client,
