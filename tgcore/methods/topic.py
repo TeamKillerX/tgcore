@@ -38,3 +38,19 @@ class Topic(BaseMethod):
             "/api/v2/hideGeneralForumTopic",
             kw
         )
+
+    def unpinAllForumTopicMessages(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/unpinAllForumTopicMessages",
+            kw
+        )
+
+    def unpinAllGeneralForumTopicMessages(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/unpinAllGeneralForumTopicMessages",
+            kw
+        )
