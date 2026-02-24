@@ -28,5 +28,5 @@ class Gifts(BaseMethod):
             self._client,
             "POST",
             "/api/v2/getAvailableGifts",
-            _params={}
+            {}
         )
