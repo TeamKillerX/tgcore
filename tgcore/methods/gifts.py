@@ -23,10 +23,10 @@ class Gifts(BaseMethod):
             kw
         )
 
-    def getAvailableGifts(self, **kw):
+    def getAvailableGifts(self):
         return RequestCall(
             self._client,
             "POST",
             "/api/v2/getAvailableGifts",
-            kw
+            _params={}
         )
