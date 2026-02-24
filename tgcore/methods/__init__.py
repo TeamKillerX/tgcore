@@ -13,7 +13,7 @@ from .pinned import Pinned
 from .stickers import Stickers
 from .topic import Topic
 from .webhook import Webhook
-
+from .gifts import Gifts
 
 class Methods(
     Message,
@@ -30,6 +30,7 @@ class Methods(
     File,
     Edit,
     Invite,
-    Topic
+    Topic,
+    Gifts
 ):
     pass
