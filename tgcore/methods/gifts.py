@@ -25,8 +25,8 @@ class Gifts(BaseMethod):
 
     def getAvailableGifts(self):
         return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/getAvailableGifts",
-            {}
+            _client=self._client,
+            _method="POST",
+            _path="/api/v2/getAvailableGifts",
+            _params={}
         )
