@@ -6,6 +6,7 @@ from .deletemsg import DeleteMsg
 from .edit import Edit
 from .files import File
 from .forward import Forward
+from .gifts import Gifts
 from .invite import Invite
 from .message import Message
 from .mute import Mute
@@ -30,6 +31,7 @@ class Methods(
     File,
     Edit,
     Invite,
-    Topic
+    Topic,
+    Gifts
 ):
     pass
