@@ -15,6 +15,14 @@ from .base import BaseMethod
 
 
 class Topic(BaseMethod):
+    def createForumTopic(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/createForumTopic",
+            kw
+        )
+
     def editForumTopic(self, **kw):
         return RequestCall(
             self._client,
