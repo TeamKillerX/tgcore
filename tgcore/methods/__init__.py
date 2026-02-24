@@ -6,6 +6,7 @@ from .deletemsg import DeleteMsg
 from .edit import Edit
 from .files import File
 from .forward import Forward
+from .gifts import Gifts
 from .invite import Invite
 from .message import Message
 from .mute import Mute
@@ -13,7 +14,7 @@ from .pinned import Pinned
 from .stickers import Stickers
 from .topic import Topic
 from .webhook import Webhook
-from .gifts import Gifts
+
 
 class Methods(
     Message,
