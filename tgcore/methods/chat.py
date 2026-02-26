@@ -55,6 +55,14 @@ class Chat(BaseMethod):
             kw
         )
 
+    def setChatPhoto(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/setChatPhoto",
+            kw
+        )
+
     def setChatPermissions(self, **kw):
         return RequestCall(
             self._client,
