@@ -47,6 +47,30 @@ class Topic(BaseMethod):
             kw
         )
 
+    def deleteForumTopic(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteForumTopic",
+            kw
+        )
+
+    def closeForumTopic(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/closeForumTopic",
+            kw
+        )
+
+    def closeGeneralForumTopic(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/closeGeneralForumTopic",
+            kw
+        )
+
     def unpinAllForumTopicMessages(self, **kw):
         return RequestCall(
             self._client,
