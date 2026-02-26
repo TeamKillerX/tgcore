@@ -79,3 +79,19 @@ class Message(BaseMethod):
             "/api/v2/sendAnimation",
             kw
         )
+
+    def sendPoll(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/sendPoll",
+            kw
+        )
+
+    def sendChecklist(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/sendChecklist",
+            kw
+        )
