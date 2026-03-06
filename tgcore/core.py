@@ -20,6 +20,7 @@ import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
+from box import Box
 from typing import (
     Any,
     BinaryIO,
@@ -372,7 +373,7 @@ class RequestCall(Generic[T]):
 @dataclass
 class CoreBotAuth:
     api_key: str
-    base_url: str = "https://services-pro.ryzenths.dpdns.org"
+    base_url: str = "https://tgcore.ryzenths.dpdns.org"
     user_agent: str = "tgcore/1.0"
     timeout: float = 30.0
 
@@ -422,6 +423,9 @@ class CoreBotAuth:
     def set_header(self, key: str, value: str) -> "CoreBotAuth":
         self._extra_headers[key.lower()] = value
         return self
+
+    def to_obj(self, everything):
+        return Box(everything)
 
     def _raise_http_error(self, r: httpx.Response) -> None:
         if r.is_success:
