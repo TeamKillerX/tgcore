@@ -220,6 +220,21 @@ class MediaFactory:
         return InputMedia(self._client, "video", file)
 
 @dataclass
+class SuggestedPostParametersBuilder:
+    _data: Dict[str, Any] = field(default_factory=dict)
+
+    def currency(self, value: str):
+        self._data["currency"] = value
+        return self
+
+    def amount(self, value: int):
+        self._data["amount"] = value
+        return self
+
+    def build(self):
+        return self._data
+
+@dataclass
 class LinkPreviewBuilder:
     _data: Dict[str, Any] = field(default_factory=dict)
 
