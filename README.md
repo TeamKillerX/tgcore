@@ -148,7 +148,7 @@ async def pinterest_images(q: str):
         return None
     return like_ts.data.pins[1].media.images.orig.url
 
-async def send_msg():
+async def send_photo():
     newurl = await pinterest_images("Real coding")
     resp = await tg.raw.sendPhoto(
         chat_id=-100123456789,
