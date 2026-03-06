@@ -156,7 +156,7 @@ async def send_photo():
         reply_markup=(
             KeyboardBuilder()
             .url("View Pinterest", newurl)
-            .url("Tgcore on PYPI", "https://pypi.org/project/tgcore/")
+            .url("Tgcore on PyPI", "https://pypi.org/project/tgcore/")
             .row()
             .url("Tgcore on NPMJS", "https://www.npmjs.com/package/@xtsea/tgcore-ts")
             .build()
