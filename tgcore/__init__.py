@@ -14,6 +14,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 from .client import Client
 from .core import (
+    ButtonExamples,
     ChatPermissionsBuilder,
     KeyboardBuilder,
     LinkPreviewBuilder,
@@ -22,6 +23,7 @@ from .core import (
 
 __all__ = [
   "Client",
+  "ButtonExamples",
   "KeyboardBuilder",
   "LinkPreviewBuilder",
   "ReplyParametersBuilder",
