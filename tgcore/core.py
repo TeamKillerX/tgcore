@@ -20,7 +20,6 @@ import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from box import Box
 from typing import (
     Any,
     BinaryIO,
@@ -37,6 +36,7 @@ from typing import (
 )
 
 import httpx
+from box import Box
 
 T = TypeVar("T")
 
