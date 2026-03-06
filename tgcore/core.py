@@ -353,7 +353,7 @@ class ButtonExamples:
 
     def copy_text(name: str, copy_text: str):
         return KeyboardBuilder().copy_text(name, copy_text).build()
-    
+
 @dataclass
 class RequestCall(Generic[T]):
     _client: "CoreBotAuth"
