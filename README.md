@@ -131,6 +131,39 @@ await (
         .execute()
 )
 ```
+
+### Rest API & TgCore Bot
+```py
+from tgcore import Client, KeyboardBuilder
+
+tg = Client()
+
+async def pinterest_images(q: str):
+    kw = await tg._post(
+        "/api/web/pinterest",
+        payload={"query": q}
+    )
+    like_ts = tg.to_obj(kw)
+    if not like_ts.ok or not like_ts.data:
+        return None
+    return like_ts.data.pins[1].media.images.orig.url
+
+async def send_photo():
+    newurl = await pinterest_images("Real coding")
+    resp = await tg.raw.sendPhoto(
+        chat_id=-100123456789,
+        photo=newurl,
+        reply_markup=(
+            KeyboardBuilder()
+            .url("View Pinterest", newurl)
+            .url("Tgcore on PyPI", "https://pypi.org/project/tgcore/")
+            .row()
+            .url("Tgcore on NPMJS", "https://www.npmjs.com/package/@xtsea/tgcore-ts")
+            .build()
+        )
+    ).execute()
+    return tg.to_obj(resp).ok
+```
 ---
 
 ## 🔄 Token Rotation Support
