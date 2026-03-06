@@ -342,17 +342,21 @@ class KeyboardBuilder:
         return {"inline_keyboard": self._rows}
 
 class ButtonExamples:
-    def url(name, text, url: str):
-        return KeyboardBuilder().url(name, url).build()
+    @staticmethod
+    def url(text, url):
+        return KeyboardBuilder().url(text, url).build()
 
-    def style(name: str, style: str, **kw):
-        return KeyboardBuilder().style(name, style, kw).build()
+    @staticmethod
+    def style(text, style, **kw):
+        return KeyboardBuilder().style(text, style, **kw).build()
 
-    def callback(name: str, data: str):
-        return KeyboardBuilder().callback(name, data).build()
+    @staticmethod
+    def callback(text, data):
+        return KeyboardBuilder().callback(text, data).build()
 
-    def copy_text(name: str, copy_text: str):
-        return KeyboardBuilder().copy_text(name, copy_text).build()
+    @staticmethod
+    def copy_text(text, copy_text):
+        return KeyboardBuilder().copy_text(text, copy_text).build()
 
 @dataclass
 class RequestCall(Generic[T]):
