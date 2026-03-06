@@ -34,7 +34,7 @@ setuptools.setup(
     ],
     install_requires=[
         "httpx>=0.24.0",
-        "python-box>=7.4.1",
+        "python-box~=7.0",
         "pydantic"
     ],
     classifiers=[
