@@ -342,7 +342,7 @@ class KeyboardBuilder:
         return {"inline_keyboard": self._rows}
 
 class ButtonExamples:
-    def url(name, str, url: str):
+    def url(name, text, url: str):
         return KeyboardBuilder().url(name, url).build()
 
     def style(name: str, style: str, **kw):
