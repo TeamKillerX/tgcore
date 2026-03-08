@@ -459,6 +459,9 @@ class CoreBotAuth:
     def to_obj(self, everything):
         return Box(everything)
 
+    def kb(self):
+        return KeyboardBuilder()
+
     def _raise_http_error(self, r: httpx.Response) -> None:
         if r.is_success:
             return
