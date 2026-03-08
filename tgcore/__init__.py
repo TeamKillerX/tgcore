@@ -15,11 +15,11 @@ http://www.apache.org/licenses/LICENSE-2.0
 from .client import Client
 from .core import (
     ButtonExamples,
-    SuggestedPostParametersBuilder,
     ChatPermissionsBuilder,
     KeyboardBuilder,
     LinkPreviewBuilder,
     ReplyParametersBuilder,
+    SuggestedPostParametersBuilder,
 )
 
 __all__ = [
