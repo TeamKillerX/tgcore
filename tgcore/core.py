@@ -498,10 +498,11 @@ class CoreBotAuth:
         return r.json()
 
     async def fetch_post(self, path: str, **kw):
+        headers = kw.pop("headers", None)
         return await self._post(
             path=path,
-            payload=**kw,
-            headers=kw.pop("headers", None)
+            payload=kw,
+            headers=headers
         )
 
     async def _get(
