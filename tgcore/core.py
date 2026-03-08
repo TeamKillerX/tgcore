@@ -508,7 +508,7 @@ class CoreBotAuth:
         if check_errors:
             obj = self.to_obj(ok)
             if not obj.ok or not obj.data:
-                return "ERROR REQUEST"
+                return None
             return obj
         else:
             return ok
