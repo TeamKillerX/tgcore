@@ -497,6 +497,13 @@ class CoreBotAuth:
         self._raise_http_error(r)
         return r.json()
 
+    async def fetch_post(self, path: str, **kw):
+        return await self._post(
+            path=path,
+            payload=**kw,
+            headers=kw.pop("headers", None)
+        )
+
     async def _get(
         self,
         path: str,
