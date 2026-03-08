@@ -499,11 +499,19 @@ class CoreBotAuth:
 
     async def fetch_post(self, path: str, **kw):
         headers = kw.pop("headers", None)
-        return await self._post(
+        check_errors = kw.pop("check_errors", False)
+        ok = await self._post(
             path=path,
             payload=kw,
             headers=headers
         )
+        if check_errors:
+            obj = self.to_obj(ok)
+            if not obj.ok or not obj.data:
+                return "ERROR REQUEST"
+            return obj
+        else:
+            return ok
 
     async def _get(
         self,
