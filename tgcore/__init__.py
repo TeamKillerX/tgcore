@@ -19,13 +19,15 @@ from .core import (
     KeyboardBuilder,
     LinkPreviewBuilder,
     ReplyParametersBuilder,
+    SuggestedPostParametersBuilder,
 )
 
 __all__ = [
-  "Client",
-  "ButtonExamples",
-  "KeyboardBuilder",
-  "LinkPreviewBuilder",
-  "ReplyParametersBuilder",
-  "ChatPermissionsBuilder"
+    "Client",
+    "ButtonExamples",
+    "SuggestedPostParametersBuilder",
+    "KeyboardBuilder",
+    "LinkPreviewBuilder",
+    "ReplyParametersBuilder",
+    "ChatPermissionsBuilder"
 ]
