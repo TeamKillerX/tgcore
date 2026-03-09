@@ -407,7 +407,7 @@ class RequestCall(Generic[T]):
         if not _result["ok"] or not _result["data"]:
             return None
         return _result["ok"]
-        
+
     async def json(self) -> Any:
         return await self.execute()
 
