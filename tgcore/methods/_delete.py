@@ -1,0 +1,80 @@
+# Copyright 2026 Randy W
+# Licensed under the Apache License, Version 2.0
+
+# Github Author: https://github.com/TeamKillerX/
+# Code: @zxyeor
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+from ..core import RequestCall
+from .base import BaseMethod
+
+
+class Delete(BaseMethod):
+    def deleteMessages(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteMessages",
+            kw
+        )
+
+    def deleteMessage(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteMessage",
+            kw
+        )
+
+    def deleteBusinessMessages(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteBusinessMessages",
+            kw
+        )
+
+    def deleteChatPhoto(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteChatPhoto",
+            kw
+        )
+
+    def deleteChatStickerSet(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteChatStickerSet",
+            kw
+        )
+
+    def deleteForumTopic(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteForumTopic",
+            kw
+        )
+
+    def deleteMyCommands(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteMyCommands",
+            kw
+        )
+
+    def deleteStory(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteStory",
+            kw
+        )
