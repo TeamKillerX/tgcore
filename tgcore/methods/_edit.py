@@ -46,27 +46,3 @@ class Edit(BaseMethod):
             "/api/v2/editMessageChecklist",
             kw
         )
-
-    def editForumTopic(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/editForumTopic",
-            kw
-        )
-
-    def editGeneralForumTopic(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/editGeneralForumTopic",
-            kw
-        )
-
-    def editChatInviteLink(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/editChatInviteLink",
-            kw
-        )
