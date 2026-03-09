@@ -112,10 +112,10 @@ class Message(BaseMethod):
             kw
         )
 
-    def sendAnimation(self, **kw):
+    def sendChatAction(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/sendAnimation",
+            "/api/v2/sendChatAction",
             kw
         )
