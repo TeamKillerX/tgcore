@@ -68,6 +68,32 @@ await client.telegram.send_message(
 ---
 
 ## 👾 Usage
+### New fluent chain API
+• Platform Downloader (7-day free trial)
+- `/api/web/facebook/download`
+- `/api/web/tiktok/download`
+- `/api/web/pinterest/download`
+```py
+# version: 1.0.43+
+async def full_code():
+    _ = await tg.fetch_post(
+        "/api/web/facebook/download",
+        url="https://www.facebook.com/groups/788889186033999/permalink/1325624742360438/?app=fbl",
+        check_errors=True
+    )
+    await tg.raw\
+    .sendVideo()\
+    .chat_id(chat_id)\
+    .video(_.data.video[0].url)\
+    .reply_markup(
+    tg.kb().copy_text(
+        "this SDK builder style",
+        "use a framework"
+    )
+        .build()
+    )\
+    .skip()
+```
 ### sendMessage
 ```py
 # Latest version 1.0.16+
