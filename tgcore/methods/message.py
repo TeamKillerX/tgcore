@@ -95,3 +95,27 @@ class Message(BaseMethod):
             "/api/v2/sendChecklist",
             kw
         )
+
+    def sendVoice(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/sendVoice",
+            kw
+        )
+
+    def sendMessageDraft(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/sendMessageDraft",
+            kw
+        )
+
+    def sendAnimation(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/sendAnimation",
+            kw
+        )

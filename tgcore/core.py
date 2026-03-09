@@ -381,6 +381,12 @@ class RequestCall(Generic[T]):
     _params: Dict[str, Any]
     _response_model: Optional[Type[T]] = None
 
+    def __getattr__(self, name):
+        def setter(value):
+            self._params[name] = value
+            return self
+        return setter
+
     async def execute(self) -> T:
         raw = await (
             self._client._get(self._path, self._params)
@@ -392,6 +398,15 @@ class RequestCall(Generic[T]):
             return raw  # type: ignore
 
         return self._response_model.model_validate(raw)  # type: ignore
+
+    async def send(self) -> Any:
+        return await self.execute()
+
+    async def skip(self) -> Any:
+        _result = await self.execute()
+        if not _result["ok"] or not _result["data"]:
+            return None
+        return _result["ok"]
 
     async def json(self) -> Any:
         return await self.execute()
@@ -461,6 +476,12 @@ class CoreBotAuth:
 
     def kb(self):
         return KeyboardBuilder()
+
+    def lw(self):
+        return LinkPreviewBuilder()
+
+    def rs(self):
+        return ReplyParametersBuilder()
 
     def _raise_http_error(self, r: httpx.Response) -> None:
         if r.is_success:
