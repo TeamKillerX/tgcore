@@ -2,7 +2,7 @@ from .approve import Approve
 from .ban import Ban
 from .chat import Chat
 from .copy import Copy
-from .deletemsg import DeleteMsg
+from ._delete import Delete
 from .edit import Edit
 from .files import File
 from .forward import Forward
