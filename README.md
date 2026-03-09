@@ -91,10 +91,10 @@ async def full_code():
     .chat_id(chat_id)\
     .video(_.data.video[0].url)\
     .reply_markup(
-    tg.kb().copy_text(
-        "this SDK builder style",
-        "use a framework"
-    )
+        tg.kb().copy_text(
+            "this SDK builder style",
+            "use a framework"
+        )
         .build()
     )\
     .skip()
