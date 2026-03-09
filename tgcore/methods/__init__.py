@@ -1,19 +1,19 @@
-from .approve import Approve
-from .ban import Ban
-from .chat import Chat
-from .copy import Copy
-from .deletemsg import DeleteMsg
-from .edit import Edit
-from .files import File
-from .forward import Forward
-from .gifts import Gifts
-from .invite import Invite
-from .message import Message
-from .mute import Mute
-from .pinned import Pinned
-from .stickers import Stickers
-from .topic import Topic
-from .webhook import Webhook
+from ._approve import Approve
+from ._ban import Ban
+from ._chat import Chat
+from ._copy import Copy
+from ._delete import Delete
+from ._edit import Edit
+from ._files import File
+from ._forward import Forward
+from ._gifts import Gifts
+from ._invite import Invite
+from ._message import Message
+from ._mute import Mute
+from ._pinned import Pinned
+from ._stickers import Stickers
+from ._topic import Topic
+from ._webhook import Webhook
 
 
 class Methods(

@@ -102,3 +102,11 @@ class Stickers(BaseMethod):
             "/api/v2/setStickerEmojiList",
             kw
         )
+
+    def deleteChatStickerSet(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteChatStickerSet",
+            kw
+        )

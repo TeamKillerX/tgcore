@@ -14,59 +14,67 @@ from ..core import RequestCall
 from .base import BaseMethod
 
 
-class Chat(BaseMethod):
-    def getChat(self, **kw):
-        return RequestCall(
-            _client=self._client,
-            _method="GET",
-            _path="/api/v2/getChat",
-            _params=kw
-        )
-
-    def getChatAdministrators(self, **kw):
+class Delete(BaseMethod):
+    def deleteMessages(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/getChatAdministrators",
+            "/api/v2/deleteMessages",
             kw
         )
 
-    def getChatMember(self, **kw):
+    def deleteMessage(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/getChatMember",
+            "/api/v2/deleteMessage",
             kw
         )
 
-    def leaveChat(self, **kw):
+    def deleteBusinessMessages(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/leaveChat",
+            "/api/v2/deleteBusinessMessages",
             kw
         )
 
-    def setChatTitle(self, **kw):
+    def deleteChatPhoto(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/setChatTitle",
+            "/api/v2/deleteChatPhoto",
             kw
         )
 
-    def setChatPhoto(self, **kw):
+    def deleteChatStickerSet(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/setChatPhoto",
+            "/api/v2/deleteChatStickerSet",
             kw
         )
 
-    def setChatPermissions(self, **kw):
+    def deleteForumTopic(self, **kw):
         return RequestCall(
             self._client,
             "POST",
-            "/api/v2/setChatPermissions",
+            "/api/v2/deleteForumTopic",
+            kw
+        )
+
+    def deleteMyCommands(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteMyCommands",
+            kw
+        )
+
+    def deleteStory(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteStory",
             kw
         )
