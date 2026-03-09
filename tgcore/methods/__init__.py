@@ -23,7 +23,7 @@ class Methods(
     Ban,
     Chat,
     Copy,
-    DeleteMsg,
+    Delete,
     Forward,
     Mute,
     Webhook,
