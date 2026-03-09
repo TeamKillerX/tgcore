@@ -69,7 +69,7 @@ await client.telegram.send_message(
 
 ## 👾 Usage
 ### New fluent chain API
-• Platform Downloader (7 days free)
+• Platform Downloader (7-day free trial)
 - `/api/web/facebook/download`
 - `/api/web/tiktok/download`
 - `/api/web/pinterest/download`
