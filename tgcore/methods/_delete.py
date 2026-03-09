@@ -39,30 +39,6 @@ class Delete(BaseMethod):
             kw
         )
 
-    def deleteChatPhoto(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/deleteChatPhoto",
-            kw
-        )
-
-    def deleteChatStickerSet(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/deleteChatStickerSet",
-            kw
-        )
-
-    def deleteForumTopic(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/v2/deleteForumTopic",
-            kw
-        )
-
     def deleteMyCommands(self, **kw):
         return RequestCall(
             self._client,
