@@ -378,7 +378,7 @@ class RequestCall(Generic[T]):
     _client: "CoreBotAuth"
     _method: str
     _path: str
-    _params: Dict[str, Any]
+    _params: Dict[str, Any] = field(default_factory=dict)
     _response_model: Optional[Type[T]] = None
 
     def __getattr__(self, name):
