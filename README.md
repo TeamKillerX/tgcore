@@ -69,6 +69,9 @@ await client.telegram.send_message(
 
 ## 👾 Usage
 ### New fluent chain API
+
+Parameters can be chained (`builder-style`) without having to write long functions like `send_message(...)`.
+
 - Platform Downloader (7-day free trial)
 - `/api/web/facebook/download`
 - `/api/web/tiktok/download`
