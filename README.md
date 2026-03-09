@@ -69,10 +69,15 @@ await client.telegram.send_message(
 
 ## 👾 Usage
 ### New fluent chain API
-• Platform Downloader (7-day free trial)
+
+Parameters can be chained (`builder-style`) without having to write long functions like `send_message(...)`.
+
+- Platform Downloader (7-day free trial)
 - `/api/web/facebook/download`
 - `/api/web/tiktok/download`
 - `/api/web/pinterest/download`
+
+Example of using fluent chain API:
 ```py
 # version: 1.0.43+
 async def full_code():
@@ -94,6 +99,11 @@ async def full_code():
     )\
     .skip()
 ```
+Example:
+`await tg.raw.sendMessage().chat_id(chat_id).text("tgcore").skip()`
+
+That's the concept of builder + fluent chain API.
+
 ### sendMessage
 ```py
 # Latest version 1.0.16+
