@@ -63,6 +63,14 @@ class Chat(BaseMethod):
             kw
         )
 
+    def deleteChatPhoto(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/deleteChatPhoto",
+            kw
+        )
+
     def setChatPermissions(self, **kw):
         return RequestCall(
             self._client,
