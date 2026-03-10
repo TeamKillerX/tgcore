@@ -30,7 +30,10 @@ Enterprise Telegram Bot Framework • Secure • Scalable • Zero-Trust Ready
 The most secure Telegram Bot SDK ever built.
 
 ##  ✨ Features
-
+- 🧩 Fluent builder API
+- 🧲 Keyboard builder
+- 🪄 AI integrations
+- 📥 Platform downloader
 - ⚡ Async native ("async/await")
 - 🔐 Secure API key authentication
 - 🤖 Multi-bot token support
