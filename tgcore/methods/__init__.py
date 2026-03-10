@@ -32,7 +32,6 @@ class Methods(
     Edit,
     Invite,
     Topic,
-    Gifts,
-    Downloader
+    Gifts
 ):
     pass
