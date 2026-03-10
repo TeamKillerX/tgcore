@@ -374,10 +374,16 @@ class ButtonExamples:
         return KeyboardBuilder().copy_text(text, copy_text).build()
 
 @dataclass
-class ChatCompletionResult:
+class ResponseResult:
     data: Any
     def text(self):
         return self.data.choices[0].message.content
+
+    def video_url(self, value=0):
+        return self.data.video[value].url
+
+    def pins_url(self, value=0):
+        return self.data.pins[value].media.images.orig.url
 
     def tokens(self):
         return self.data.usage.total_tokens
@@ -415,11 +421,11 @@ class RequestCall(Generic[T]):
         self,
         *,
         allow_object: bool = False,
-        via_chat: bool = False
+        via_result: bool = False
     ) -> Any:
         result = await self.execute()
-        if via_chat:
-            return ChatCompletionResult(
+        if via_result:
+            return ResponseResult(
                 self._client.to_obj(result["data"])
             )
         else:
