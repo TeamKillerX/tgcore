@@ -22,3 +22,17 @@ class Pinterest(BaseMethod):
             "/api/web/pinterest/download",
             kw
         )
+    def search(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/web/pinterest",
+            kw
+        )
+    def profile(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/web/pinterest/profile",
+            kw
+        )
