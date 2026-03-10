@@ -392,8 +392,6 @@ class ResponseResult:
                 _list.append(x.url)
             if x.type == "video":
                 _list.append(x.url)
-        if not _list:
-            return None
         return _list
 
     def tokens(self):
