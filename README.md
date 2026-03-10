@@ -71,6 +71,12 @@ await client.telegram.send_message(
 ---
 
 ## 👾 Usage
+### Platform Tools
+```py
+resp = await tg.platform.facebook\
+    .download(url="https://facebook.com/...")\
+    .send()
+```
 ### New fluent chain API
 
 Parameters can be chained (`builder-style`) without having to write long functions like `send_message(...)`.
