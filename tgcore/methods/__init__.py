@@ -14,7 +14,7 @@ from ._pinned import Pinned
 from ._stickers import Stickers
 from ._topic import Topic
 from ._webhook import Webhook
-
+from ._downloader import Downloader
 
 class Methods(
     Message,
@@ -32,6 +32,7 @@ class Methods(
     Edit,
     Invite,
     Topic,
-    Gifts
+    Gifts,
+    Downloader
 ):
     pass
