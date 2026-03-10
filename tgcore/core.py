@@ -385,6 +385,17 @@ class ResponseResult:
     def pins_url(self, value=0):
         return self.data.pins[value].media.images.orig.url
 
+    def pins_urls(self):
+        _list = []
+        for x in self.data.pins.media_urls:
+            if x.type == "image":
+                _list.append(x.url)
+            if x.type == "video":
+                _list.append(x.url)
+        if not _list:
+            return None
+        return _list
+
     def tokens(self):
         return self.data.usage.total_tokens
 
