@@ -374,6 +374,18 @@ class ButtonExamples:
         return KeyboardBuilder().copy_text(text, copy_text).build()
 
 @dataclass
+class ChatCompletionResult:
+    data: Any
+    def text(self):
+        return self.data.choices[0].message.content
+
+    def tokens(self):
+        return self.data.usage.total_tokens
+
+    def model(self):
+        return self.data.model
+
+@dataclass
 class RequestCall(Generic[T]):
     _client: "CoreBotAuth"
     _method: str
@@ -399,8 +411,17 @@ class RequestCall(Generic[T]):
 
         return self._response_model.model_validate(raw)  # type: ignore
 
-    async def send(self, *, allow_object: bool = False) -> Any:
-        return self._client.to_obj(await self.execute()) if allow_object else await self.execute()
+    async def send(
+        self,
+        *,
+        allow_object: bool = False,
+        via_chat: bool = False
+    ) -> Any:
+        result = await self.execute()
+        if via_chat:
+            return ChatCompletionResult(result["data"])
+        else:
+            return self._client.to_obj(result) if allow_object else result
 
     async def skip(self) -> Any:
         _result = await self.execute()
