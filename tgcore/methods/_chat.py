@@ -78,3 +78,11 @@ class Chat(BaseMethod):
             "/api/v2/setChatPermissions",
             kw
         )
+
+    def chatCompletions(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            "/api/v2/chatCompletions",
+            kw
+        )
