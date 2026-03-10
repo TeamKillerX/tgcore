@@ -1,6 +1,7 @@
 from ._facebook import Facebook
-from ._tiktok import TikTok
 from ._pinterest import Pinterest
+from ._tiktok import TikTok
+
 
 class Platform:
     def __init__(self, client):

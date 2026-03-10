@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from ..methods.base import BaseMethod
 
+
 class Facebook(BaseMethod):
     def download(self, **kw):
         return RequestCall(
