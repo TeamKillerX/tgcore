@@ -3,6 +3,7 @@ from ._ban import Ban
 from ._chat import Chat
 from ._copy import Copy
 from ._delete import Delete
+from ._downloader import Downloader
 from ._edit import Edit
 from ._files import File
 from ._forward import Forward
@@ -14,7 +15,7 @@ from ._pinned import Pinned
 from ._stickers import Stickers
 from ._topic import Topic
 from ._webhook import Webhook
-from ._downloader import Downloader
+
 
 class Methods(
     Message,
