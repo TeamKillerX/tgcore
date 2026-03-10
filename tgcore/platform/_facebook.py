@@ -11,30 +11,14 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 
 from ..core import RequestCall
-from .base import BaseMethod
+from ..methods.base import BaseMethod
 
 
-class Downloader(BaseMethod):
-    def facebookDownload(self, **kw):
+class Facebook(BaseMethod):
+    def download(self, **kw):
         return RequestCall(
             self._client,
             "POST",
             "/api/web/facebook/download",
-            kw
-        )
-
-    def tiktokDownload(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/web/tiktok/download",
-            kw
-        )
-
-    def pinterestDownload(self, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            "/api/web/pinterest/download",
             kw
         )
