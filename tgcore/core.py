@@ -419,7 +419,9 @@ class RequestCall(Generic[T]):
     ) -> Any:
         result = await self.execute()
         if via_chat:
-            return ChatCompletionResult(result["data"])
+            return ChatCompletionResult(
+                self._client.to_obj(result)
+            )
         else:
             return self._client.to_obj(result) if allow_object else result
 
