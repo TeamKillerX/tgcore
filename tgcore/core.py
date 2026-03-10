@@ -399,8 +399,8 @@ class RequestCall(Generic[T]):
 
         return self._response_model.model_validate(raw)  # type: ignore
 
-    async def send(self) -> Any:
-        return await self.execute()
+    async def send(self, allow_object=False) -> Any:
+        return self._client.to_obj(await self.execute()) if allow_object else await self.execute()
 
     async def skip(self) -> Any:
         _result = await self.execute()
