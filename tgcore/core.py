@@ -379,7 +379,7 @@ class ResponseResult:
     def text(self):
         return self.data.choices[0].message.content
 
-    def url(self, value=0):
+    def video_url(self, value=0):
         return self.data.video[value].url
 
     def pins_url(self, value=0):
