@@ -14,12 +14,12 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 from __future__ import annotations
 
+import base64
 import json
 import mimetypes
 import os
 import re
 import uuid
-import base64
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import (
