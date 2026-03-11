@@ -2,11 +2,13 @@ from ._blackforest import Blackforest
 from ._facebook import Facebook
 from ._pinterest import Pinterest
 from ._tiktok import TikTok
+from ._tools import AllTools
 
 
 class Platform:
     def __init__(self, client):
         self.facebook = Facebook(client)
         self.tiktok = TikTok(client)
+        self.tools = AllTools(self)
         self.pinterest = Pinterest(client)
         self.blackforest = Blackforest(client)
