@@ -4,6 +4,7 @@ from ._pinterest import Pinterest
 from ._tiktok import TikTok
 from ._tools import AllTools
 
+
 class Platform:
     def __init__(self, client):
         self.facebook = Facebook(client)
