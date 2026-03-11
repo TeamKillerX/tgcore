@@ -1,7 +1,8 @@
+from ._blackforest import Blackforest
 from ._facebook import Facebook
 from ._pinterest import Pinterest
 from ._tiktok import TikTok
-from ._blackforest import Blackforest
+
 
 class Platform:
     def __init__(self, client):
