@@ -1,7 +1,7 @@
 # Level architecture
-You're read in [the docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs)
+Full documentation is available in [the docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs)
 
-People confuse without explanation ⊙⁠﹏⁠⊙
+Without explanation, the architecture may look confusing. ⊙⁠﹏⁠⊙
 
 ```mermaid
 graph LR;
