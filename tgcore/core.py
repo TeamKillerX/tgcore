@@ -535,17 +535,14 @@ class CoreBotAuth:
             payload = r.text[:800]
         raise RuntimeError(f"HTTP {r.status_code}: {payload}")
 
-    def writer(self, image_bytes: str, is_base64: bool = False):
+    def writer(self, image_bytes: bytes | str, is_base64: bool = False):
         path = f"tgcore-{uuid.uuid4()}.jpg"
-        try:
-            with open(path, "wb") as f:
-                if is_base64:
-                    dd = base64.b64decode(image_bytes)
-                    f.write(dd)
-                else:
-                    f.write(image_bytes)
-        except Exception:
-            return None
+        with open(path, "wb") as f:
+            if is_base64:
+                dd = base64.b64decode(image_bytes)
+                f.write(dd)
+            else:
+                f.write(image_bytes)
         return path
 
     async def _post(
