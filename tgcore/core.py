@@ -18,6 +18,7 @@ import json
 import mimetypes
 import os
 import re
+import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import (
@@ -385,6 +386,9 @@ class ResponseResult:
     def pins_url(self, value=0):
         return self.data.pins[value].media.images.orig.url
 
+    def image_bytes(self):
+        return self.data.image_bytes
+
     def pins_urls(self):
         _list = []
         for x in self.data.pins.media_urls:
@@ -529,6 +533,15 @@ class CoreBotAuth:
         except Exception:
             payload = r.text[:800]
         raise RuntimeError(f"HTTP {r.status_code}: {payload}")
+
+    def writer(self, image_bytes):
+        path = f"tgcore-{uuid.uuid4()}.jpg"
+        try:
+            with open(path, "wb") as f:
+                f.write(image_bytes)
+        except Exception:
+            return None
+        return path
 
     async def _post(
         self,

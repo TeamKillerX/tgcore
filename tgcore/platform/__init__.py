@@ -1,3 +1,4 @@
+from ._blackforest import Blackforest
 from ._facebook import Facebook
 from ._pinterest import Pinterest
 from ._tiktok import TikTok
@@ -8,3 +9,4 @@ class Platform:
         self.facebook = Facebook(client)
         self.tiktok = TikTok(client)
         self.pinterest = Pinterest(client)
+        self.blackforest = Blackforest(client)
