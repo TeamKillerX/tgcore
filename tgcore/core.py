@@ -14,6 +14,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 from __future__ import annotations
 
+import base64
 import json
 import mimetypes
 import os
@@ -534,11 +535,15 @@ class CoreBotAuth:
             payload = r.text[:800]
         raise RuntimeError(f"HTTP {r.status_code}: {payload}")
 
-    def writer(self, image_bytes):
+    def writer(self, image_bytes: str, is_base64: bool = False):
         path = f"tgcore-{uuid.uuid4()}.jpg"
         try:
             with open(path, "wb") as f:
-                f.write(image_bytes)
+                if is_base64:
+                    dd = base64.b64decode(image_bytes)
+                    f.write(dd)
+                else:
+                    f.write(image_bytes)
         except Exception:
             return None
         return path
