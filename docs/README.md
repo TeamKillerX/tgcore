@@ -2,6 +2,14 @@
 You're read in [the docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs)
 
 People confuse without explanation ⊙⁠﹏⁠⊙
+
+```mermaid
+graph LR;
+    A[tg.platform.facebook.download]-->B[RequestCall];
+    A-->C[POST /api/web/facebook/download];
+    C-->D[Result Object];
+```
+
 ## Platform
 parameters
 - `url`
