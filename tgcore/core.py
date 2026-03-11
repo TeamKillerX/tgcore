@@ -535,7 +535,7 @@ class CoreBotAuth:
         raise RuntimeError(f"HTTP {r.status_code}: {payload}")
 
     def writer(self, image_bytes):
-        path = f"tgcore.{uuid.uuid4()}.jpg"
+        path = f"tgcore-{uuid.uuid4()}.jpg"
         try:
             with open(path, "wb") as f:
                 f.write(image_bytes)
