@@ -546,7 +546,7 @@ class CoreBotAuth:
         self,
         prefix: str = "jpg",
         *,
-        image_bytes: bytes | str,
+        cbytes: bytes | str,
         is_base64: bool = False
     ):
         safe_prefix = re.sub(r"[^A-Za-z0-9]", "_", prefix or "jpg")
