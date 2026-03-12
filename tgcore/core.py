@@ -424,9 +424,9 @@ class RequestCall(Generic[T]):
 
     async def execute(self, is_content: bool = False) -> T:
         raw = await (
-            self._client._get(self._path, self._params, is_content=is_content)
+            self._client._get(self._path, self._params, is_content)
             if self._method.upper() == "GET"
-            else self._client._post(self._path, self._params, is_content=is_content)
+            else self._client._post(self._path, self._params, is_content)
         )
 
         if self._response_model is None:
@@ -558,7 +558,7 @@ class CoreBotAuth:
         payload: Dict[str, Any],
         headers: Dict[str, str] | None = None,
         is_content: bool = False,
-    ) -> Dict[str, Any]:
+    ) -> Union[Dict[str, Any], bytes]:
         payload = dict(payload or {})
         path = _format_path_and_pop_params(path, payload)
 
@@ -601,7 +601,7 @@ class CoreBotAuth:
         params: Dict[str, Any],
         headers: Dict[str, str] | None = None,
         is_content: bool = False,
-    ) -> Dict[str, Any]:
+    ) -> Union[Dict[str, Any], bytes]:
         params = dict(params or {})
         path = _format_path_and_pop_params(path, params)
 
