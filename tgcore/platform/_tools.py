@@ -15,7 +15,7 @@ from ..methods.base import BaseMethod
 
 
 class AllTools(BaseMethod):
-    def all_tools(self, **kw):
+    def types(self, **kw):
         return RequestCall(
             self._client,
             "POST",
