@@ -390,6 +390,9 @@ class ResponseResult:
     def image_bytes(self):
         return self.data.image_bytes
 
+    def ig_url(self):
+        return self.data.download
+
     def pins_urls(self):
         _list = []
         for x in self.data.pins.media_urls:
@@ -419,11 +422,11 @@ class RequestCall(Generic[T]):
             return self
         return setter
 
-    async def execute(self) -> T:
+    async def execute(self, is_content: bool = False) -> T:
         raw = await (
-            self._client._get(self._path, self._params)
+            self._client._get(self._path, self._params, is_content=is_content)
             if self._method.upper() == "GET"
-            else self._client._post(self._path, self._params)
+            else self._client._post(self._path, self._params, is_content=is_content)
         )
 
         if self._response_model is None:
@@ -535,6 +538,10 @@ class CoreBotAuth:
             payload = r.text[:800]
         raise RuntimeError(f"HTTP {r.status_code}: {payload}")
 
+    def is_url(self, text):
+        match = re.search(r"https://\S+", text)
+        return match.group(0) if match else None
+
     def writer(self, image_bytes: bytes | str, is_base64: bool = False):
         path = f"tgcore-{uuid.uuid4()}.jpg"
         with open(path, "wb") as f:
@@ -550,6 +557,7 @@ class CoreBotAuth:
         path: str,
         payload: Dict[str, Any],
         headers: Dict[str, str] | None = None,
+        is_content: bool = False,
     ) -> Dict[str, Any]:
         payload = dict(payload or {})
         path = _format_path_and_pop_params(path, payload)
@@ -569,7 +577,7 @@ class CoreBotAuth:
             r = await c.post(url, json=payload, headers=self._headers(headers))
 
         self._raise_http_error(r)
-        return r.json()
+        return r.content if is_content else r.json()
 
     async def fetch_post(self, path: str, **kw):
         headers = kw.pop("headers", None)
@@ -592,6 +600,7 @@ class CoreBotAuth:
         path: str,
         params: Dict[str, Any],
         headers: Dict[str, str] | None = None,
+        is_content: bool = False,
     ) -> Dict[str, Any]:
         params = dict(params or {})
         path = _format_path_and_pop_params(path, params)
@@ -601,4 +610,4 @@ class CoreBotAuth:
         r = await c.get(url, params=params, headers=self._headers(headers))
 
         self._raise_http_error(r)
-        return r.json()
+        return r.content if is_content else r.json()
