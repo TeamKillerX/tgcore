@@ -24,6 +24,31 @@ user = await tg.platform.facebook\
 return user.video_url(0)
 ```
 
+parameters
+- `pinUrl`
+```py
+
+user = await tg.platform.pinterest\
+       .download()
+       .pinUrl("https://pinterest.com/pin/914862421155199/")
+       .send(via_result=True)
+
+return user.pins_urls()
+```
+
+parameters
+- `platform`
+- `url`
+```py
+user = await tg.platform.tools\
+       .all_tools()
+       .platform("instagram")
+       .url("")
+       .send()
+
+return user
+```
+
 ## Blackforest
 * parameters
 - `query`
@@ -48,7 +73,7 @@ resp = await tg.raw.chatCompletions()\
       [{"role": "user", "content": "say test"}]
     )\
     .stream(False)\
-    .send(via_chat=True)\
+    .send(via_result=True)\
 
 return resp.text()
 ```
