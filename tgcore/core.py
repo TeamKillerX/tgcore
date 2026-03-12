@@ -545,10 +545,13 @@ class CoreBotAuth:
     def writer(
         self,
         prefix: str = "jpg",
+        *,
         image_bytes: bytes | str,
         is_base64: bool = False
     ):
-        path = f"tgcore-{uuid.uuid4()}.{prefix}"
+        safe_prefix = re.sub(r"[^A-Za-z0-9]", "_", prefix or "jpg")
+        safe_prefix = safe_prefix.lstrip(".") or "jpg"
+        path = f"tgcore-{uuid.uuid4()}.{safe_prefix}"
         with open(path, "wb") as f:
             if is_base64:
                 dd = base64.b64decode(image_bytes)
