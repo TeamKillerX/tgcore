@@ -542,8 +542,13 @@ class CoreBotAuth:
         match = re.search(r"https://\S+", text)
         return match.group(0) if match else None
 
-    def writer(self, image_bytes: bytes | str, is_base64: bool = False):
-        path = f"tgcore-{uuid.uuid4()}.jpg"
+    def writer(
+        self,
+        prefix: str = "jpg",
+        image_bytes: bytes | str,
+        is_base64: bool = False
+    ):
+        path = f"tgcore-{uuid.uuid4()}.{prefix}"
         with open(path, "wb") as f:
             if is_base64:
                 dd = base64.b64decode(image_bytes)
