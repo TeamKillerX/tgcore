@@ -1,6 +1,6 @@
 <h1 align="center">TGCore SDK</h1>
 <p align="center">
-Enterprise Telegram Bot Framework • Secure • Scalable • Zero-Trust Ready
+Enterprise Telegram Bot Framework • Secure • Scalable • Zero-Trust Ready • Python Telegram Bot SDK • Telegram Bot Framework Python • Fluent API Builder Pattern • Async Telegram Bot Framework • Telegram Bot Architecture Design
 </p>
 
 <p align="center">
@@ -54,6 +54,18 @@ Or install locally:
 `pip install -e .`
 
 ---
+
+## Quick Start Code
+```py
+from tgcore import Client
+
+tg = Client(api_key="YOUR_API_KEY")
+
+await tg.raw.sendMessage()\
+    .chat_id(123456789)\
+    .text("Hello from TGCore")\
+    .send()
+```
 
 ## 🔑 Authentication
 
