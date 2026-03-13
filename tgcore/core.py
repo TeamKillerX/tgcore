@@ -393,6 +393,13 @@ class ResponseResult:
     def threads_url(self, is_video: bool = True):
         return self.data.video if is_video else self.data.photo
 
+    def twitter_url(self, _type: str = "hd"):
+        if _type == "hd":
+            return self.data.url[0].hd
+        if _type == "sd":
+            return self.data.url[1].sd
+        return self.data.url
+
     def image_bytes(self):
         return self.data.image_bytes
 
