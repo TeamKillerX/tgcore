@@ -85,6 +85,25 @@ send_message()\
     .text("hello")\
     .send()
 ```
+
+## Architecture clean
+- Architecture: clean
+- Code: perfect
+- Async: working
+```py
+
+tg = Client(api_key="something", base_url="https://your_domain.com")
+
+result = await tg.use.default\
+    .types("/v1/chat/completions", use=True)\
+    .model("model")\
+    .messages([...])\
+    .stream(False)\
+    .send(allow_object=True)
+
+print(result)
+```
+
 ## 🔑 Authentication
 
 Create client instance:
