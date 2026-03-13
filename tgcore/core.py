@@ -557,7 +557,7 @@ class CoreBotAuth:
 
     def writer(
         self,
-        prefix: str = ".jpg",
+        prefix: str = "custom.jpg",
         *,
         cbytes: bytes | str,
         is_base64: bool = False
@@ -565,7 +565,7 @@ class CoreBotAuth:
         allowed_extensions = (".jpg", ".jpeg", ".png", ".gif", ".webp")
         if not prefix.lower().endswith(allowed_extensions):
             return None
-        path = f"tgcore-{uuid.uuid4()}{prefix}"
+        path = f"tgcore-{uuid.uuid4()}-{prefix}"
         with open(path, "wb") as f:
             if is_base64:
                 dd = base64.b64decode(cbytes)
