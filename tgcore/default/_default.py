@@ -15,10 +15,5 @@ from ..methods.base import BaseMethod
 
 
 class Default(BaseMethod):
-    def types(self, path: str, **kw):
-        return RequestCall(
-            self._client,
-            "POST",
-            path,
-            kw
-        )
+    def types(self, path: str, use: bool = True, **kw):
+        return RequestCall(self._client, "POST", path, kw) if use else RequestCall(self._client, "GET", path, {})

@@ -560,10 +560,10 @@ class CoreBotAuth:
         path = f"tgcore-{uuid.uuid4()}.{safe_prefix}"
         with open(path, "wb") as f:
             if is_base64:
-                dd = base64.b64decode(image_bytes)
+                dd = base64.b64decode(cbytes)
                 f.write(dd)
             else:
-                f.write(image_bytes)
+                f.write(cbytes)
         return path
 
     async def _post(
