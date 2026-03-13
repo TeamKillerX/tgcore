@@ -87,7 +87,7 @@ You can set `base_url` when using the userbot:
 3. Or by assigning it directly:
 `tg.base_url = "https://tgcore.ryzenths.dpdns.org"`
 
-This value will be saved and persist.
+This value will be saved and will persist.
 
 Code Example:
 ```py
