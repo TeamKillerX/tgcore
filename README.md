@@ -55,6 +55,18 @@ Or install locally:
 
 ---
 
+## Quick Start Code
+```py
+from tgcore import Client
+
+tg = Client(api_key="YOUR_API_KEY")
+
+await tg.raw.sendMessage()\
+    .chat_id(123456789)\
+    .text("Hello from TGCore")\
+    .send()
+```
+
 ## 🔑 Authentication
 
 Create client instance:
