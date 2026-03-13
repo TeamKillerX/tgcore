@@ -86,7 +86,7 @@ send_message()\
     .send()
 ```
 
-## Architecture clean
+## Clean architecture
 - Architecture: clean
 - Code: perfect
 - Async: working
