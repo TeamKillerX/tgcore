@@ -131,3 +131,13 @@ result = await tg.use.default\
 ```
 
 **Key Advantage:** Fluent builder allows dynamic step-by-step construction while maintaining readability.
+
+## Is TgCore Free?
+
+Yes, it's completely free with the following limits:
+
+- **Access:** Bot, platform, and AI features
+- **Trial Period:** 7 days
+- **API Key Types:**
+  - `fw_trial_xxx` = 7 days validity
+  - `fw_live_xxx` = 30 days validity (renewable)
