@@ -18,6 +18,7 @@ import os
 from typing import Optional
 
 from .core import CoreBotAuth, MediaFactory
+from .default import DefaultMethod
 from .methods import Methods
 from .platform import Platform
 from .telegram_namespace import TelegramNamespace
@@ -32,6 +33,7 @@ class Client(CoreBotAuth):
         super().__init__(api_key, **kw)
 
         self.raw = Methods(self)
+        self.use = DefaultMethod(self)
         self.platform = Platform(self)
         self.media: MediaFactory = MediaFactory(self)
         self.telegram = TelegramNamespace(self)
