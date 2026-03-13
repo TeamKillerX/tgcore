@@ -1,10 +1,11 @@
 from ._blackforest import Blackforest
+from ._capcut import Capcut
 from ._facebook import Facebook
 from ._pinterest import Pinterest
+from ._threads import Threads
 from ._tiktok import TikTok
 from ._tools import AllTools
-from ._capcut import Capcut
-from ._threads import Threads
+
 
 class Platform:
     def __init__(self, client):
