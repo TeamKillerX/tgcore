@@ -137,7 +137,7 @@ result = await tg.use.default\
 Yes, it's completely free with the following limits:
 
 - **Access:** Bot, platform, and AI features
-- **Trial Period:** 7 days
+- **Trial Period:** 7-day validity
 - **API Key Types:**
-  - `fw_trial_xxx` = 7 days validity
-  - `fw_live_xxx` = 30 days validity (renewable)
+  - `fw_trial_xxx` = 7-day validity
+  - `fw_live_xxx` = valid for 30 days (renewable)
