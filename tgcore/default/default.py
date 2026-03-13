@@ -15,7 +15,7 @@ from ..methods.base import BaseMethod
 
 
 class Default(BaseMethod):
-    def default(self, path: str, **kw):
+    def types(self, path: str, **kw):
         return RequestCall(
             self._client,
             "POST",
