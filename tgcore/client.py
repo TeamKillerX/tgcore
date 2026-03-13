@@ -18,9 +18,9 @@ import os
 from typing import Optional
 
 from .core import CoreBotAuth, MediaFactory
+from .default import DefaultMethod
 from .methods import Methods
 from .platform import Platform
-from .default import DefaultMethod
 from .telegram_namespace import TelegramNamespace
 
 
