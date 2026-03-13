@@ -387,6 +387,12 @@ class ResponseResult:
     def pins_url(self, value=0):
         return self.data.pins[value].media.images.orig.url
 
+    def capcut_url(self):
+        return self.data.originalVideoUrl
+
+    def threads_url(self, is_video: bool = True):
+        return self.data.video if is_video else self.data.photo
+
     def image_bytes(self):
         return self.data.image_bytes
 
