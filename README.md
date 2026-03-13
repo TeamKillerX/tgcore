@@ -67,6 +67,24 @@ await tg.raw.sendMessage()\
     .send()
 ```
 
+## Traditional API
+```py
+send_message(
+    chat_id,
+    text,
+    parse_mode,
+    disable_notification,
+    reply_markup,
+    protect_content
+)
+```
+## TGCore Fluent Builder
+```py
+send_message()\
+    .chat_id(id)\
+    .text("hello")\
+    .send()
+```
 ## 🔑 Authentication
 
 Create client instance:
