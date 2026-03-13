@@ -30,7 +30,21 @@ setuptools.setup(
         "sdk",
         "framework",
         "tgcore",
-        "ryzenth"
+        "ryzenth",
+        "security-audit",
+        "ai",
+        "hackerrank",
+        "scraping-websites",
+        "scraping-python",
+        "scrapper-api",
+        "architecture-lib",
+        "architecture-api",
+        "framework-tgcore",
+        "python-telegram-bot-sdk",
+        "telegram-bot-framework-python",
+        "fluent-api-builder-pattern",
+        "async-telegram-bot-framework",
+        "telegram-bot-architecture-design"
     ],
     install_requires=[
         "httpx>=0.24.0",

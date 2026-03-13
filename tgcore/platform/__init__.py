@@ -5,6 +5,7 @@ from ._pinterest import Pinterest
 from ._threads import Threads
 from ._tiktok import TikTok
 from ._tools import AllTools
+from ._twitter import Twitter
 
 
 class Platform:
@@ -16,3 +17,4 @@ class Platform:
         self.blackforest = Blackforest(client)
         self.capcut = Capcut(client)
         self.threads = Threads(client)
+        self.twitter = Twitter(client)
