@@ -122,11 +122,11 @@ return result
 data = {"step": "this"}
 
 # Fluent Builder style
-result = await tg.use.default \
-    .types("/") \
-    .step() \
-    .step2() \
-    .step3() \
+result = await tg.use.default\
+    .types("/api/todo")\
+    .step()\
+    .step2()\
+    .step3()\
     .send()
 ```
 
