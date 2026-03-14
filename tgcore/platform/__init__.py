@@ -1,3 +1,4 @@
+from ._all_in_one import Aio
 from ._blackforest import Blackforest
 from ._capcut import Capcut
 from ._facebook import Facebook
@@ -6,7 +7,7 @@ from ._threads import Threads
 from ._tiktok import TikTok
 from ._tools import AllTools
 from ._twitter import Twitter
-from ._all_in_one import Aio
+
 
 class Platform:
     def __init__(self, client):
