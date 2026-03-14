@@ -390,8 +390,11 @@ class ResponseResult:
     def capcut_url(self):
         return self.data.originalVideoUrl
 
+    def aio_url(self, defaults=True):
+        return self.data.links.video[0].url if defaults else self.data.links
+
     def threads_url(self, is_video: bool = True):
-        return self.data.video if is_video else self.data.photo
+        return self.data.video if is_video else self.data.image
 
     def twitter_url(self, _type: str = "hd"):
         if _type == "hd":
