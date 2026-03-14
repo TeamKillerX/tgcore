@@ -1,5 +1,9 @@
 ## Why fluent builder?
 
+Traditional Telegram API calls often require many parameters.
+
+This leads to what developers call **"parameter hell"**.
+
 ![brain meme](https://cdn.ryzenths.dpdns.org/amlve3.jpg)
 
 ```py
