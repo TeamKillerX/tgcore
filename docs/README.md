@@ -69,6 +69,8 @@ await tg.raw.sendMessage()\
     .send()
 ```
 
+![brain meme](https://cdn.ryzenths.dpdns.org/IMG_20260315_010120_852.jpg)
+
 An example of keyboard or reply markup will demonstrate the power of chaining:
 ```py
 kb = tg.kb().copy_text("Click", "ok").build()
