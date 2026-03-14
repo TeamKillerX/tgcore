@@ -87,11 +87,11 @@ send_message()\
 ```
 
 ## Clean architecture
-- Architecture: clean
-- Code: perfect
-- Async: working
-```py
+* Architecture: clean
+* Code: perfect
+* Async: working
 
+```py
 tg = Client(api_key="something", base_url="https://your_domain.com")
 
 result = await tg.use.default\

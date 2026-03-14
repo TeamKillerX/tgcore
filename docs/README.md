@@ -1,19 +1,76 @@
+## Why fluent builder?
+
+```py
+send_message(
+ chat_id,
+ text,
+ parse_mode,
+ disable_notification,
+ reply_markup,
+ protect_content,
+ ...
+)
+```
+vs
+`tg.send().chat_id().text().send()`
+
+## Telegram API
+```py
+send_message(chat_id, text, parse_mode, disable_notification...)
+```
+
+## TGCore
+
+`tg.send().chat_id().text().send()`
+
 # Level architecture
+
+TGCore is not just a library.
+It's an SDK architecture.
+
 Full documentation is available in [the docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs).
 
 Without explanation, the architecture may look confusing. ⊙⁠﹏⁠⊙
 
-```mermaid
-graph LR;
-    A[tg.platform.facebook.download]-->B[RequestCall];
-    A-->C[POST /api/web/facebook/download];
-    C-->D[Result Object];
+## Quick start example
+
+TGCore is an asynchronous Telegram SDK framework for Python
+designed around a fluent builder architecture.
+
+It eliminates parameter-heavy API calls and replaces them with
+a composable chain-based interface.
+
+```bash
+pip install tgcore
+```
+
+Create a client and send your first message:
+```py
+from tgcore import Client
+
+tg = Client(api_key="YOUR_API_KEY")
+
+await tg.raw.sendMessage()\
+    .chat_id(123456789)\
+    .text("Hello from TGCore")\
+    .send()
+```
+
+An example of keyboard or reply markup will demonstrate the power of chaining:
+```py
+kb = tg.kb().copy_text("Click", "ok").build()
+
+await tg.raw.sendMessage()\
+    .chat_id(123456789)\
+    .text("Hello")\
+    .reply_markup(kb)\
+    .send()
 ```
 
 ## Platform
 parameters
-- `url`
-- tg.platform.`<method>`
+* `url`
+* tg.platorm.`<method>`
 
 ```py
 user = await tg.platform.facebook\
@@ -25,9 +82,9 @@ return user.video_url(0)
 ```
 
 parameters
-- `pinUrl`
-```py
+* `pinUrl`
 
+```py
 user = await tg.platform.pinterest\
        .download()
        .pinUrl("https://pinterest.com/pin/914862421155199/")
@@ -37,8 +94,9 @@ return user.pins_urls()
 ```
 
 parameters
-- `platform`
-- `url`
+* `platform`
+* `url`
+
 ```py
 user = await tg.platform.tools\
        .all_tools()
@@ -50,8 +108,9 @@ return user
 ```
 
 ## Blackforest
-* parameters
-- `query`
+parameters
+* `query`
+
 ```py
 user = await tg.platform.blackforest\
       .image()\
@@ -62,10 +121,11 @@ return user.image_bytes()
 ```
 
 ## chatCompletions
-* parameters
-- `model`
-- `messages`
-- `stream`
+parameters
+* `model`
+* `messages`
+* `stream`
+
 ```py
 resp = await tg.raw.chatCompletions()\
     .model("kimi-dev")\
