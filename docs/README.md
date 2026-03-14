@@ -1,4 +1,33 @@
+## Why fluent builder?
+
+```py
+send_message(
+ chat_id,
+ text,
+ parse_mode,
+ disable_notification,
+ reply_markup,
+ protect_content,
+ ...
+)
+```
+vs
+`tg.send().chat_id().text().send()`
+
+## Telegram API
+```py
+send_message(chat_id, text, parse_mode, disable_notification...)
+```
+
+## TGCore
+
+`tg.send().chat_id().text().send()`
+
 # Level architecture
+
+TGCore is not just a library.
+It's an SDK architecture.
+
 Full documentation is available in [the docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs).
 
 Without explanation, the architecture may look confusing. ⊙⁠﹏⁠⊙
