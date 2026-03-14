@@ -40,6 +40,11 @@ designed around a fluent builder architecture.
 It eliminates parameter-heavy API calls and replaces them with
 a composable chain-based interface.
 
+```bash
+pip install tgcore
+```
+
+Create a client and send your first message:
 ```py
 from tgcore import Client
 
@@ -48,6 +53,17 @@ tg = Client(api_key="YOUR_API_KEY")
 await tg.raw.sendMessage()\
     .chat_id(123456789)\
     .text("Hello from TGCore")\
+    .send()
+```
+
+An example of keyboard or reply markup will demonstrate the power of chaining:
+```py
+kb = tg.kb().copy_text("Click", "ok").build()
+
+await tg.raw.sendMessage()\
+    .chat_id(123456789)\
+    .text("Hello")\
+    .reply_markup(kb)\
     .send()
 ```
 
