@@ -139,59 +139,79 @@ Full documentation is available in [the docs](https://tgcore.ryzenths.dpdns.org/
 ![brain meme](https://cdn.ryzenths.dpdns.org/amnbup.jpg)
 
 ```py
+# Chat / Member Management
+# Operations related to members, admins, and chat permissions
 tg.raw.approveChatJoinRequest()
 tg.raw.declineChatJoinRequest()
 tg.raw.banChatMember()
 tg.raw.banChatSenderChat()
 tg.raw.unbanChatMember()
 tg.raw.unbanChatSenderChat()
+tg.raw.restrictChatMember()
+tg.raw.leaveChat()
 tg.raw.getChat()
 tg.raw.getChatAdministrators()
 tg.raw.getChatMember()
-tg.raw.leaveChat()
 tg.raw.setChatTitle()
-tg.raw.setChatPhoto()
-tg.raw.deleteChatPhoto()
 tg.raw.setChatPermissions()
-tg.raw.chatCompletions()
-tg.raw.copyMessages()
-tg.raw.copyMessage()
-tg.raw.deleteMessages()
-tg.raw.deleteMessage()
-tg.raw.deleteBusinessMessages()
-tg.raw.deleteMyCommands()
-tg.raw.deleteStory()
-tg.raw.editMessageMedia()
-tg.raw.editMessageText()
-tg.raw.editMessageReplyMarkup()
-tg.raw.editMessageChecklist()
-tg.raw.getFile()
-tg.raw.forwardMessages()
-tg.raw.forwardMessage()
-tg.raw.getBusinessAccountGifts()
-tg.raw.getAvailableGifts()
-tg.raw.createChatInviteLink()
-tg.raw.exportChatInviteLink()
-tg.raw.revokeChatInviteLink()
-tg.raw.editChatInviteLink()
-tg.raw.editChatSubscriptionInviteLink()
-tg.raw.getMe()
+
+# Message Management
+# Operations to send, edit, or delete messages
 tg.raw.sendMessage()
 tg.raw.sendPhoto()
 tg.raw.sendPhotoUpload()
 tg.raw.sendVideo()
 tg.raw.sendVideoUpload()
-tg.raw.sendMediaGroup()
+tg.raw.sendVoice()
 tg.raw.sendAnimation()
 tg.raw.sendPoll()
 tg.raw.sendChecklist()
-tg.raw.sendVoice()
-tg.raw.sendMessageDraft()
+tg.raw.sendMediaGroup()
 tg.raw.sendChatAction()
-tg.raw.restrictChatMember()
+tg.raw.sendMessageDraft()
+
+tg.raw.editMessageText()
+tg.raw.editMessageMedia()
+tg.raw.editMessageReplyMarkup()
+tg.raw.editMessageChecklist()
+
+tg.raw.deleteMessage()
+tg.raw.deleteMessages()
+tg.raw.deleteBusinessMessages()
+
+tg.raw.copyMessage()
+tg.raw.copyMessages()
+tg.raw.forwardMessage()
+tg.raw.forwardMessages()
+
+# Chat Settings
+# Visual settings or chat configuration
+tg.raw.setChatPhoto()
+tg.raw.deleteChatPhoto()
 tg.raw.pinChatMessage()
 tg.raw.unpinChatMessage()
 tg.raw.unpinAllChatMessages()
+
+# Invite Links
+# Invite link management
+tg.raw.createChatInviteLink()
+tg.raw.exportChatInviteLink()
+tg.raw.revokeChatInviteLink()
+tg.raw.editChatInviteLink()
+tg.raw.editChatSubscriptionInviteLink()
+
+# Bot Information
+# Bot information or configuration
+tg.raw.getMe()
+tg.raw.deleteMyCommands()
+tg.raw.getWebhookInfo()
+
+# Files / Media
+# Retrieving or uploading files
+tg.raw.getFile()
+
+# Stickers & Emoji
+# Sticker set operation
 tg.raw.addStickerToSet()
 tg.raw.deleteStickerFromSet()
 tg.raw.deleteStickerSet()
@@ -204,6 +224,9 @@ tg.raw.sendSticker()
 tg.raw.uploadStickerFile()
 tg.raw.setStickerEmojiList()
 tg.raw.deleteChatStickerSet()
+
+# Forum Topics
+# Group forum features
 tg.raw.createForumTopic()
 tg.raw.editForumTopic()
 tg.raw.editGeneralForumTopic()
@@ -213,18 +236,31 @@ tg.raw.closeForumTopic()
 tg.raw.closeGeneralForumTopic()
 tg.raw.unpinAllForumTopicMessages()
 tg.raw.unpinAllGeneralForumTopicMessages()
-tg.raw.getWebhookInfo()
 
-# platform
+# Stories / Business
+# New Telegram features
+tg.raw.deleteStory()
+tg.raw.getBusinessAccountGifts()
+tg.raw.getAvailableGifts()
+
+# AI / Extensions
+# Custom API that is not original Telegram
+tg.raw.chatCompletions()
+
+
+
+# Platform Tools
+# Additional TGCore endpoints for other platforms
 tg.platform.facebook.download()
 tg.platform.tiktok.download()
-tg.platform.tools.types()
 tg.platform.pinterest.download()
-tg.platform.blackforest.image()
 tg.platform.capcut.download()
 tg.platform.threads.download()
 tg.platform.twitter.download()
 tg.platform.aio.download()
+
+tg.platform.tools.types()
+tg.platform.blackforest.image()
 ```
 
 ## Platform
