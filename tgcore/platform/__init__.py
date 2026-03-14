@@ -1,3 +1,4 @@
+from ._all_in_one import Aio
 from ._blackforest import Blackforest
 from ._capcut import Capcut
 from ._facebook import Facebook
@@ -18,3 +19,4 @@ class Platform:
         self.capcut = Capcut(client)
         self.threads = Threads(client)
         self.twitter = Twitter(client)
+        self.aio = Aio(client)
