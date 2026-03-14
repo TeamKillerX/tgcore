@@ -136,6 +136,8 @@ tg.use.default.types().step().pretty()
 
 Full documentation is available in [the docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs).
 
+![brain meme](https://cdn.ryzenths.dpdns.org/amnbup.jpg)
+
 ```py
 tg.raw.approveChatJoinRequest()
 tg.raw.declineChatJoinRequest()
