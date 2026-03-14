@@ -247,8 +247,6 @@ tg.raw.getAvailableGifts()
 # Custom API that is not original Telegram
 tg.raw.chatCompletions()
 
-
-
 # Platform Tools
 # Additional TGCore endpoints for other platforms
 tg.platform.facebook.download()
