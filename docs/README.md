@@ -43,6 +43,8 @@ Full documentation is available in [the docs](https://tgcore.ryzenths.dpdns.org/
 
 Without explanation, the architecture may look confusing. ⊙⁠﹏⁠⊙
 
+![brain meme](https://cdn.ryzenths.dpdns.org/IMG_20260315_005158_516.jpg)
+
 ## Quick start example
 
 TGCore is an asynchronous Telegram SDK framework for Python
