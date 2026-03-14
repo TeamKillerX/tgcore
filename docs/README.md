@@ -67,6 +67,53 @@ await tg.raw.sendMessage()\
     .send()
 ```
 
+## List Methods
+- `tg.api_key`
+- `tg.base_url`
+
+```py
+tg._ensure_client().get(url, params, json, headers)
+tg._ensure_client().post(url, params, json, headers)
+
+tg._headers(extra={})
+tg.set_header(key, value)
+tg.to_obj(data)
+tg.kb() # KeyboardBuilder
+tg.lw() # LinkPreviewBuilder
+tg.rs() # ReplyParametersBuilder
+tg.is_url(text)
+
+tg.writer(prefix, cbytes, is_base64=False)
+
+tg._post(
+   path="/api/todo",
+   payload={},
+   headers={},
+   is_content=False
+)
+
+tg._get(
+   path="/api/todo",
+   payload={},
+   headers={},
+   is_content=False
+)
+
+tg.fetch_post(path, **kw)
+```
+
+## RequestCall
+```py
+tg.use.default.types().step().execute()
+
+tg.use.default.types().step().skip()
+
+tg.use.default.types().step().send(allow_object=False, via_result=False)
+
+tg.use.default.types().step().pretty()
+
+```
+
 ## Platform
 parameters
 * `url`
