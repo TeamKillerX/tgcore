@@ -32,17 +32,29 @@ Full documentation is available in [the docs](https://tgcore.ryzenths.dpdns.org/
 
 Without explanation, the architecture may look confusing. ⊙⁠﹏⁠⊙
 
-```mermaid
-graph LR;
-    A[tg.platform.facebook.download]-->B[RequestCall];
-    A-->C[POST /api/web/facebook/download];
-    C-->D[Result Object];
+## Quick start example
+
+TGCore is an asynchronous Telegram SDK framework for Python
+designed around a fluent builder architecture.
+
+It eliminates parameter-heavy API calls and replaces them with
+a composable chain-based interface.
+
+```py
+from tgcore import Client
+
+tg = Client(api_key="YOUR_API_KEY")
+
+await tg.raw.sendMessage()\
+    .chat_id(123456789)\
+    .text("Hello from TGCore")\
+    .send()
 ```
 
 ## Platform
 parameters
 * `url`
-* tg.platform.`<method>`
+* tg.platorm.`<method>`
 
 ```py
 user = await tg.platform.facebook\
