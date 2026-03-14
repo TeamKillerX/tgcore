@@ -99,7 +99,7 @@ parameters
 
 ```py
 user = await tg.platform.tools\
-       .all_tools()
+       .types()
        .platform("instagram")
        .url("")
        .send()
