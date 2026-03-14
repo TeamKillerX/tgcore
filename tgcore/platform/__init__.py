@@ -6,7 +6,7 @@ from ._threads import Threads
 from ._tiktok import TikTok
 from ._tools import AllTools
 from ._twitter import Twitter
-
+from ._all_in_one import Aio
 
 class Platform:
     def __init__(self, client):
@@ -18,3 +18,4 @@ class Platform:
         self.capcut = Capcut(client)
         self.threads = Threads(client)
         self.twitter = Twitter(client)
+        self.aio = Aio(client)
