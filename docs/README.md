@@ -70,7 +70,7 @@ await tg.raw.sendMessage()\
 ## Platform
 parameters
 * `url`
-* tg.platorm.`<method>`
+* tg.platform.`<method>`
 
 ```py
 user = await tg.platform.facebook\
