@@ -20,6 +20,9 @@ send_message(
 
 ![brain meme](https://cdn.ryzenths.dpdns.org/IMG_20260315_003008_575.jpg)
 
+Instead of passing many parameters at once,
+TGCore uses a fluent builder interface.
+
 `tg.send().chat_id().text().send()`
 
 ## Telegram API
