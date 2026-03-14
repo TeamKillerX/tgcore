@@ -17,7 +17,9 @@ send_message(
  ...
 )
 ```
-vs
+
+![brain meme](https://cdn.ryzenths.dpdns.org/IMG_20260315_003008_575.jpg)
+
 `tg.send().chat_id().text().send()`
 
 ## Telegram API
