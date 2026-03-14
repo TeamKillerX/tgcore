@@ -12,8 +12,8 @@ graph LR;
 
 ## Platform
 parameters
-- `url`
-- tg.platform.`<method>`
+* `url`
+* tg.platform.`<method>`
 
 ```py
 user = await tg.platform.facebook\
@@ -25,9 +25,9 @@ return user.video_url(0)
 ```
 
 parameters
-- `pinUrl`
-```py
+* `pinUrl`
 
+```py
 user = await tg.platform.pinterest\
        .download()
        .pinUrl("https://pinterest.com/pin/914862421155199/")
@@ -37,8 +37,9 @@ return user.pins_urls()
 ```
 
 parameters
-- `platform`
-- `url`
+* `platform`
+* `url`
+
 ```py
 user = await tg.platform.tools\
        .all_tools()
@@ -50,8 +51,9 @@ return user
 ```
 
 ## Blackforest
-* parameters
-- `query`
+parameters
+* `query`
+
 ```py
 user = await tg.platform.blackforest\
       .image()\
@@ -62,10 +64,11 @@ return user.image_bytes()
 ```
 
 ## chatCompletions
-* parameters
-- `model`
-- `messages`
-- `stream`
+parameters
+* `model`
+* `messages`
+* `stream`
+
 ```py
 resp = await tg.raw.chatCompletions()\
     .model("kimi-dev")\
