@@ -1,5 +1,7 @@
 ## Why fluent builder?
 
+![brain meme](https://cdn.ryzenths.dpdns.org/amlve3.jpg)
+
 ```py
 send_message(
  chat_id,
