@@ -217,7 +217,7 @@ tg.raw.getWebhookInfo()
 tg.raw.getFile()
 
 # Stickers & Emoji
-# Sticker set operation
+# Sticker set operations
 tg.raw.addStickerToSet()
 tg.raw.deleteStickerFromSet()
 tg.raw.deleteStickerSet()
