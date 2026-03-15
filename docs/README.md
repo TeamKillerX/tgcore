@@ -422,19 +422,19 @@ send_message(
 ```
 Main problems:
 
-1. Cognitive overload
+**Cognitive overload**
 
 Developers have to look at 15 parameters at once.
 
-2. Optional parameter chaos
+**Optional parameter chaos**
 
 Many parameters are optional, but they still appear.
 
-3. Poor readability
+**Poor readability**
 
 Hard code to scan fast.
 
-4. Difficult to expand
+**Difficult to expand**
 
 If Telegram adds new parameters:
 ```py
