@@ -395,3 +395,137 @@ Yes, it's completely free with the following limits:
 - **API Key Types:**
   - `fw_trial_xxx` = 7-day validity
   - `fw_live_xxx` = valid for 30 days (renewable)
+
+---
+
+## Parameter-heavy API (traditional way)
+
+Example:
+```py
+send_message(
+    chat_id=chat_id,
+    text=text,
+    business_connection_id=business_connection_id,
+    message_thread_id=message_thread_id,
+    direct_messages_topic_id=direct_messages_topic_id,
+    parse_mode=parse_mode,
+    entities=entities,
+    link_preview_options=link_preview_options,
+    disable_notification=disable_notification,
+    protect_content=protect_content,
+    allow_paid_broadcast=allow_paid_broadcast,
+    message_effect_id=message_effect_id,
+    suggested_post_parameters=suggested_post_parameters,
+    reply_parameters=reply_parameters,
+    reply_markup=reply_markup
+)
+```
+Main problems:
+
+1. Cognitive overload
+
+Developers have to look at 15 parameters at once.
+
+2. Optional parameter chaos
+
+Many parameters are optional, but they still appear.
+
+3. Poor readability
+
+Hard code to scan fast.
+
+4. Difficult to expand
+
+If Telegram adds new parameters:
+```py
+send_message(..., new_parameter=...)
+```
+the function signature is getting longer.
+
+---
+
+## Fluent Builder TGCore
+
+```
+send_message()\
+    .chat_id()\
+    .text()\
+    .business_connection_id()\
+    .message_thread_id()\
+    .direct_messages_topic_id()\
+    .parse_mode()\
+    .entities()\
+    .link_preview_options()\
+    .disable_notification()\
+    .protect_content()\
+    .allow_paid_broadcast()\
+    .message_effect_id()\
+    .suggested_post_parameters()\
+    .reply_parameters()\
+    .reply_markup()
+```
+## Advantages of this design:
+
+Progressive configuration
+
+Parameters are added one by one.
+
+Optional parameter natural
+
+Developers only call what is needed.
+
+Real example:
+```py
+send_message()\
+  .chat_id(chat_id)\
+  .text(text)
+```
+No need for the other 13 parameters.
+
+---
+
+Easy to expand
+If Telegram adds new parameters:
+
+`.message_effect_id()`
+
+No need to change the function signature.
+
+---
+
+# API design differences
+
+**Traditional API**
+```
+Function
+ └── many parameters
+```
+**Fluent builder**
+```
+Method
+ └── builder
+     └── chained parameters
+         └── execute
+```
+---
+
+## Why this design is popular in modern SDKs
+
+Many large SDKs use the same pattern:
+
+Example:
+AWS SDK
+```py
+client.putObject()
+      .bucket()
+      .key()
+      .body()
+      .send()
+```
+## Stripe SDK
+
+`stripe.checkout.sessions.create()`
+
+## Elasticsearch DSL
+
+`query.filter().sort().execute()`
