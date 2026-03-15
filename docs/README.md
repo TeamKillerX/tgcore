@@ -476,7 +476,7 @@ Progressive configuration
 
 Parameters are added one by one.
 
-Optional parameter natural
+Optional parameters feel natural.
 
 Developers only call what is needed.
 
