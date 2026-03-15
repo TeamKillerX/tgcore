@@ -438,7 +438,7 @@ Many parameters are optional, but they still appear.
 
 **Poor readability**
 
-Hard code to scan fast.
+The code is hard to scan quickly.
 
 **Difficult to expand**
 
