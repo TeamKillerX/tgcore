@@ -1,5 +1,11 @@
 ## Why fluent builder?
 
+Yes, having only a few parameters is nice. `func(arg, arg)`
+
+But the Telegram API has a lot of parameters, so `Fluent Builder allows optional parameters` to avoid lengthy functions.
+
+That's why many modern SDKs use that pattern.
+
 Traditional Telegram API calls often require many parameters.
 
 This leads to what developers call **"parameter hell"**.
@@ -136,60 +142,82 @@ tg.use.default.types().step().pretty()
 
 Full documentation is available in [the docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs).
 
+![brain meme](https://cdn.ryzenths.dpdns.org/amnbup.jpg)
+
 ```py
+# Chat / Member Management
+# Operations related to members, admins, and chat permissions
 tg.raw.approveChatJoinRequest()
 tg.raw.declineChatJoinRequest()
 tg.raw.banChatMember()
 tg.raw.banChatSenderChat()
 tg.raw.unbanChatMember()
 tg.raw.unbanChatSenderChat()
+tg.raw.restrictChatMember()
+tg.raw.leaveChat()
 tg.raw.getChat()
 tg.raw.getChatAdministrators()
 tg.raw.getChatMember()
-tg.raw.leaveChat()
 tg.raw.setChatTitle()
-tg.raw.setChatPhoto()
-tg.raw.deleteChatPhoto()
 tg.raw.setChatPermissions()
-tg.raw.chatCompletions()
-tg.raw.copyMessages()
-tg.raw.copyMessage()
-tg.raw.deleteMessages()
-tg.raw.deleteMessage()
-tg.raw.deleteBusinessMessages()
-tg.raw.deleteMyCommands()
-tg.raw.deleteStory()
-tg.raw.editMessageMedia()
-tg.raw.editMessageText()
-tg.raw.editMessageReplyMarkup()
-tg.raw.editMessageChecklist()
-tg.raw.getFile()
-tg.raw.forwardMessages()
-tg.raw.forwardMessage()
-tg.raw.getBusinessAccountGifts()
-tg.raw.getAvailableGifts()
-tg.raw.createChatInviteLink()
-tg.raw.exportChatInviteLink()
-tg.raw.revokeChatInviteLink()
-tg.raw.editChatInviteLink()
-tg.raw.editChatSubscriptionInviteLink()
-tg.raw.getMe()
+
+# Message Management
+# Operations to send, edit, or delete messages
 tg.raw.sendMessage()
 tg.raw.sendPhoto()
 tg.raw.sendPhotoUpload()
 tg.raw.sendVideo()
 tg.raw.sendVideoUpload()
-tg.raw.sendMediaGroup()
+tg.raw.sendVoice()
 tg.raw.sendAnimation()
 tg.raw.sendPoll()
 tg.raw.sendChecklist()
-tg.raw.sendVoice()
-tg.raw.sendMessageDraft()
+tg.raw.sendMediaGroup()
 tg.raw.sendChatAction()
-tg.raw.restrictChatMember()
+tg.raw.sendMessageDraft()
+
+tg.raw.editMessageText()
+tg.raw.editMessageMedia()
+tg.raw.editMessageReplyMarkup()
+tg.raw.editMessageChecklist()
+
+tg.raw.deleteMessage()
+tg.raw.deleteMessages()
+tg.raw.deleteBusinessMessages()
+
+tg.raw.copyMessage()
+tg.raw.copyMessages()
+tg.raw.forwardMessage()
+tg.raw.forwardMessages()
+
+# Chat Settings
+# Visual settings or chat configuration
+tg.raw.setChatPhoto()
+tg.raw.deleteChatPhoto()
 tg.raw.pinChatMessage()
 tg.raw.unpinChatMessage()
 tg.raw.unpinAllChatMessages()
+
+# Invite Links
+# Invite link management
+tg.raw.createChatInviteLink()
+tg.raw.exportChatInviteLink()
+tg.raw.revokeChatInviteLink()
+tg.raw.editChatInviteLink()
+tg.raw.editChatSubscriptionInviteLink()
+
+# Bot Information
+# Bot information or configuration
+tg.raw.getMe()
+tg.raw.deleteMyCommands()
+tg.raw.getWebhookInfo()
+
+# Files / Media
+# Retrieving or uploading files
+tg.raw.getFile()
+
+# Stickers & Emoji
+# Sticker set operations
 tg.raw.addStickerToSet()
 tg.raw.deleteStickerFromSet()
 tg.raw.deleteStickerSet()
@@ -202,6 +230,9 @@ tg.raw.sendSticker()
 tg.raw.uploadStickerFile()
 tg.raw.setStickerEmojiList()
 tg.raw.deleteChatStickerSet()
+
+# Forum Topics
+# Group forum features
 tg.raw.createForumTopic()
 tg.raw.editForumTopic()
 tg.raw.editGeneralForumTopic()
@@ -211,18 +242,29 @@ tg.raw.closeForumTopic()
 tg.raw.closeGeneralForumTopic()
 tg.raw.unpinAllForumTopicMessages()
 tg.raw.unpinAllGeneralForumTopicMessages()
-tg.raw.getWebhookInfo()
 
-# platform
+# Stories / Business
+# New Telegram features
+tg.raw.deleteStory()
+tg.raw.getBusinessAccountGifts()
+tg.raw.getAvailableGifts()
+
+# AI / Extensions
+# Custom API that is not original Telegram
+tg.raw.chatCompletions()
+
+# Platform Tools
+# Additional TGCore endpoints for other platforms
 tg.platform.facebook.download()
 tg.platform.tiktok.download()
-tg.platform.tools.types()
 tg.platform.pinterest.download()
-tg.platform.blackforest.image()
 tg.platform.capcut.download()
 tg.platform.threads.download()
 tg.platform.twitter.download()
 tg.platform.aio.download()
+
+tg.platform.tools.types()
+tg.platform.blackforest.image()
 ```
 
 ## Platform
@@ -359,3 +401,137 @@ Yes, it's completely free with the following limits:
 - **API Key Types:**
   - `fw_trial_xxx` = 7-day validity
   - `fw_live_xxx` = valid for 30 days (renewable)
+
+---
+
+## Parameter-heavy API (traditional way)
+
+Example:
+```py
+send_message(
+    chat_id=chat_id,
+    text=text,
+    business_connection_id=business_connection_id,
+    message_thread_id=message_thread_id,
+    direct_messages_topic_id=direct_messages_topic_id,
+    parse_mode=parse_mode,
+    entities=entities,
+    link_preview_options=link_preview_options,
+    disable_notification=disable_notification,
+    protect_content=protect_content,
+    allow_paid_broadcast=allow_paid_broadcast,
+    message_effect_id=message_effect_id,
+    suggested_post_parameters=suggested_post_parameters,
+    reply_parameters=reply_parameters,
+    reply_markup=reply_markup
+)
+```
+Main problems:
+
+**Cognitive overload**
+
+Developers have to look at 15 parameters at once.
+
+**Optional parameter chaos**
+
+Many parameters are optional, but they still appear.
+
+**Poor readability**
+
+The code is hard to scan quickly.
+
+**Difficult to expand**
+
+If Telegram adds new parameters:
+```py
+send_message(..., new_parameter=...)
+```
+the function signature is getting longer.
+
+---
+
+## Fluent Builder TGCore
+
+```
+send_message()\
+    .chat_id()\
+    .text()\
+    .business_connection_id()\
+    .message_thread_id()\
+    .direct_messages_topic_id()\
+    .parse_mode()\
+    .entities()\
+    .link_preview_options()\
+    .disable_notification()\
+    .protect_content()\
+    .allow_paid_broadcast()\
+    .message_effect_id()\
+    .suggested_post_parameters()\
+    .reply_parameters()\
+    .reply_markup()
+```
+## Advantages of this design:
+
+Progressive configuration
+
+Parameters are added one by one.
+
+Optional parameters feel natural.
+
+Developers only call what is needed.
+
+Real example:
+```py
+send_message()\
+  .chat_id(chat_id)\
+  .text(text)
+```
+No need for the other 13 parameters.
+
+---
+
+Easy to expand
+If Telegram adds new parameters:
+
+`.message_effect_id()`
+
+No need to change the function signature.
+
+---
+
+## API design differences
+
+**Traditional API**
+```
+Function
+ └── many parameters
+```
+**Fluent builder**
+```
+Method
+ └── builder
+     └── chained parameters
+         └── execute
+```
+---
+
+## Why this design is popular in modern SDKs
+
+Many large SDKs use the same pattern:
+
+Example:
+AWS SDK
+```py
+client.putObject()
+      .bucket()
+      .key()
+      .body()
+      .send()
+```
+## Stripe SDK
+
+`stripe.checkout.sessions.create()`
+
+## Elasticsearch DSL
+
+`query.filter().sort().execute()`
