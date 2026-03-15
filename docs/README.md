@@ -1,5 +1,11 @@
 ## Why fluent builder?
 
+Yes, having only a few parameters is nice. `func(arg, arg)`
+
+But the Telegram API has a lot of parameters, so Fluent Builder allows optional parameters to avoid lengthy functions.
+
+That's why many modern SDKs use that pattern.
+
 Traditional Telegram API calls often require many parameters.
 
 This leads to what developers call **"parameter hell"**.
