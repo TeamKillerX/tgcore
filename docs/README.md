@@ -493,7 +493,7 @@ No need to change the function signature.
 
 ---
 
-# API design differences
+## API design differences
 
 **Traditional API**
 ```
