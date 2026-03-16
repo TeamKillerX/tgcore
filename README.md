@@ -137,7 +137,7 @@ Parameters can be chained (`builder-style`) without having to write long functio
 
 Example of using fluent chain API:
 ```py
-# version: 1.0.43+
+# version: 1.0.43+, 1.0.68+
 async def full_code():
     _ = await tg.fetch_post(
         "/api/web/facebook/download",
@@ -164,7 +164,7 @@ That's the concept of builder + fluent chain API.
 
 ### sendMessage
 ```py
-# Latest version 1.0.16+
+# Latest version 1.0.16+, 1.0.68+
 # Support Pyrogram/Kurigram (KeyboardBuilder)
 
 from tgcore import Client, KeyboardBuilder
@@ -228,6 +228,7 @@ await (
 
 ### Rest API & TgCore Bot
 ```py
+# Version: 1.0.68+
 from tgcore import Client, KeyboardBuilder
 
 tg = Client()
