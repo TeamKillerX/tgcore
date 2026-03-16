@@ -539,7 +539,6 @@ class CoreBotAuth:
     _parse_mode: str | None = None
     _extra_headers: Dict[str, str] = field(default_factory=dict)
     _client: Optional[httpx.AsyncClient] = field(default=None, init=False, repr=False)
-    kb: Keyboard = field(default_factory=Keyboard)
 
     def _ensure_client(self) -> httpx.AsyncClient:
         if self._client is None:
@@ -586,6 +585,10 @@ class CoreBotAuth:
 
     def to_obj(self, everything):
         return Box(everything)
+
+    @property
+    def kb(self):
+        return Keyboard()
 
     def lw(self):
         return LinkPreviewBuilder()
