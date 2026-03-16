@@ -56,7 +56,7 @@ Without explanation, the architecture may look confusing. ⊙⁠﹏⁠⊙
 TGCore is an asynchronous Telegram SDK framework for Python
 designed around a fluent builder architecture.
 
-It eliminates parameter-heavy API calls and replaces them with
+It eliminates [parameter-heavy API calls](https://teamkillerx.github.io/tgcore/docs/#parameter-heavy-api-traditional-way) and replaces them with
 a composable chain-based interface.
 
 ```bash
@@ -77,8 +77,8 @@ await tg.raw.sendMessage()\
 
 ![brain meme](https://cdn.ryzenths.dpdns.org/IMG_20260315_010120_852.jpg)
 
-TGCore provides a keyboard builder that simplifies
-Telegram's [Core InlineKeyboardMarkup](https://core.telegram.org/bots/api#sendmessage), [Pyrogram InlineKeyboardMarkup](https://docs.pyrogram.org/api/methods/send_message) construction.
+TGCore provides a [keyboard builder](https://teamkillerx.github.io/tgcore/docs/#keyboardbuilder) that simplifies
+Telegram's [Core InlineKeyboardMarkup](https://core.telegram.org/bots/api#sendmessage) and [Pyrogram InlineKeyboardMarkup](https://docs.pyrogram.org/api/methods/send_message) construction.
 
 An example of keyboard or reply markup will demonstrate the power of chaining:
 ```py
