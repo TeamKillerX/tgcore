@@ -112,8 +112,12 @@ await tg.raw.sendMessage()\
 ```
 
 ```py
+# version: 1.0.69
+tg.kb.inline()
+tg.kb.reply()
+
 # version: 1.0.68
-kb = tg.kb()\
+tg.kb = tg.kb()\
    .style("A", "success", copy_text={"text": "this copy"})\
    .style("B", "danger", copy_text={"text": "this danger"})\
    .row()\
