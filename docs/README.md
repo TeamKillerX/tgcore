@@ -82,7 +82,7 @@ Telegram's [Core InlineKeyboardMarkup](https://core.telegram.org/bots/api#sendme
 
 An example of keyboard or reply markup will demonstrate the power of chaining:
 ```py
-kb = tg.kb().copy_text("Click", "ok").build()
+kb = tg.kb().copy_text("Click", "ok").build() # version: 1.0.68
 
 await tg.raw.sendMessage()\
     .chat_id(123456789)\
@@ -94,11 +94,12 @@ await tg.raw.sendMessage()\
 ## KeyboardBuilder
 Build keyboard and send message in 2 lines.
 ```py
-kb = tg.kb().style("Custom Name", "danger", copy_text={"text": "ok"}).build()
+kb = tg.kb().style("Custom Name", "danger", copy_text={"text": "ok"}).build() # version: 1.0.68
 await tg.raw.sendMessage().chat_id(id).text("2 Lines real shit").reply_markup(kb).send()
 ```
 
 ```py
+# version: 1.0.68
 kb = tg.kb()\
       .style("Custom Name", "danger", copy_text={"text": "ok"})\
       .build()
@@ -111,6 +112,7 @@ await tg.raw.sendMessage()\
 ```
 
 ```py
+# version: 1.0.68
 kb = tg.kb()\
    .style("A", "success", copy_text={"text": "this copy"})\
    .style("B", "danger", copy_text={"text": "this danger"})\
@@ -136,7 +138,7 @@ tg._ensure_client().post(url, params, json, headers)
 tg._headers(extra={})
 tg.set_header(key, value)
 tg.to_obj(data)
-tg.kb() # KeyboardBuilder
+tg.kb() # version: 1.0.68, KeyboardBuilder
 tg.lw() # LinkPreviewBuilder
 tg.rs() # ReplyParametersBuilder
 tg.is_url(text)
