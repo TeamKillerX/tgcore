@@ -110,6 +110,21 @@ await tg.raw.sendMessage()\
     .send()
 ```
 
+```py
+kb = tg.kb()\
+   .style("A", "success", copy_text={"text": "this copy"})\
+   .style("B", "danger", copy_text={"text": "this danger"})\
+   .row()\
+   .style("Github", "primary", url="https://github.com/TeamKillerX/tgcore")\
+   .style("TeamKillerX IO", "success", url="https://teamkillerx.github.io/tgcore/")\
+   .row()\
+   .style("TgCore API Docs", "success", url="https://tgcore.ryzenths.dpdns.org/api/v2/docs")\
+   .row()\
+   .style("Callback A", "primary", callback_data="#abc")\
+   .style("Callback B", "danger", callback_data="#abc")\
+   .build()
+```
+
 ## List Methods
 - `tg.api_key`
 - `tg.base_url`
