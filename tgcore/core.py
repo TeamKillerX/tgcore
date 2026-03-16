@@ -587,7 +587,7 @@ class CoreBotAuth:
         return Box(everything)
 
     @property
-    def kb(self):
+    def kb(self) -> Keyboard:
         return Keyboard()
 
     def lw(self):
