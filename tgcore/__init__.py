@@ -17,8 +17,8 @@ from .core import (
     ButtonExamples,
     ChatPermissionsBuilder,
     InlineKeyboardBuilder,
-    ReplyKeyboardBuilder,
     LinkPreviewBuilder,
+    ReplyKeyboardBuilder,
     ReplyParametersBuilder,
     SuggestedPostParametersBuilder,
 )
