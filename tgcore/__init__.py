@@ -16,8 +16,9 @@ from .client import Client
 from .core import (
     ButtonExamples,
     ChatPermissionsBuilder,
-    KeyboardBuilder,
+    InlineKeyboardBuilder,
     LinkPreviewBuilder,
+    ReplyKeyboardBuilder,
     ReplyParametersBuilder,
     SuggestedPostParametersBuilder,
 )
@@ -26,7 +27,8 @@ __all__ = [
     "Client",
     "ButtonExamples",
     "SuggestedPostParametersBuilder",
-    "KeyboardBuilder",
+    "InlineKeyboardBuilder",
+    "ReplyKeyboardBuilder",
     "LinkPreviewBuilder",
     "ReplyParametersBuilder",
     "ChatPermissionsBuilder"

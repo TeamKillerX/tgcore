@@ -293,7 +293,7 @@ class ReplyParametersBuilder:
         return self._data
 
 @dataclass
-class KeyboardBuilder:
+class InlineKeyboardBuilder:
     _rows: List[List[Dict[str, Any]]] = field(default_factory=list)
     _current_row: List[Dict[str, Any]] = field(default_factory=list)
 
@@ -358,22 +358,63 @@ class KeyboardBuilder:
             self.row()
         return {"inline_keyboard": self._rows}
 
+@dataclass
+class ReplyKeyboardBuilder:
+    _keyboard: List[List[Dict[str, Any]]] = field(default_factory=list)
+    _row: List[Dict[str, Any]] = field(default_factory=list)
+    _options: Dict[str, Any] = field(default_factory=dict)
+
+    def text(self, value: str):
+        self._row.append({"text": value})
+        return self
+
+    def row(self):
+        if self._row:
+            self._keyboard.append(self._row)
+            self._row = []
+        return self
+
+    def resize_keyboard(self, value: bool = True):
+        self._options["resize_keyboard"] = value
+        return self
+
+    def one_time_keyboard(self, value: bool = True):
+        self._options["one_time_keyboard"] = value
+        return self
+
+    def selective(self, value: bool = True):
+        self._options["selective"] = value
+        return self
+
+    def input_field_placeholder(self, value: str):
+        self._options["input_field_placeholder"] = value
+        return self
+
+    def build(self):
+        if self._row:
+            self._keyboard.append(self._row)
+
+        return {
+            "keyboard": self._keyboard,
+            **self._options
+        }
+
 class ButtonExamples:
     @staticmethod
     def url(text, url):
-        return KeyboardBuilder().url(text, url).build()
+        return InlineKeyboardBuilder().url(text, url).build()
 
     @staticmethod
     def style(text, style, **kw):
-        return KeyboardBuilder().style(text, style, **kw).build()
+        return InlineKeyboardBuilder().style(text, style, **kw).build()
 
     @staticmethod
     def callback(text, data):
-        return KeyboardBuilder().callback(text, data).build()
+        return InlineKeyboardBuilder().callback(text, data).build()
 
     @staticmethod
     def copy_text(text, copy_text):
-        return KeyboardBuilder().copy_text(text, copy_text).build()
+        return InlineKeyboardBuilder().copy_text(text, copy_text).build()
 
 @dataclass
 class ResponseResult:
@@ -479,6 +520,15 @@ class RequestCall(Generic[T]):
             return json.dumps(data.model_dump(), indent=indent, ensure_ascii=False)
         return json.dumps(data, indent=indent, ensure_ascii=False)
 
+class Keyboard:
+    @staticmethod
+    def inline():
+        return InlineKeyboardBuilder()
+
+    @staticmethod
+    def reply():
+        return ReplyKeyboardBuilder()
+
 @dataclass
 class CoreBotAuth:
     api_key: str
@@ -489,6 +539,7 @@ class CoreBotAuth:
     _parse_mode: str | None = None
     _extra_headers: Dict[str, str] = field(default_factory=dict)
     _client: Optional[httpx.AsyncClient] = field(default=None, init=False, repr=False)
+    kb: Keyboard = field(default_factory=Keyboard)
 
     def _ensure_client(self) -> httpx.AsyncClient:
         if self._client is None:
@@ -535,9 +586,6 @@ class CoreBotAuth:
 
     def to_obj(self, everything):
         return Box(everything)
-
-    def kb(self):
-        return KeyboardBuilder()
 
     def lw(self):
         return LinkPreviewBuilder()
