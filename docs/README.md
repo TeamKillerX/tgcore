@@ -77,8 +77,8 @@ await tg.raw.sendMessage()\
 
 ![brain meme](https://cdn.ryzenths.dpdns.org/IMG_20260315_010120_852.jpg)
 
-TGCore provides a [keyboard builder](https://teamkillerx.github.io/tgcore/docs/#keyboardbuilder) that simplifies
-Telegram's [Core InlineKeyboardMarkup](https://core.telegram.org/bots/api#sendmessage) and [Pyrogram InlineKeyboardMarkup](https://docs.pyrogram.org/api/methods/send_message) construction.
+TGCore provides a [keyboard builder](https://teamkillerx.github.io/tgcore/docs/#keyboardbuilder) that simplifies the construction of
+Telegram's [Core InlineKeyboardMarkup](https://core.telegram.org/bots/api#sendmessage) and [Pyrogram InlineKeyboardMarkup](https://docs.pyrogram.org/api/methods/send_message).
 
 An example of keyboard or reply markup will demonstrate the power of chaining:
 ```py
