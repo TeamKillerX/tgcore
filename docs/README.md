@@ -56,7 +56,7 @@ Without explanation, the architecture may look confusing. ⊙⁠﹏⁠⊙
 TGCore is an asynchronous Telegram SDK framework for Python
 designed around a fluent builder architecture.
 
-It eliminates parameter-heavy API calls and replaces them with
+It eliminates [parameter-heavy API calls](https://teamkillerx.github.io/tgcore/docs/#parameter-heavy-api-traditional-way) and replaces them with
 a composable chain-based interface.
 
 ```bash
@@ -77,8 +77,8 @@ await tg.raw.sendMessage()\
 
 ![brain meme](https://cdn.ryzenths.dpdns.org/IMG_20260315_010120_852.jpg)
 
-TGCore provides a keyboard builder that simplifies
-Telegram's [Core InlineKeyboardMarkup](https://core.telegram.org/bots/api#sendmessage), [Pyrogram InlineKeyboardMarkup](https://docs.pyrogram.org/api/methods/send_message) construction.
+TGCore provides a [keyboard builder](https://teamkillerx.github.io/tgcore/docs/#keyboardbuilder) that simplifies
+Telegram's [Core InlineKeyboardMarkup](https://core.telegram.org/bots/api#sendmessage) and [Pyrogram InlineKeyboardMarkup](https://docs.pyrogram.org/api/methods/send_message) construction.
 
 An example of keyboard or reply markup will demonstrate the power of chaining:
 ```py
@@ -89,6 +89,40 @@ await tg.raw.sendMessage()\
     .text("Hello")\
     .reply_markup(kb)\
     .send()
+```
+
+## KeyboardBuilder
+Build keyboard and send message in 2 lines.
+```py
+kb = tg.kb().style("Custom Name", "danger", copy_text={"text": "ok"}).build()
+await tg.raw.sendMessage().chat_id(id).text("2 Lines real shit").reply_markup(kb).send()
+```
+
+```py
+kb = tg.kb()\
+      .style("Custom Name", "danger", copy_text={"text": "ok"})\
+      .build()
+
+await tg.raw.sendMessage()\
+    .chat_id(chat_id)\
+    .text("2 Lines real shit")\
+    .reply_markup(kb)\
+    .send()
+```
+
+```py
+kb = tg.kb()\
+   .style("A", "success", copy_text={"text": "this copy"})\
+   .style("B", "danger", copy_text={"text": "this danger"})\
+   .row()\
+   .style("Github", "primary", url="https://github.com/TeamKillerX/tgcore")\
+   .style("TeamKillerX IO", "success", url="https://teamkillerx.github.io/tgcore/")\
+   .row()\
+   .style("TgCore API Docs", "success", url="https://tgcore.ryzenths.dpdns.org/api/v2/docs")\
+   .row()\
+   .style("Callback A", "primary", callback_data="#abc")\
+   .style("Callback B", "danger", callback_data="#abc")\
+   .build()
 ```
 
 ## List Methods
