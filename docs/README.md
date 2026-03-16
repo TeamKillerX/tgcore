@@ -91,6 +91,25 @@ await tg.raw.sendMessage()\
     .send()
 ```
 
+## KeyboardBuilder
+Build keyboard and send message in 2 lines.
+```py
+kb = tg.kb().style("Custom Name", "danger", copy_text={"text": "ok"}).build()
+await tg.raw.sendMessage().chat_id(id).text("2 Lines real shit").reply_markup(kb).send()
+```
+
+```py
+kb = tg.kb()\
+      .style("Custom Name", "danger", copy_text={"text": "ok"})\
+      .build()
+
+await tg.raw.sendMessage()\
+    .chat_id(chat_id)\
+    .text("2 Lines real shit")\
+    .reply_markup(kb)\
+    .send()
+```
+
 ## List Methods
 - `tg.api_key`
 - `tg.base_url`
