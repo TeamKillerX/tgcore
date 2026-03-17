@@ -9,6 +9,14 @@ Enterprise Telegram Bot Framework • Secure • Scalable • Zero-Trust Ready �
 <img src="https://img.shields.io/badge/Security-AES--256%20GCM-green?style=for-the-badge">
 </p>
 
+<p align="center">
+<a href="https://github.com/TeamKillerX/tgcore">Framework TgCore</a> |
+  <a href="https://teamkillerx.github.io/tgcore/docs">TeamKillerX Docs IO</a> |
+  <a href="https://tgcore.ryzenths.dpdns.org">TgCore API Docs</a> |
+  <a href="https://core.telegram.org/bots/api">Original Telegram API Docs</a>
+  <br/><br/>
+</p>
+
 ![Maintained](https://img.shields.io/badge/maintained-yes-success?style=flat-square)
 ![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)
 ![Security](https://img.shields.io/badge/security-audited-blue?style=flat-square)
@@ -29,21 +37,25 @@ Enterprise Telegram Bot Framework • Secure • Scalable • Zero-Trust Ready �
 
 Security-focused Telegram Bot Framework.
 
-##  ✨ Features
-- 🧩 Fluent builder API
-- 🧲 Keyboard builder
-- 🪄 AI integrations
-- 📥 Platform downloader
-- ⚡ Async native ("async/await")
-- 🔐 Secure API key authentication
-- 🤖 Multi-bot token support
-- 🔁 Token rotation ready
-- 🧩 Builder pattern + simple calls
-- 📦 Auto-generated methods from OpenAPI schema
-- 📚 Auto docstring generation
-- 🏗 Enterprise-ready architecture
-
----
+- [Getting Started](#getting-started)
+   - [Installation](https://github.com/TeamKillerX/tgcore/tree/main#-installation)
+   - [Traditional API](https://github.com/TeamKillerX/tgcore/tree/main#traditional-api)
+   - [TGCore Fluent Builder](https://github.com/TeamKillerX/tgcore/tree/main#tgcore-fluent-builder)
+   - [Clean architecture](https://github.com/TeamKillerX/tgcore/tree/main#clean-architecture)
+   - [Authentication](https://github.com/TeamKillerX/tgcore/tree/main#-authentication)
+   - [Usage](https://github.com/TeamKillerX/tgcore/tree/main#-usage)
+   - [New fluent chain API](https://github.com/TeamKillerX/tgcore/tree/main#new-fluent-chain-api)
+   - [sendMessage](https://github.com/TeamKillerX/tgcore/tree/main#sendmessage)
+   - [Simple Call](https://github.com/TeamKillerX/tgcore/tree/main#simple-call)
+   - [Builder Pattern](https://github.com/TeamKillerX/tgcore/tree/main#builder-pattern)
+   - [Builder Pattern](https://github.com/TeamKillerX/tgcore/tree/main#builder-pattern)
+   - [Rest API & TgCore Bot](https://github.com/TeamKillerX/tgcore/tree/main?tab=readme-ov-file#rest-api--tgcore-bot)
+   - [Why TGCore?](https://github.com/TeamKillerX/tgcore/tree/main?tab=readme-ov-file#why-tgcore)
+   - [Compared to Native Telegram API](https://github.com/TeamKillerX/tgcore/tree/main?tab=readme-ov-file#compared-to-native-telegram-api)
+   - [License](https://github.com/TeamKillerX/tgcore/tree/main?tab=readme-ov-file#-license)
+   - [Contributing](https://github.com/TeamKillerX/tgcore/tree/main?tab=readme-ov-file#-contributing)
+   - [Status](https://github.com/TeamKillerX/tgcore/tree/main?tab=readme-ov-file#-status)
+   - [Author](https://github.com/TeamKillerX/tgcore/tree/main?tab=readme-ov-file#-author)
 
 ## 📦 Installation
 
@@ -55,7 +67,7 @@ Or install locally:
 
 ---
 
-## Quick Start Code
+## Getting started
 ```py
 from tgcore import Client
 
@@ -327,4 +339,4 @@ Production Ready
 
 ## 👑 Author
 
-Built with ❤️ by Randy W
+Built with ❤️ by [Randy W](https://t.me/zxyeor)
