@@ -56,7 +56,7 @@ Security-focused Telegram Bot Framework.
    - [Contributing](https://github.com/TeamKillerX/tgcore/tree/main?tab=readme-ov-file#-contributing)
    - [Status](https://github.com/TeamKillerX/tgcore/tree/main?tab=readme-ov-file#-status)
    - [Author](https://github.com/TeamKillerX/tgcore/tree/main?tab=readme-ov-file#-author)
-  
+
 ## 📦 Installation
 
 `pip install tgcore`
