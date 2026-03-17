@@ -7,6 +7,8 @@ See [TgCore API docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs#tag/Bot/oper
 
 ![brain meme](https://cdn.ryzenths.dpdns.org/Screenshot_20260318-042542_Brave.jpg)
 
+Raw APIs expose complexity.
+Good SDKs absorb it.
 
 
 ## Why fluent builder?
