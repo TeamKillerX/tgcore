@@ -48,7 +48,7 @@ Security-focused Telegram Bot Framework.
    - [sendMessage](#sendmessage)
    - [Simple Call](#simple-call)
    - [Builder Pattern](#builder-pattern)
-   - [Rest API & TgCore Bot](#rest-api--tgcore-bot)
+   - [Rest API & TGCore Bot](#rest-api--tgcore-bot)
    - [Why TGCore?](#why-tgcore)
    - [Compared to Native Telegram API](#compared-to-native-telegram-api)
    - [License](#-license)
