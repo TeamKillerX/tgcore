@@ -12,6 +12,9 @@ This leads to what developers call **"parameter hell"**.
 
 ![brain meme](https://cdn.ryzenths.dpdns.org/amlve3.jpg)
 
+If your API needs too many parameters,
+your abstraction is missing.
+
 ```py
 send_message(
  chat_id,
