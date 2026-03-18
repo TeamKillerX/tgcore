@@ -419,8 +419,8 @@ class ButtonExamples:
 @dataclass
 class ResponseResult:
     data: Any
-    def text(self):
-        return self.data.choices[0].message.content
+    def text(self, gemini=False):
+        return self.data.candidates[0].content.parts[0].text if gemini else self.data.choices[0].message.content
 
     def video_url(self, value=0):
         return self.data.video[value].url
