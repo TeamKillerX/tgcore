@@ -1,3 +1,16 @@
+## Why TgCore exists
+
+Telegram API exposes all parameters in one layer.
+TgCore restructures it into a fluent, composable interface.
+
+See [TgCore API docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs#tag/Bot/operation/send_message_api_v2_sendMessage_post)
+
+![brain meme](https://cdn.ryzenths.dpdns.org/Screenshot_20260318-042542_Brave.jpg)
+
+Raw APIs expose complexity.
+Good SDKs absorb it.
+
+
 ## Why fluent builder?
 
 Yes, having only a few parameters is nice. `func(arg, arg)`
@@ -11,6 +24,9 @@ Traditional Telegram API calls often require many parameters.
 This leads to what developers call **"parameter hell"**.
 
 ![brain meme](https://cdn.ryzenths.dpdns.org/amlve3.jpg)
+
+If your API needs too many parameters,
+your abstraction is missing.
 
 ```py
 send_message(
