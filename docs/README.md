@@ -148,8 +148,8 @@ tg.kb = tg.kb()\
 ```
 
 ## payload DSL (domain-specific language)
-JSON is output, not source of truth
-Architecture should absorb API changes
+JSON is the output, not the source of truth
+The architecture should absorb API changes
 
 ```py
 result = await tg.use.default\
