@@ -15,5 +15,14 @@ from ..methods.base import BaseMethod
 
 
 class Default(BaseMethod):
-    def types(self, path: str, use: bool = True, **kw):
+    def route(
+        self,
+        name: str = None,
+        custom: str = None,
+        use: bool = True,
+        **kw
+    ):
+        return RequestCall(self._client, "POST", f"/api/web/{name}/{custom}", kw) if use else RequestCall(self._client, "GET", path, {})
+
+    def endpoint(self, path: str, use: bool = True, **kw):
         return RequestCall(self._client, "POST", path, kw) if use else RequestCall(self._client, "GET", path, {})
