@@ -19,10 +19,9 @@ class Default(BaseMethod):
         self,
         name: str = None,
         custom: str = None,
-        use: bool = True,
         **kw
     ):
-        return RequestCall(self._client, "POST", f"/api/web/{name}/{custom}", kw) if use else RequestCall(self._client, "GET", path, {})
+        return RequestCall(self._client, "POST", f"/api/web/{name}/{custom}", kw)
 
     def endpoint(self, path: str, use: bool = True, **kw):
         return RequestCall(self._client, "POST", path, kw) if use else RequestCall(self._client, "GET", path, {})
