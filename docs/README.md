@@ -147,6 +147,34 @@ tg.kb = tg.kb()\
    .build()
 ```
 
+## payload DSL (domain-specific language)
+```py
+result = await tg.use.default\
+      .route("gemini", "gemini-2.5-flash")\
+      .contents(
+          [
+              tg.getkwargs(
+                  parts=[tg.getkwargs(text="lu siapa keren?")]
+              )
+          ]
+      )\
+      .system_instruction(
+          tg.getkwargs(
+              parts=[tg.getkwargs(text="kamu adalah TgCore komedi lucu")]
+          )
+      )\
+      .generationConfig(
+          tg.getkwargs(
+              temperature=1.0,
+              topP=0.8,
+              topK=10
+          )
+      )\
+      .send(via_result=True)
+
+return result.text(gemini=True)
+```
+
 ## List Methods
 - `tg.api_key`
 - `tg.base_url`
