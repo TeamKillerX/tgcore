@@ -99,6 +99,9 @@ send_message()\
 ```
 
 ## payload DSL (domain-specific language)
+JSON is output, not source of truth
+Architecture should absorb API changes
+
 ```py
 result = await tg.use.default\
       .route("gemini", "gemini-2.5-flash")\
