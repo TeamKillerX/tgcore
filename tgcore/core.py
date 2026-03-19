@@ -668,7 +668,7 @@ class CoreBotAuth:
         match = re.search(r"https://\S+", text)
         return match.group(0) if match else None
 
-    def getkwargs(self, **aa):
+    def where(self, **aa):
         return {**aa}
 
     def writer(

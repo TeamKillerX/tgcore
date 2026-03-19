@@ -17,6 +17,7 @@ from __future__ import annotations
 import os
 from typing import Optional
 
+from .chats import Chats
 from .core import CoreBotAuth, MediaFactory
 from .default import DefaultMethod
 from .methods import Methods
@@ -33,6 +34,7 @@ class Client(CoreBotAuth):
         super().__init__(api_key, **kw)
 
         self.raw = Methods(self)
+        self.ai = Chats(self)
         self.use = DefaultMethod(self)
         self.platform = Platform(self)
         self.media: MediaFactory = MediaFactory(self)
