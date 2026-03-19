@@ -17,10 +17,10 @@ from __future__ import annotations
 import os
 from typing import Optional
 
+from .chats import Chats
 from .core import CoreBotAuth, MediaFactory
 from .default import DefaultMethod
 from .methods import Methods
-from .chats import Chats
 from .platform import Platform
 from .telegram_namespace import TelegramNamespace
 

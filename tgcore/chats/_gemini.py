@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from ..methods.base import BaseMethod
 
+
 class GeminiAI(BaseMethod):
     def gemini(self, model: str, **kw):
         return RequestCall(

@@ -13,6 +13,7 @@
 from ..core import RequestCall
 from ..methods.base import BaseMethod
 
+
 class GroqAI(BaseMethod):
     def groq(self, **kw):
         return RequestCall(
