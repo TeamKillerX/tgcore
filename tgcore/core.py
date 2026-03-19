@@ -422,6 +422,9 @@ class ResponseResult:
     def text(self, gemini=False):
         return self.data.candidates[0].content.parts[0].text if gemini else self.data.choices[0].message.content
 
+    def next(self):
+        return self.data
+
     def video_url(self, value=0):
         return self.data.video[value].url
 
@@ -493,17 +496,10 @@ class RequestCall(Generic[T]):
 
     async def send(
         self,
-        *,
-        allow_object: bool = False,
-        via_result: bool = False
+        allow_object: bool = True
     ) -> Any:
         result = await self.execute()
-        if via_result:
-            return ResponseResult(
-                self._client.to_obj(result["data"])
-            )
-        else:
-            return self._client.to_obj(result) if allow_object else result
+        return ResponseResult(self._client.to_obj(result["data"])) if allow_object else result
 
     async def skip(self) -> Any:
         _result = await self.execute()
