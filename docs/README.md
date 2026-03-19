@@ -132,6 +132,9 @@ await tg.raw.sendMessage()\
 tg.kb.inline()
 tg.kb.reply()
 
+tg.msg
+tg.getkwargs()
+
 # version: 1.0.68
 tg.kb = tg.kb()\
    .style("A", "success", copy_text={"text": "this copy"})\
