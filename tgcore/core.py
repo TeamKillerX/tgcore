@@ -649,7 +649,7 @@ class CoreBotAuth:
     def msg(self):
         return Messages()
 
-    def user(content: str):
+    def user(self, content: str):
         return [{"role": "user", "content": content}]
 
     def lw(self):
