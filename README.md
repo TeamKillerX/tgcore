@@ -1,6 +1,6 @@
 <h1 align="center">TGCore SDK</h1>
 <p align="center">
-Designed for complex systems • made simple • Telegram Bot Framework • Secure • Scalable • Zero-Trust Ready • Python Telegram Bot SDK • Telegram Bot Framework for Python • Fluent API Builder Pattern • Async Telegram Bot Framework • Telegram Bot Architecture Design
+Designed for complex systems. Made simple.
 </p>
 
 <p align="center">
@@ -39,6 +39,7 @@ Security-focused Telegram Bot Framework.
 
 - [Getting Started](#getting-started)
    - [Installation](#-installation)
+   - [Feature](#feature)
    - [Traditional API](#traditional-api)
    - [TGCore Fluent Builder](#tgcore-fluent-builder)
    - [payload DSL (domain-specific language)](#payload-dsl-domain-specific-language)
@@ -56,6 +57,13 @@ Security-focused Telegram Bot Framework.
    - [Contributing](#-contributing)
    - [Status](#-status)
    - [Author](#-author)
+ 
+## Feature
+- Secure and scalable architecture  
+- Async-first design  
+- Fluent API builder pattern  
+- Supports Telegram bots, APIs, and AI workflows  
+- Designed for complex system composition
 
 ## 📦 Installation
 
