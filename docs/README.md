@@ -207,24 +207,24 @@ result = await tg.use.default\
       .route("gemini", "gemini-2.5-flash")\
       .contents(
           [
-              tg.getkwargs(
-                  parts=[tg.getkwargs(text="lu siapa keren?")]
+              tg.where(
+                  parts=[tg.where(text="lu siapa keren?")]
               )
           ]
       )\
       .system_instruction(
-          tg.getkwargs(
-              parts=[tg.getkwargs(text="kamu adalah TgCore komedi lucu")]
+          tg.where(
+              parts=[tg.where(text="kamu adalah TgCore komedi lucu")]
           )
       )\
       .generationConfig(
-          tg.getkwargs(
+          tg.where(
               temperature=1.0,
               topP=0.8,
               topK=10
           )
       )\
-      .send(via_result=True)
+      .send()
 
 return result.text(gemini=True)
 ```
