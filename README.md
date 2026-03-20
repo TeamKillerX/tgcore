@@ -1,6 +1,21 @@
 <h1 align="center">TGCore SDK</h1>
 <p align="center">
-A fluent DSL framework for Telegram, APIs, and AI workflows.
+A fluent DSL framework for composing Telegram, APIs, and AI workflows.
+
+Turn messy APIs into clean, composable chains.
+
+```py
+# Chain your backend, not JSON
+
+msg = tg.msg.core("Hello")
+
+res = await tg.ai.groq()\
+    .model("moonshotai/kimi-k2-instruct")\
+    .messages([msg])\
+    .send()
+
+print(res.text())
+```
 </p>
 
 <p align="center">
@@ -39,7 +54,7 @@ Security-focused Telegram Bot Framework.
 
 - [Getting Started](#getting-started)
    - [Installation](#-installation)
-   - [Feature](#feature)
+   - [What makes TgCore different](#what-makes-tgcore-different)
    - [Chain & DSL](#chain--dsl)
    - [AI Chain](#ai-chain)
    - [Traditional API](#traditional-api)
@@ -60,7 +75,7 @@ Security-focused Telegram Bot Framework.
    - [Status](#-status)
    - [Author](#-author)
 
-## Feature
+## What makes TgCore different
 - Secure and scalable architecture
 - Async-first design
 - Fluent API builder pattern
