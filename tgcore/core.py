@@ -652,6 +652,12 @@ class CoreBotAuth:
     def user(self, content: str):
         return [{"role": "user", "content": content}]
 
+    def system(self, content: str):
+        return [{"role": "system", "content": content}]
+
+    def app(self, name: str, **kw):
+        return RequestCall(self._client, "POST", f"/api/web/{name}", kw)
+
     def lw(self):
         return LinkPreviewBuilder()
 
