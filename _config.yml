@@ -1,3 +1,6 @@
 remote_theme: pages-themes/architect@v0.2.0
 plugins:
 - jekyll-remote-theme
+
+title: "Framework TgCore"
+description: "TgCore • Enterprise Telegram SDK framework with fluent builder API, platform tools, and AI integrations."
