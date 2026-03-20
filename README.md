@@ -1,6 +1,6 @@
 <h1 align="center">TGCore SDK</h1>
 <p align="center">
-Designed for complex systems. Made simple.
+A fluent DSL framework for Telegram, APIs, and AI workflows.
 </p>
 
 <p align="center">
@@ -87,6 +87,39 @@ await tg.raw.sendMessage()\
     .send()
 ```
 
+## Chain & DSL
+```py
+await tg.use.default\
+     .route("games", "chain")\
+     .user(
+         tg.where(
+             name="Randy Architect",
+             age="145",
+             hobi="all"
+         )
+     )\
+     .database(
+         tg.where(
+             mongodb=True,
+             redis=True,
+             sqlite=True
+         )
+     )\
+     .pretty()
+```
+
+## AI Chain
+```py
+msg = tg.msg.core("Hello")
+
+res = await tg.ai.groq()\
+    .model("kimi-k2")\
+    .messages([msg])\
+    .send()
+
+print(res.text())
+```
+
 ## Traditional API
 ```py
 send_message(
@@ -115,26 +148,26 @@ result = await tg.use.default\
       .route("gemini", "gemini-2.5-flash")\
       .contents(
           [
-              tg.getkwargs(
-                  parts=[tg.getkwargs(text="lu siapa keren?")]
+              tg.where(
+                  parts=[tg.where(text="lu siapa?")]
               )
           ]
       )\
       .system_instruction(
-          tg.getkwargs(
-              parts=[tg.getkwargs(text="kamu adalah TgCore komedi lucu")]
+          tg.where(
+              parts=[tg.where(text="kamu adalah TgCore komedi lucu")]
           )
       )\
       .generationConfig(
-          tg.getkwargs(
+          tg.where(
               temperature=1.0,
               topP=0.8,
               topK=10
           )
       )\
-      .send(via_result=True)
+      .send()
 
-return result.text(gemini=True)
+return result.text()
 ```
 
 ## Clean architecture
@@ -146,11 +179,11 @@ return result.text(gemini=True)
 tg = Client(api_key="something", base_url="https://your_domain.com")
 
 result = await tg.use.default\
-    .types("/v1/chat/completions", use=True)\
+    .endpoint("/v1/chat/completions")\
     .model("model")\
     .messages([...])\
     .stream(False)\
-    .send(allow_object=True)
+    .send()
 
 print(result)
 ```
@@ -180,11 +213,6 @@ resp = await tg.platform.facebook\
 ### New fluent chain API
 
 Parameters can be chained (`builder-style`) without having to write long functions like `send_message(...)`.
-
-- Platform Downloader (7-day free trial)
-- `/api/web/facebook/download`
-- `/api/web/tiktok/download`
-- `/api/web/pinterest/download`
 
 Example of using fluent chain API:
 ```py
