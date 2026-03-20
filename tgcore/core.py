@@ -471,11 +471,11 @@ class ResponseResult:
 class Messages:
     @staticmethod
     def core(content: str):
-        return {"role": "system", "content": content}
+        return [{"role": "system", "content": content}]
 
     @staticmethod
     def user(content: str):
-        return {"role": "user", "content": content}
+        return [{"role": "user", "content": content}]
 
     @staticmethod
     def user_and_audio(
@@ -648,6 +648,9 @@ class CoreBotAuth:
     @property
     def msg(self):
         return Messages()
+
+    def user(content: str):
+        return [{"role": "user", "content": content}]
 
     def lw(self):
         return LinkPreviewBuilder()
