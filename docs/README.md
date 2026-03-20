@@ -1,7 +1,7 @@
 ## Why TgCore exists
 
-Telegram API exposes all parameters in one layer.
-TgCore restructures it into a fluent, composable interface.
+Telegram APIs are powerful but messy.
+TgCore turns them into a clean, composable chain.
 
 See [TgCore API docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs#tag/Bot/operation/send_message_api_v2_sendMessage_post)
 
@@ -150,6 +150,55 @@ tg.kb = tg.kb()\
    .build()
 ```
 
+## Games Chain Challenge
+Write backend logic like a chain, not JSON
+
+- Without an API key
+- This chain demo
+- You can eval using userbot
+
+```py
+from tgcore import Client
+
+tg = Client(api_key="pass")
+
+await tg.use.default\
+     .route("games", "chain")\
+     .user(
+         tg.where(
+             name="Randy Architect",
+             age="145",
+             hobi="all"
+         )
+     )\
+     .database(
+         tg.where(
+             mongodb=True,
+             redis=True,
+             sqlite=True
+         )
+     )\
+     .pretty()
+```
+Output:
+```json
+{
+  "ok": true,
+  "data": {
+    "user": {
+      "name": "Randy Architect",
+      "age": "145",
+      "hobi": "all"
+    },
+    "database": {
+      "mongodb": true,
+      "redis": true,
+      "sqlite": true
+    }
+  }
+}
+```
+
 ## payload DSL (domain-specific language)
 JSON is the output, not the source of truth
 The architecture should absorb API changes
@@ -159,24 +208,24 @@ result = await tg.use.default\
       .route("gemini", "gemini-2.5-flash")\
       .contents(
           [
-              tg.getkwargs(
-                  parts=[tg.getkwargs(text="lu siapa keren?")]
+              tg.where(
+                  parts=[tg.where(text="lu siapa keren?")]
               )
           ]
       )\
       .system_instruction(
-          tg.getkwargs(
-              parts=[tg.getkwargs(text="kamu adalah TgCore komedi lucu")]
+          tg.where(
+              parts=[tg.where(text="kamu adalah TgCore komedi lucu")]
           )
       )\
       .generationConfig(
-          tg.getkwargs(
+          tg.where(
               temperature=1.0,
               topP=0.8,
               topK=10
           )
       )\
-      .send(via_result=True)
+      .send()
 
 return result.text(gemini=True)
 ```
