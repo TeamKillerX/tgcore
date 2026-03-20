@@ -40,6 +40,8 @@ Security-focused Telegram Bot Framework.
 - [Getting Started](#getting-started)
    - [Installation](#-installation)
    - [Feature](#feature)
+   - [Chain & DSL](#chain--dsl)
+   - [AI Chain](#ai-chain)
    - [Traditional API](#traditional-api)
    - [TGCore Fluent Builder](#tgcore-fluent-builder)
    - [payload DSL (domain-specific language)](#payload-dsl-domain-specific-language)
