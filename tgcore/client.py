@@ -19,7 +19,7 @@ from typing import Optional
 
 from .chats import Chats
 from .core import CoreBotAuth, MediaFactory
-from .default import DefaultMethod, App
+from .default import App, DefaultMethod
 from .methods import Methods
 from .platform import Platform
 from .telegram_namespace import TelegramNamespace
