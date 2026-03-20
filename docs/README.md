@@ -153,7 +153,7 @@ tg.kb = tg.kb()\
 ## Games Chain Challenge
 Write backend logic like a chain, not JSON
 
-- Without api key
+- Without an API key
 - This chain demo
 - You can eval using userbot
 
