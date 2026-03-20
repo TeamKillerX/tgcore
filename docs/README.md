@@ -151,7 +151,8 @@ tg.kb = tg.kb()\
 ```
 
 ## Games Chain Challenge
-domain-specific language for systems + infra + AI
+Write backend logic like a chain, not JSON
+
 - Without api key
 - This chain demo
 - You can eval using userbot
