@@ -1,5 +1,5 @@
 __title__ = "tgcore"
-__version__ = "1.0.79"
+__version__ = "1.0.80"
 __author__ = "TeamKillerX"
 __license__ = "Apache-2.0"
 
