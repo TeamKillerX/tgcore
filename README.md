@@ -59,12 +59,12 @@ Security-focused Telegram Bot Framework.
    - [Contributing](#-contributing)
    - [Status](#-status)
    - [Author](#-author)
- 
+
 ## Feature
-- Secure and scalable architecture  
-- Async-first design  
-- Fluent API builder pattern  
-- Supports Telegram bots, APIs, and AI workflows  
+- Secure and scalable architecture
+- Async-first design
+- Fluent API builder pattern
+- Supports Telegram bots, APIs, and AI workflows
 - Designed for complex system composition
 
 ## 📦 Installation
