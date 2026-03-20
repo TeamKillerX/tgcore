@@ -14,6 +14,10 @@ from ..core import RequestCall
 from ..methods.base import BaseMethod
 
 
+class OnApp(BaseMethod):
+    def app(self, **kw):
+        return RequestCall(self._client, "POST", f"/api/web/{name}", kw)
+
 class Default(BaseMethod):
     def route(
         self,

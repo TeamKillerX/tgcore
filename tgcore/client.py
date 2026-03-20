@@ -19,7 +19,7 @@ from typing import Optional
 
 from .chats import Chats
 from .core import CoreBotAuth, MediaFactory
-from .default import DefaultMethod
+from .default import App, DefaultMethod
 from .methods import Methods
 from .platform import Platform
 from .telegram_namespace import TelegramNamespace
@@ -36,6 +36,7 @@ class Client(CoreBotAuth):
         self.raw = Methods(self)
         self.ai = Chats(self)
         self.use = DefaultMethod(self)
+        self.on = App(self)
         self.platform = Platform(self)
         self.media: MediaFactory = MediaFactory(self)
         self.telegram = TelegramNamespace(self)
