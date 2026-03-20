@@ -1,4 +1,4 @@
-from ._default import Default, OnApp
+from ._default import Default
 
 
 class DefaultMethod:
