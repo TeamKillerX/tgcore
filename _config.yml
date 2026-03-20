@@ -3,4 +3,4 @@ plugins:
 - jekyll-remote-theme
 
 title: "Framework TgCore"
-description: "TgCore • Designed for complex systems, made simple, Telegram SDK framework with fluent builder API, platform tools, and AI integrations."
+description: "TgCore • Designed for complex systems, made simple, TgCore is a fluent DSL for building Telegram bots, APIs, and AI workflows."
