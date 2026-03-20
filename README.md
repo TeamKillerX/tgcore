@@ -10,14 +10,15 @@ Like Flutter for backend logic.
 ```py
 # Chain your backend, not JSON
 
-msg = tg.msg.core("Hello")
+result = await tg.app("groq.ai")\
+        .model("moonshotai/kimi-k2-instruct-0905")\
+        .messages(
+            tg.user("Say test")
+        )\
+        .stream(False)\
+        .send()
 
-res = await tg.ai.groq()\
-    .model("moonshotai/kimi-k2-instruct")\
-    .messages([msg])\
-    .send()
-
-print(res.text())
+print(result.text())
 ```
 
 <p align="center">
