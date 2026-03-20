@@ -36,7 +36,7 @@ class Client(CoreBotAuth):
         self.raw = Methods(self)
         self.ai = Chats(self)
         self.use = DefaultMethod(self)
-        self.on = App(self)
+        self.app = App(self)
         self.platform = Platform(self)
         self.media: MediaFactory = MediaFactory(self)
         self.telegram = TelegramNamespace(self)
