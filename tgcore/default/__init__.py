@@ -1,4 +1,4 @@
-from ._default import Default, App
+from ._default import Default, OnApp
 
 class DefaultMethod:
     def __init__(self, client):
