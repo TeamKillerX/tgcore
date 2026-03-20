@@ -150,6 +150,54 @@ tg.kb = tg.kb()\
    .build()
 ```
 
+## Games Chain Challenge
+domain-specific language for systems + infra + AI
+- Without api key
+- This chain demo
+- You can eval using userbot
+
+```py
+from tgcore import Client
+
+tg = Client(api_key="pass")
+
+await tg.use.default\
+     .route("games", "chain")\
+     .user(
+         tg.where(
+             name="Randy Architect",
+             age="145",
+             hobi="all"
+         )
+     )\
+     .database(
+         tg.where(
+             mongodb=True,
+             redis=True,
+             sqlite=True
+         )
+     )\
+     .pretty()
+```
+Output:
+```json
+{
+  "ok": true,
+  "data": {
+    "user": {
+      "name": "Randy Architect",
+      "age": "145",
+      "hobi": "all"
+    },
+    "database": {
+      "mongodb": true,
+      "redis": true,
+      "sqlite": true
+    }
+  }
+}
+```
+
 ## payload DSL (domain-specific language)
 JSON is the output, not the source of truth
 The architecture should absorb API changes
