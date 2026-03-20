@@ -1,7 +1,7 @@
 ## Why TgCore exists
 
-Telegram API exposes all parameters in one layer.
-TgCore restructures it into a fluent, composable interface.
+Telegram APIs are powerful but messy.
+TgCore turns them into a clean, composable chain.
 
 See [TgCore API docs](https://tgcore.ryzenths.dpdns.org/api/v2/docs#tag/Bot/operation/send_message_api_v2_sendMessage_post)
 
