@@ -5,6 +5,7 @@ A fluent DSL framework for composing Telegram, APIs, and AI workflows.
 Turn messy APIs into clean, composable chains.
 
 Like Flutter for backend logic.
+</p>
 
 ```py
 # Chain your backend, not JSON
@@ -18,7 +19,6 @@ res = await tg.ai.groq()\
 
 print(res.text())
 ```
-</p>
 
 <p align="center">
 <img src="https://img.shields.io/badge/Framework-TGCore-black?style=for-the-badge">
