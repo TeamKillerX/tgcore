@@ -1,6 +1,7 @@
 remote_theme: pages-themes/architect@v0.2.0
+
 plugins:
 - jekyll-remote-theme
 
-title: "Framework TgCore"
-description: "TgCore • Designed for complex systems, made simple, TgCore is a fluent DSL for building Telegram bots, APIs, and AI workflows."
+title: "TgCore • Fluent DSL for APIs & AI"
+description: "Designed for complex systems. Made simple. A fluent DSL for building Telegram bots, APIs, and AI workflows."
