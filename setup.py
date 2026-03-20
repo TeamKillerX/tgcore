@@ -14,7 +14,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     version=read("tgcore/__version__.py", version=True),
     license="Apache-2.0",
-    description="TGCoreSDK | Enterprise Telegram SDK framework with fluent builder API, platform tools, and AI integrations.",
+    description="TGCoreSDK | A fluent DSL framework for Telegram, APIs, and AI workflows.",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     author="TeamKillerX",
