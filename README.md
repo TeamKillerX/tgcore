@@ -54,7 +54,7 @@ Security-focused Telegram Bot Framework.
 
 - [Getting Started](#getting-started)
    - [Installation](#-installation)
-   - [What makes TgCore different](#what-makes-tgcore-different)
+   - [What makes TGCore different](#what-makes-tgcore-different)
    - [Chain & DSL](#chain--dsl)
    - [AI Chain](#ai-chain)
    - [Traditional API](#traditional-api)
@@ -75,7 +75,7 @@ Security-focused Telegram Bot Framework.
    - [Status](#-status)
    - [Author](#-author)
 
-## What makes TgCore different
+## What makes TGCore different
 - Secure and scalable architecture
 - Async-first design
 - Fluent API builder pattern
