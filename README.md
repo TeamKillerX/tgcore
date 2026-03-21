@@ -169,7 +169,7 @@ InlineKeyboardMarkup([
 ])
 ```
 
-✅ tgcore (you use)
+✅ tgcore (which you already use)
 
 ```py
 tg.kb.inline().url("A", "...").build()
