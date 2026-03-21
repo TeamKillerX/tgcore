@@ -66,6 +66,7 @@ Security-focused Telegram Bot Framework.
    - [Clean architecture](#clean-architecture)
    - [Authentication](#-authentication)
    - [Usage](#-usage)
+   - [Simple comparison](#simple-comparison)
    - [New fluent chain API](#new-fluent-chain-api)
    - [sendMessage](#sendmessage)
    - [Simple Call](#simple-call)
@@ -157,6 +158,21 @@ send_message()\
     .chat_id(id)\
     .text("hello")\
     .send()
+```
+
+## Simple comparison
+❌ Regular Telegram
+
+```py
+InlineKeyboardMarkup([
+    [InlineKeyboardButton("A", url="...")]
+])
+```
+
+✅ tgcore (which you already use)
+
+```py
+tg.kb.inline().url("A", "...").build()
 ```
 
 ## payload DSL (domain-specific language)
