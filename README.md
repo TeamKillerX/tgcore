@@ -159,6 +159,21 @@ send_message()\
     .send()
 ```
 
+## Simple comparison
+❌ Regular Telegram
+
+```py
+InlineKeyboardMarkup([
+    [InlineKeyboardButton("A", url="...")]
+])
+```
+
+✅ tgcore (you use)
+
+```py
+tg.kb.inline().url("A", "...").build()
+```
+
 ## payload DSL (domain-specific language)
 JSON is the output, not the source of truth
 The architecture should absorb API changes
