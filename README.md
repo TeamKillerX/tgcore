@@ -66,6 +66,7 @@ Security-focused Telegram Bot Framework.
    - [Clean architecture](#clean-architecture)
    - [Authentication](#-authentication)
    - [Usage](#-usage)
+   - [Simple comparison](#simple-comparison)
    - [New fluent chain API](#new-fluent-chain-api)
    - [sendMessage](#sendmessage)
    - [Simple Call](#simple-call)
