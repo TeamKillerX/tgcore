@@ -584,7 +584,7 @@ class Keyboard:
 
 @dataclass
 class CoreBotAuth:
-    api_key: str
+    api_key: Optional[str] = None
     bearer_token: Optional[str] = None
     is_bearer: bool = False
     base_url: str = "https://tgcore.ryzenths.dpdns.org"
@@ -608,13 +608,15 @@ class CoreBotAuth:
     def _headers(self, extra: Optional[Dict[str, str]] = None) -> Dict[str, str]:
         if self.is_bearer:
             if not self.bearer_token:
-                return None
+                raise ValueError("TGCore Bearer Token required")
             h = {
                 "Authorization": f"Bearer {self.bearer_token}",
                 "accept": "application/json",
                 "user-agent": self.user_agent,
             }
         else:
+            if not self.api_key:
+                raise ValueError("TGCore API key required")
             h = {
                 "x-api-key": self.api_key,
                 "accept": "application/json",
