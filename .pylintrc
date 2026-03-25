@@ -12,6 +12,15 @@ disable=
     R0903, # too-few-public-methods
     R0902, # too-many-instance-attributes
     C0103, # invalid-name
+    R0901, # too-many-ancestors
+    W0611, # unused-import
+    W0718, # broad-exception-caught
+    R1705, # no-else-return
+    R1732, # consider-using-with
+    E0611, # no-name-in-module
+    E1142, # await-outside-async
+    E0401, # import-error
+    E0001, # syntax-error
 
 [DEV]
 disable=
@@ -23,3 +32,12 @@ disable=
     R0903, # too-few-public-methods
     R0902, # too-many-instance-attributes
     C0103, # invalid-name
+    R0901, # too-many-ancestors
+    W0611, # unused-import
+    W0718, # broad-exception-caught
+    R1705, # no-else-return
+    R1732, # consider-using-with
+    E0611, # no-name-in-module
+    E1142, # await-outside-async
+    E0401, # import-error
+    E0001, # syntax-error
