@@ -5,6 +5,8 @@
 # pylint: disable=line-too-long
 # pylint: disable=protected-access
 # pylint: disable=undefined-variable
+# pylint: disable=too-few-public-methods
+# pylint: disable=invalid-name
 
 # Copyright 2026 Randy W
 # Licensed under the Apache License, Version 2.0
