@@ -585,6 +585,8 @@ class Keyboard:
 @dataclass
 class CoreBotAuth:
     api_key: str
+    bearer_token: str = None
+    is_bearer: bool = False
     base_url: str = "https://tgcore.ryzenths.dpdns.org"
     user_agent: str = "tgcore/1.0"
     timeout: float = 30.0
@@ -604,12 +606,18 @@ class CoreBotAuth:
             self._client = None
 
     def _headers(self, extra: Optional[Dict[str, str]] = None) -> Dict[str, str]:
-        h = {
-            "x-api-key": self.api_key,
-            "Authorization": f"Bearer {self.api_key}",
-            "accept": "application/json",
-            "user-agent": self.user_agent,
-        }
+        if self.is_bearer:
+            h = {
+                "Authorization": f"Bearer {self.bearer_token}",
+                "accept": "application/json",
+                "user-agent": self.user_agent,
+            }
+        else:
+            h = {
+                "x-api-key": self.api_key,
+                "accept": "application/json",
+                "user-agent": self.user_agent,
+            }
         for k, v in self._extra_headers.items():
             h[k.lower()] = v
         if extra:
