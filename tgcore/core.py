@@ -679,7 +679,7 @@ class CoreBotAuth:
     def app(
         self,
         name: str,
-        router: "/v1",
+        router: str = "/v1",
         tgmod: bool = False,
         **kw
     ):
