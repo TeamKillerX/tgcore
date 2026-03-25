@@ -62,7 +62,7 @@ Security-focused Telegram Bot Framework.
    - [AI Chain](#ai-chain)
    - [Traditional API](#traditional-api)
    - [TGCore Fluent Builder](#tgcore-fluent-builder)
-   - [Benchmark Core](#benchmark-core)
+   - [System Benchmark](#system-benchmark)
    - [payload DSL (domain-specific language)](#payload-dsl-domain-specific-language)
    - [Clean architecture](#clean-architecture)
    - [Authentication](#-authentication)
@@ -161,7 +161,10 @@ send_message()\
     .send()
 ```
 
-## Benchmark Core
+## System Benchmark
+
+**Standardized routing layer across APIs**
+
 ![benchmark_core](https://cdn.ryzenths.dpdns.org/Screenshot_20260325-200707_Brave.jpg)
 
 * API devs etc
