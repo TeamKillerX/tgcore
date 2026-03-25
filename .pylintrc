@@ -5,3 +5,21 @@
 [MAIN]
 disable=
     C0114, # missing-module-docstring
+    R0904, # too-many-public-methods
+    E0602, # undefined-variable
+    W0212, # protected-access
+    C0301, # line-too-long
+    R0903, # too-few-public-methods
+    R0902, # too-many-instance-attributes
+    C0103, # invalid-name
+
+[DEV]
+disable=
+    C0114, # missing-module-docstring
+    R0904, # too-many-public-methods
+    E0602, # undefined-variable
+    W0212, # protected-access
+    C0301, # line-too-long
+    R0903, # too-few-public-methods
+    R0902, # too-many-instance-attributes
+    C0103, # invalid-name
