@@ -584,7 +584,7 @@ class Keyboard:
 
 @dataclass
 class CoreBotAuth:
-    api_key: str
+    api_key: Optional[str] = None
     bearer_token: Optional[str] = None
     is_bearer: bool = False
     base_url: str = "https://tgcore.ryzenths.dpdns.org"
@@ -615,6 +615,8 @@ class CoreBotAuth:
                 "user-agent": self.user_agent,
             }
         else:
+            if not self.api_key:
+                return None
             h = {
                 "x-api-key": self.api_key,
                 "accept": "application/json",
