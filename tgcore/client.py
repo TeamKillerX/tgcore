@@ -26,9 +26,15 @@ from .telegram_namespace import TelegramNamespace
 
 
 class Client(CoreBotAuth):
-    def __init__(self, api_key=None, bearer_token=None, **kw):
+    def __init__(
+        self,
+        api_key=None,
+        bearer_token=None,
+        is_bearer=False,
+        **kw
+    ):
         api_key = api_key or os.getenv("TGCORE_API_KEY")
-        super().__init__(api_key, bearer_token, **kw)
+        super().__init__(api_key, bearer_token, is_bearer, **kw)
 
         self.raw = Methods(self)
         self.ai = Chats(self)
