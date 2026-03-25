@@ -21,7 +21,7 @@ setuptools.setup(
     project_urls={
         "Source": "https://github.com/TeamKillerX/tgcore",
         "Issues": "https://github.com/TeamKillerX/tgcore/issues",
-        "Documentation": "https://services-pro.ryzenths.dpdns.org/api/v2/docs"
+        "Documentation": "https://tgcore.ryzenths.dpdns.org/"
     },
     keywords=[
         "telegram",
