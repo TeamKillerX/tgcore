@@ -1,16 +1,14 @@
 # Copyright 2026 Randy W
 # Licensed under the Apache License, Version 2.0
 
-"""
-Github Author: https://github.com/TeamKillerX/
-Code: @zxyeor
+# Github Author: https://github.com/TeamKillerX/
+# Code: @zxyeor
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
-"""
+# http://www.apache.org/licenses/LICENSE-2.0
 
 from __future__ import annotations
 
@@ -608,6 +606,7 @@ class CoreBotAuth:
     def _headers(self, extra: Optional[Dict[str, str]] = None) -> Dict[str, str]:
         h = {
             "x-api-key": self.api_key,
+            "Authorization": f"Bearer {self.api_key}",
             "accept": "application/json",
             "user-agent": self.user_agent,
         }
