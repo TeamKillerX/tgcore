@@ -21,6 +21,8 @@ disable=
     E1142, # await-outside-async
     E0401, # import-error
     E0001, # syntax-error
+    W0622, # redefined-builtin
+    C0116, # missing-function-docstring
 
 [DEV]
 disable=
@@ -41,3 +43,5 @@ disable=
     E1142, # await-outside-async
     E0401, # import-error
     E0001, # syntax-error
+    W0622, # redefined-builtin
+    C0116, # missing-function-docstring
