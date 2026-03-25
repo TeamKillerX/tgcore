@@ -10,7 +10,7 @@ Like Flutter for backend logic.
 ```py
 # Chain your backend, not JSON
 
-result = await tg.app("groq.ai", tmod=True)\
+result = await tg.app("groq.ai", tgmod=True)\
         .model("moonshotai/kimi-k2-instruct-0905")\
         .messages(
             tg.user("Say test")
@@ -158,6 +158,47 @@ send_message()\
     .chat_id(id)\
     .text("hello")\
     .send()
+```
+
+## Benchmark Core
+* API devs etc
+* Use `router` enums: `/v1`, `/openai`, `/api` or custom
+
+```py
+from tgcore import Client
+
+tg = Client(
+    bearer_token="gsk_xxxx",
+    base_url="https://api.groq.com",
+    is_bearer=True
+)
+
+await (
+    tg.app(
+      "v1/chat/completions",
+        router="/openai",
+        tgmod=False
+    )
+    .model("moonshotai/kimi-k2-instruct-0905")
+    .messages(tg.user("say test"))
+).execute()
+```
+
+* **TgCore (full control)**
+
+```py
+from tgcore import Client
+
+tg = Client(api_key="xxxxxx")
+
+result = await tg.app("groq.ai", tgmod=True)\
+        .model("moonshotai/kimi-k2-instruct-0905")\
+        .messages(
+            tg.user("Say test")
+        )\
+        .send()
+
+print(result.text())
 ```
 
 ## Simple comparison
