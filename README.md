@@ -10,7 +10,7 @@ Like Flutter for backend logic.
 ```py
 # Chain your backend, not JSON
 
-result = await tg.app("groq.ai")\
+result = await tg.app("groq.ai", tmod=True)\
         .model("moonshotai/kimi-k2-instruct-0905")\
         .messages(
             tg.user("Say test")
