@@ -586,7 +586,7 @@ class Keyboard:
 class CoreBotAuth:
     api_key: str
     bearer_token: Optional[str] = None
-    is_bearer: Optional[bool] = False
+    is_bearer: bool = False
     base_url: str = "https://tgcore.ryzenths.dpdns.org"
     user_agent: str = "tgcore/1.0"
     timeout: float = 30.0
