@@ -2,6 +2,6 @@
 # Posted by gurney alex, modified by community. See post 'Timeline' for change history
 # Retrieved 2026-03-25, License - CC BY-SA 4.0
 
-[MASTER]
+[MAIN]
 disable=
     C0114, # missing-module-docstring
