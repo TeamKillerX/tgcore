@@ -187,7 +187,7 @@ await (
 ).execute()
 ```
 
-* **TgCore (full control)**
+* **TGCore (full control)**
 
 ```py
 from tgcore import Client
