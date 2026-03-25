@@ -167,7 +167,7 @@ send_message()\
 
 ![benchmark_core](https://cdn.ryzenths.dpdns.org/Screenshot_20260325-200707_Brave.jpg)
 
-* API devs etc
+* API devs, etc
 * Use `router` enums: `/v1`, `/openai`, `/api` or custom
 
 ```py
