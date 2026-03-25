@@ -679,7 +679,7 @@ class CoreBotAuth:
     def app(
         self,
         name: str,
-        router: Literal["/v1", "/openai", "/api"] = "/v1",
+        router: Union[Literal["/v1", "/openai", "/api"], str] = "/v1",
         tgmod: bool = False,
         **kw
     ):
