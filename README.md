@@ -10,7 +10,7 @@ Like Flutter for backend logic.
 ```py
 # Chain your backend, not JSON
 
-result = await tg.app("groq.ai", tmod=True)\
+result = await tg.app("groq.ai", tgmod=True)\
         .model("moonshotai/kimi-k2-instruct-0905")\
         .messages(
             tg.user("Say test")
@@ -62,6 +62,7 @@ Security-focused Telegram Bot Framework.
    - [AI Chain](#ai-chain)
    - [Traditional API](#traditional-api)
    - [TGCore Fluent Builder](#tgcore-fluent-builder)
+   - [Benchmark Core](#benchmark-core)
    - [payload DSL (domain-specific language)](#payload-dsl-domain-specific-language)
    - [Clean architecture](#clean-architecture)
    - [Authentication](#-authentication)
@@ -158,6 +159,49 @@ send_message()\
     .chat_id(id)\
     .text("hello")\
     .send()
+```
+
+## Benchmark Core
+![benchmark_core](https://cdn.ryzenths.dpdns.org/Screenshot_20260325-200707_Brave.jpg)
+
+* API devs etc
+* Use `router` enums: `/v1`, `/openai`, `/api` or custom
+
+```py
+from tgcore import Client
+
+tg = Client(
+    bearer_token="gsk_xxxx",
+    base_url="https://api.groq.com",
+    is_bearer=True
+)
+
+await (
+    tg.app(
+      "v1/chat/completions",
+        router="/openai",
+        tgmod=False
+    )
+    .model("moonshotai/kimi-k2-instruct-0905")
+    .messages(tg.user("say test"))
+).execute()
+```
+
+* **TGCore (full control)**
+
+```py
+from tgcore import Client
+
+tg = Client(api_key="xxxxxx")
+
+result = await tg.app("groq.ai", tgmod=True)\
+        .model("moonshotai/kimi-k2-instruct-0905")\
+        .messages(
+            tg.user("Say test")
+        )\
+        .send()
+
+print(result.text())
 ```
 
 ## Simple comparison
