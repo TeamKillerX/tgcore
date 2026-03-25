@@ -655,8 +655,8 @@ class CoreBotAuth:
     def system(self, content: str):
         return [{"role": "system", "content": content}]
 
-    def app(self, name: str, **kw):
-        return RequestCall(self, "POST", f"/api/web/{name}", kw)
+    def app(self, name: str, tgmod: bool = False, **kw):
+        return RequestCall(self, "POST", f"/api/web/{name}", kw) if tgmod else RequestCall(self, "POST", f"/api/{name}", kw)
 
     def lw(self):
         return LinkPreviewBuilder()
