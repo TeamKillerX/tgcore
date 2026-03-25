@@ -62,6 +62,7 @@ Security-focused Telegram Bot Framework.
    - [AI Chain](#ai-chain)
    - [Traditional API](#traditional-api)
    - [TGCore Fluent Builder](#tgcore-fluent-builder)
+   - [Benchmark Core](#benchmark-core)
    - [payload DSL (domain-specific language)](#payload-dsl-domain-specific-language)
    - [Clean architecture](#clean-architecture)
    - [Authentication](#-authentication)
@@ -161,6 +162,8 @@ send_message()\
 ```
 
 ## Benchmark Core
+![benchmark_core](https://cdn.ryzenths.dpdns.org/Screenshot_20260325-200707_Brave.jpg)
+
 * API devs etc
 * Use `router` enums: `/v1`, `/openai`, `/api` or custom
 
