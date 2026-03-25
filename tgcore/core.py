@@ -608,7 +608,7 @@ class CoreBotAuth:
     def _headers(self, extra: Optional[Dict[str, str]] = None) -> Dict[str, str]:
         if self.is_bearer:
             if not self.bearer_token:
-                return None
+                raise ValueError("TGCore Bearer Token required")
             h = {
                 "Authorization": f"Bearer {self.bearer_token}",
                 "accept": "application/json",
@@ -616,7 +616,7 @@ class CoreBotAuth:
             }
         else:
             if not self.api_key:
-                return None
+                raise ValueError("TGCore API key required")
             h = {
                 "x-api-key": self.api_key,
                 "accept": "application/json",
