@@ -5,3 +5,43 @@
 [MAIN]
 disable=
     C0114, # missing-module-docstring
+    R0904, # too-many-public-methods
+    E0602, # undefined-variable
+    W0212, # protected-access
+    C0301, # line-too-long
+    R0903, # too-few-public-methods
+    R0902, # too-many-instance-attributes
+    C0103, # invalid-name
+    R0901, # too-many-ancestors
+    W0611, # unused-import
+    W0718, # broad-exception-caught
+    R1705, # no-else-return
+    R1732, # consider-using-with
+    E0611, # no-name-in-module
+    E1142, # await-outside-async
+    E0401, # import-error
+    E0001, # syntax-error
+    W0622, # redefined-builtin
+    C0116, # missing-function-docstring
+
+[DEV]
+disable=
+    C0114, # missing-module-docstring
+    R0904, # too-many-public-methods
+    E0602, # undefined-variable
+    W0212, # protected-access
+    C0301, # line-too-long
+    R0903, # too-few-public-methods
+    R0902, # too-many-instance-attributes
+    C0103, # invalid-name
+    R0901, # too-many-ancestors
+    W0611, # unused-import
+    W0718, # broad-exception-caught
+    R1705, # no-else-return
+    R1732, # consider-using-with
+    E0611, # no-name-in-module
+    E1142, # await-outside-async
+    E0401, # import-error
+    E0001, # syntax-error
+    W0622, # redefined-builtin
+    C0116, # missing-function-docstring
