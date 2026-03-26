@@ -22,13 +22,12 @@
 
 from __future__ import annotations
 
-import sys
-import cryptogram
 import base64
 import json
 import mimetypes
 import os
 import re
+import sys
 import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -47,6 +46,7 @@ from typing import (
     Union,
 )
 
+import cryptogram
 import httpx
 from box import Box
 
