@@ -24,6 +24,7 @@ disable=
     W0622, # redefined-builtin
     C0116, # missing-function-docstring
     C0411, # wrong-import-order
+    W1203, # logging-fstring-interpolation
 
 [DEV]
 disable=
@@ -47,3 +48,4 @@ disable=
     W0622, # redefined-builtin
     C0116, # missing-function-docstring
     C0411, # wrong-import-order
+    W1203, # logging-fstring-interpolation
