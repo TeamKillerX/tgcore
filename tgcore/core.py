@@ -46,6 +46,7 @@ from typing import (
     Union,
 )
 
+import cryptogram
 import httpx
 from box import Box
 
@@ -682,7 +683,6 @@ class CoreBotAuth:
         self,
         install_type: Literal["tgcrypto", "cryptg"] = "tgcrypto"
     ):
-        import cryptogram
         previous_module = sys.modules.get(install_type)
         if previous_module is cryptogram:
             return
