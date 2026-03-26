@@ -698,7 +698,7 @@ class CoreBotAuth:
             logger.debug(f"hardware AES-NI active: {cryptogram.has_aesni()}")
             logger.debug(cryptogram.get_backend())
         else:
-            logger.warning("Default: then debug enable")
+            logger.warning("Debug logging is disabled by default; enable debug to see AES-NI backend details")
 
     def app(
         self,
