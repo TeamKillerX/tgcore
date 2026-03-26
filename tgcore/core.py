@@ -31,6 +31,7 @@ import sys
 import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
+import cryptogram
 from typing import (
     Any,
     BinaryIO,
@@ -682,7 +683,6 @@ class CoreBotAuth:
         self,
         install_type: Literal["tgcrypto", "cryptg"] = "tgcrypto"
     ):
-        import cryptogram
         previous_module = sys.modules.get(install_type)
         if previous_module is cryptogram:
             return
