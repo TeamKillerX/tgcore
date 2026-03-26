@@ -23,6 +23,7 @@
 from __future__ import annotations
 
 import sys
+import cryptogram
 import base64
 import json
 import mimetypes
