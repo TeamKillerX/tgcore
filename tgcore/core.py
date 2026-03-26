@@ -695,10 +695,10 @@ class CoreBotAuth:
         self._original_crypto_modules.setdefault(install_type, previous_module)
         sys.modules[install_type] = cryptogram
         if debug:
-            logger.info(f"hardware AES-NI active: {cryptogram.has_aesni()}")
-            logger.info(cryptogram.get_backend())
+            logger.debug(f"hardware AES-NI active: {cryptogram.has_aesni()}")
+            logger.debug(cryptogram.get_backend())
         else:
-            logger.info("Default: Debug is disabled")
+            logger.warning("Default: then debug enable")
 
     def app(
         self,
