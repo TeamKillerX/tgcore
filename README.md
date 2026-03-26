@@ -62,6 +62,7 @@ Security-focused Telegram Bot Framework.
    - [AI Chain](#ai-chain)
    - [Traditional API](#traditional-api)
    - [TGCore Fluent Builder](#tgcore-fluent-builder)
+   - [Ultra-fast with parallel](#ultra-fast-with-parallel)
    - [System Benchmark](#system-benchmark)
    - [payload DSL (domain-specific language)](#payload-dsl-domain-specific-language)
    - [Clean architecture](#clean-architecture)
@@ -159,6 +160,18 @@ send_message()\
     .chat_id(id)\
     .text("hello")\
     .send()
+```
+
+## Ultra-fast with parallel
+Ultra-fast AES-256 cryptography for Telegram MTProto with hardware AES-NI acceleration.
+
+* Mode: `tgcrypto` or `cryptg`
+
+```py
+tg.parallel(
+    install_type="tgcrypto",
+    debug=True
+)
 ```
 
 ## System Benchmark
