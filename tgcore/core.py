@@ -29,6 +29,7 @@ import os
 import re
 import sys
 import uuid
+import logging
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import (
@@ -51,6 +52,8 @@ import httpx
 from box import Box
 
 T = TypeVar("T")
+
+logger = logging.getLogger(__name__)
 
 FileTuple = Union[
     Tuple[str, Any],
@@ -681,7 +684,8 @@ class CoreBotAuth:
 
     def parallel(
         self,
-        install_type: Literal["tgcrypto", "cryptg"] = "tgcrypto"
+        install_type: Literal["tgcrypto", "cryptg"] = "tgcrypto",
+        debug: bool = False
     ):
         previous_module = sys.modules.get(install_type)
         if previous_module is cryptogram:
@@ -690,6 +694,11 @@ class CoreBotAuth:
             self._original_crypto_modules = {}
         self._original_crypto_modules.setdefault(install_type, previous_module)
         sys.modules[install_type] = cryptogram
+        if debug:
+            logger.info(f"hardware AES-NI active: {cryptogram.has_aesni()}")
+            logger.info(cryptogram.get_backend())
+        else:
+            logger.info("Default: Debug is disabled")
 
     def app(
         self,
