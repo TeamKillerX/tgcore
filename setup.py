@@ -49,7 +49,7 @@ setuptools.setup(
     install_requires=[
         "httpx>=0.24.0",
         "python-box~=7.0",
-        "cryptogram>=0.1.1",
+        "cryptogram",
         "pydantic"
     ],
     classifiers=[
