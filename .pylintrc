@@ -23,6 +23,7 @@ disable=
     E0001, # syntax-error
     W0622, # redefined-builtin
     C0116, # missing-function-docstring
+    C0411, # wrong-import-order
 
 [DEV]
 disable=
@@ -45,3 +46,4 @@ disable=
     E0001, # syntax-error
     W0622, # redefined-builtin
     C0116, # missing-function-docstring
+    C0411, # wrong-import-order
