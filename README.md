@@ -163,7 +163,7 @@ send_message()\
 ```
 
 ## Ultra-fast with parallel
-Ultra-fast AES-256 cryptography for Telegram MTProto hardware AES-NI accelerated.
+Ultra-fast AES-256 cryptography for Telegram MTProto with hardware AES-NI acceleration.
 
 * Mode: `tgcrypto` or `cryptg`
 
