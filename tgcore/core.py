@@ -31,7 +31,6 @@ import sys
 import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
-import cryptogram
 from typing import (
     Any,
     BinaryIO,
@@ -47,6 +46,7 @@ from typing import (
     Union,
 )
 
+import cryptogram
 import httpx
 from box import Box
 
