@@ -27,6 +27,7 @@ import json
 import mimetypes
 import os
 import re
+import sys
 import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -45,6 +46,7 @@ from typing import (
     Union,
 )
 
+import cryptogram
 import httpx
 from box import Box
 
@@ -675,6 +677,12 @@ class CoreBotAuth:
 
     def system(self, content: str):
         return [{"role": "system", "content": content}]
+
+    def parallel(
+        self,
+        install_type: Literal["tgcrypto", "cryptg"] = "tgcrypto"
+    ):
+        sys.modules[install_type] = cryptogram
 
     def app(
         self,
