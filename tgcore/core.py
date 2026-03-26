@@ -22,6 +22,7 @@
 
 from __future__ import annotations
 
+import sys
 import base64
 import json
 import mimetypes
@@ -675,6 +676,9 @@ class CoreBotAuth:
 
     def system(self, content: str):
         return [{"role": "system", "content": content}]
+
+    def parallel(self):
+        sys.modules['tgcrypto'] = cryptogram
 
     def app(
         self,
