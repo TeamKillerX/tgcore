@@ -682,6 +682,12 @@ class CoreBotAuth:
         self,
         install_type: Literal["tgcrypto", "cryptg"] = "tgcrypto"
     ):
+        previous_module = sys.modules.get(install_type)
+        if previous_module is cryptogram:
+            return
+        if not hasattr(self, "_original_crypto_modules"):
+            self._original_crypto_modules = {}
+        self._original_crypto_modules.setdefault(install_type, previous_module)
         sys.modules[install_type] = cryptogram
 
     def app(
