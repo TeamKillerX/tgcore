@@ -605,6 +605,7 @@ class CoreBotAuth:
 
     _parse_mode: str | None = None
     _extra_headers: Dict[str, str] = field(default_factory=dict)
+    _original_crypto_modules: dict = field(default_factory=dict)
     _client: Optional[httpx.AsyncClient] = field(default=None, init=False, repr=False)
 
     def _ensure_client(self) -> httpx.AsyncClient:
@@ -682,6 +683,12 @@ class CoreBotAuth:
         self,
         install_type: Literal["tgcrypto", "cryptg"] = "tgcrypto"
     ):
+        previous_module = sys.modules.get(install_type)
+        if previous_module is cryptogram:
+            return
+        if not hasattr(self, "_original_crypto_modules"):
+            self._original_crypto_modules = {}
+        self._original_crypto_modules.setdefault(install_type, previous_module)
         sys.modules[install_type] = cryptogram
 
     def app(
