@@ -29,6 +29,7 @@ from .chats import Chats
 from .core import CoreBotAuth, MediaFactory
 from .default import DefaultMethod
 from .methods import Methods
+from .monitors import UptimeRobot
 from .platform import Platform
 from .telegram_namespace import TelegramNamespace
 
@@ -50,6 +51,7 @@ class Client(CoreBotAuth):
         )
         self.raw = Methods(self)
         self.ai = Chats(self)
+        self.monitor = UptimeRobot(self)
         self.use = DefaultMethod(self)
         self.platform = Platform(self)
         self.media: MediaFactory = MediaFactory(self)
