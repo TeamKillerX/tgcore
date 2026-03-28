@@ -8,7 +8,8 @@
 # pylint: disable=too-few-public-methods
 # pylint: disable=invalid-name
 
-from ._monitor import MonitorsGet, MonitorsCreate
+from ._monitor import MonitorsCreate, MonitorsGet
+
 
 class UptimeRobot(
     MonitorsGet,

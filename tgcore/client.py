@@ -29,8 +29,8 @@ from .chats import Chats
 from .core import CoreBotAuth, MediaFactory
 from .default import DefaultMethod
 from .methods import Methods
-from .platform import Platform
 from .monitors import UptimeRobot
+from .platform import Platform
 from .telegram_namespace import TelegramNamespace
 
 
