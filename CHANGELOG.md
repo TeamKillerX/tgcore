@@ -2,8 +2,8 @@
 
 ### 1.0.92
 * Added: `tg.monitor.uptime_stats()`
-* Added: `tg.monitor.uptime_stats_id()`
-* Added: `tg.monitor.id()`
+* Added: `tg.monitor.uptime_stats_by_id()`
+* Added: `tg.monitor.get_by_id()`
 * Added: `tg.monitor.reset()`
 * Added: `tg.monitor.pause()`
 * Added: `tg.monitor.start()`
