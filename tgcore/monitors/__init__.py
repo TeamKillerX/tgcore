@@ -23,13 +23,13 @@ from ._monitor import (
 
 class UptimeRobot(
     MonitorsGet,
-    MonitorsCreate
-    MonitorsUptimeStats
-    MonitorsIdUptimeStats
-    MonitorsIdGet
-    MonitorsIdReset
-    MonitorsIdPause
-    MonitorsIdStart
+    MonitorsCreate,
+    MonitorsUptimeStats,
+    MonitorsIdUptimeStats,
+    MonitorsIdGet,
+    MonitorsIdReset,
+    MonitorsIdPause,
+    MonitorsIdStart,
     MonitorsIdUpdate
 ):
     pass
