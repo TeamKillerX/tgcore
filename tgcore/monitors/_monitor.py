@@ -52,7 +52,7 @@ class MonitorsUptimeStats(BaseMethod):
         )
 
 class MonitorsIdUptimeStats(BaseMethod):
-    def uptime_stats_id(self, id: int, **kw):
+    def uptime_stats_by_id(self, id: int, **kw):
         return RequestCall(
             self._client,
             "POST",
@@ -61,7 +61,7 @@ class MonitorsIdUptimeStats(BaseMethod):
         )
 
 class MonitorsIdGet(BaseMethod):
-    def id(self, id: int):
+    def get_by_id(self, id: int):
         return RequestCall(
             self._client,
             "GET",
