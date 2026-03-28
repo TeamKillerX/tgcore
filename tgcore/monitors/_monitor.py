@@ -41,3 +41,66 @@ class MonitorsCreate(BaseMethod):
             "/api/v3/monitor/create",
             kw
         )
+
+class MonitorsUptimeStats(BaseMethod):
+    def uptime_stats(self, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            f"/api/v3/monitor/uptime-stats",
+            kw
+        )
+
+class MonitorsIdUptimeStats(BaseMethod):
+    def uptime_stats_id(self, id: int, **kw):
+        return RequestCall(
+            self._client,
+            "POST",
+            f"/api/v3/monitor/{id}/uptime-stats",
+            kw
+        )
+
+class MonitorsIdGet(BaseMethod):
+    def id(self, id: int):
+        return RequestCall(
+            self._client,
+            "GET",
+            f"/api/v3/monitor/{id}",
+            {}
+        )
+
+class MonitorsIdReset(BaseMethod):
+    def reset(self, id: int):
+        return RequestCall(
+            self._client,
+            "POST",
+            f"/api/v3/monitor/{id}/reset",
+            {}
+        )
+
+class MonitorsIdPause(BaseMethod):
+    def pause(self, id: int):
+        return RequestCall(
+            self._client,
+            "POST",
+            f"/api/v3/monitor/{id}/pause",
+            {}
+        )
+
+class MonitorsIdStart(BaseMethod):
+    def start(self, id: int):
+        return RequestCall(
+            self._client,
+            "POST",
+            f"/api/v3/monitor/{id}/start",
+            {}
+        )
+
+class MonitorsIdUpdate(BaseMethod):
+    def update(self, id: int, **kw):
+        return RequestCall(
+            self._client,
+            "PATCH",
+            f"/api/v3/monitor/{id}",
+            kw
+        )
