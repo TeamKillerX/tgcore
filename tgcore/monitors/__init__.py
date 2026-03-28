@@ -9,15 +9,15 @@
 # pylint: disable=invalid-name
 
 from ._monitor import (
-    MonitorsGet,
     MonitorsCreate,
-    MonitorsUptimeStats,
-    MonitorsIdUptimeStats,
+    MonitorsGet,
     MonitorsIdGet,
-    MonitorsIdReset,
     MonitorsIdPause,
+    MonitorsIdReset,
     MonitorsIdStart,
-    MonitorsIdUpdate
+    MonitorsIdUpdate,
+    MonitorsIdUptimeStats,
+    MonitorsUptimeStats,
 )
 
 
