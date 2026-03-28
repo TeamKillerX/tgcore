@@ -47,7 +47,7 @@ class MonitorsUptimeStats(BaseMethod):
         return RequestCall(
             self._client,
             "POST",
-            f"/api/v3/monitor/uptime-stats",
+            "/api/v3/monitor/uptime-stats",
             kw
         )
 
