@@ -1,5 +1,9 @@
 ## TgCore Changelog
 
+### 1.0.93
+* Added: `tg.translate.create()`
+* Added: `tg.quotes.random()`
+
 ### 1.0.92
 * Added: `tg.monitor.uptime_stats()`
 * Added: `tg.monitor.uptime_stats_by_id()`
