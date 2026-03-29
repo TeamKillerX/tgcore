@@ -22,4 +22,3 @@ class QuotesJokes(BaseMethod):
             "/api/v3/quotes/jokes",
             kw
         )
-
