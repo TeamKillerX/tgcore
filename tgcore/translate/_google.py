@@ -22,4 +22,4 @@ class GoogleTranslate(BaseMethod):
             "/api/v3/google/translate",
             kw
         )
-      
+

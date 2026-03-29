@@ -31,9 +31,9 @@ from .default import DefaultMethod
 from .methods import Methods
 from .monitors import UptimeRobot
 from .platform import Platform
-from .translate import CustomTranslate
 from .quotes import Quotes
 from .telegram_namespace import TelegramNamespace
+from .translate import CustomTranslate
 
 
 class Client(CoreBotAuth):
