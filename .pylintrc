@@ -25,6 +25,8 @@ disable=
     C0116, # missing-function-docstring
     C0411, # wrong-import-order
     W1203, # logging-fstring-interpolation
+    C0115, # missing-class-docstring
+    C0305, # trailing-newlines
 
 [DEV]
 disable=
@@ -49,3 +51,5 @@ disable=
     C0116, # missing-function-docstring
     C0411, # wrong-import-order
     W1203, # logging-fstring-interpolation
+    C0115, # missing-class-docstring
+    C0305, # trailing-newlines
