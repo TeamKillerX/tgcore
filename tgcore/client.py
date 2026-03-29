@@ -31,6 +31,7 @@ from .default import DefaultMethod
 from .methods import Methods
 from .monitors import UptimeRobot
 from .platform import Platform
+from .translate import CustomTranslate
 from .telegram_namespace import TelegramNamespace
 
 
@@ -52,6 +53,7 @@ class Client(CoreBotAuth):
         self.raw = Methods(self)
         self.ai = Chats(self)
         self.monitor = UptimeRobot(self)
+        self.translate = CustomTranslate(self)
         self.use = DefaultMethod(self)
         self.platform = Platform(self)
         self.media: MediaFactory = MediaFactory(self)
