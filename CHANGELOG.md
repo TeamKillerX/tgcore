@@ -3,6 +3,7 @@
 ### 1.0.93
 * Added: `tg.translate.create()`
 * Added: `tg.quotes.random()`
+* Fixed: `trailing-newlines` and `missing-class-docstring` in `.pylintrc`
 
 ### 1.0.92
 * Added: `tg.monitor.uptime_stats()`
