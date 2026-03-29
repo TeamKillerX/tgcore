@@ -14,7 +14,7 @@ from ..core import RequestCall
 from ..methods.base import BaseMethod
 
 
-class Translate(BaseMethod):
+class GoogleTranslate(BaseMethod):
     def create(self, **kw):
         return RequestCall(
             self._client,
