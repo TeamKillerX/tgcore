@@ -1,5 +1,9 @@
 ## TgCore Changelog
 
+### 1.0.94
+* Added: `tg.services.carbon.create()`
+* Added: `tg.services.screenshot.create()`
+
 ### 1.0.93
 * Added: `tg.translate.create()`
 * Added: `tg.quotes.random()`
