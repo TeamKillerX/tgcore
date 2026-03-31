@@ -20,8 +20,9 @@
 
 # http://www.apache.org/licenses/LICENSE-2.0
 
+from tgcore.models import BetterResponse, User
+
 from ..core import RequestCall
-from ..models._all import BetterResponse, User
 from .base import BaseMethod
 
 
