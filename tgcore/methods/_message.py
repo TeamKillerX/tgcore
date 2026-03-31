@@ -21,7 +21,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 
 from ..core import RequestCall
-from ..models import BetterResponse, User
+from ..models._all import BetterResponse, User
 from .base import BaseMethod
 
 

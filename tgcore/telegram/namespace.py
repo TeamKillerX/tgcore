@@ -27,7 +27,7 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from .core import CoreBotAuth, RequestCall
+from ..core import CoreBotAuth, RequestCall
 
 
 class TelegramNamespace:

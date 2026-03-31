@@ -51,6 +51,8 @@ import cryptogram
 import httpx
 from box import Box
 
+from .models._all import ResponseTo
+
 T = TypeVar("T")
 
 logger = logging.getLogger(__name__)
@@ -737,23 +739,17 @@ class CoreBotAuth:
     def where(self, **aa):
         return {**aa}
 
-    def writer(
-        self,
-        prefix: str = "custom.jpg",
-        *,
-        cbytes: bytes | str,
-        is_base64: bool = False
-    ):
+    def writer(self, m: ResponseTo):
         allowed_extensions = (".jpg", ".jpeg", ".png", ".gif", ".webp")
-        if not prefix.lower().endswith(allowed_extensions):
+        if not m.prefix.lower().endswith(allowed_extensions):
             return None
-        path = f"tgcore-{uuid.uuid4()}-{prefix}"
+        path = f"tgcore-{uuid.uuid4()}-{m.prefix}"
         with open(path, "wb") as f:
-            if is_base64:
-                dd = base64.b64decode(cbytes)
+            if m.is_base64:
+                dd = base64.b64decode(m.cbytes)
                 f.write(dd)
             else:
-                f.write(cbytes)
+                f.write(m.cbytes)
         return path
 
     async def _post(
