@@ -51,7 +51,7 @@ import cryptogram
 import httpx
 from box import Box
 
-from .models._all import ResponseTo
+from .models import ResponseTo
 
 T = TypeVar("T")
 
