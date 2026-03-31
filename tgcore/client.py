@@ -32,6 +32,7 @@ from .methods import Methods
 from .monitors import UptimeRobot
 from .platform import Platform
 from .quotes import Quotes
+from .services import Services
 from .telegram_namespace import TelegramNamespace
 from .translate import CustomTranslate
 
@@ -55,6 +56,7 @@ class Client(CoreBotAuth):
         self.ai = Chats(self)
         self.monitor = UptimeRobot(self)
         self.translate = CustomTranslate(self)
+        self.services = Services(self)
         self.quotes = Quotes(self)
         self.use = DefaultMethod(self)
         self.platform = Platform(self)
