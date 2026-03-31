@@ -20,8 +20,9 @@
 
 # http://www.apache.org/licenses/LICENSE-2.0
 
-from ..core import RequestCall
 from tgcore.models import BetterResponse, WebhookInfo
+
+from ..core import RequestCall
 from .base import BaseMethod
 
 
