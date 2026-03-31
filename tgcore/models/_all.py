@@ -26,6 +26,11 @@ from pydantic import BaseModel
 
 T = TypeVar("T")
 
+class ResponseTo(BaseModel):
+    prefix: str
+    cbytes: bytes | str
+    is_base64: bool = False
+
 class User(BaseModel):
     id: int
     is_bot: bool
