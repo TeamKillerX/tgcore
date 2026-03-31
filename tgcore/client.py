@@ -33,7 +33,7 @@ from .monitors import UptimeRobot
 from .platform import Platform
 from .quotes import Quotes
 from .services import Services
-from .telegram_namespace import TelegramNamespace
+from .telegram.namespace import TelegramNamespace
 from .translate import CustomTranslate
 
 
