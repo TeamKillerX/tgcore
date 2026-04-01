@@ -558,9 +558,17 @@ class RequestCall(Generic[T]):
 
     async def execute(self, is_content: bool = False) -> T:
         raw = await (
-            self._client._get(self._path, self._params, is_content)
+            self._client._get(
+                path=self._path,
+                params=self._params,
+                is_content=is_content
+            )
             if self._method.upper() == "GET"
-            else self._client._post(self._path, self._params, is_content)
+            else self._client._post(
+                path=self._path,
+                payload=self._params,
+                is_content=is_content
+            )
         )
 
         if self._response_model is None:
