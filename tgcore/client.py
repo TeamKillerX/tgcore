@@ -28,6 +28,7 @@ from typing import Optional
 from .chats import Chats
 from .core import CoreBotAuth, MediaFactory
 from .default import DefaultMethod
+from .execute import Request
 from .methods import Methods
 from .monitors import UptimeRobot
 from .platform import Platform
@@ -58,6 +59,7 @@ class Client(CoreBotAuth):
         self.translate = CustomTranslate(self)
         self.services = Services(self)
         self.quotes = Quotes(self)
+        self.request = Request(self)
         self.use = DefaultMethod(self)
         self.platform = Platform(self)
         self.media: MediaFactory = MediaFactory(self)

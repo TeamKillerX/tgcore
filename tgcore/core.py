@@ -589,6 +589,17 @@ class RequestCall(Generic[T]):
             return None
         return _result["ok"]
 
+    async def done(self, ok=False, dot=False) -> Any:
+        _result = await self.execute()
+        if ok:
+            if not _result["ok"] or not _result["data"]:
+                return None
+            return _result["ok"]
+        elif dot:
+            return ResponseResult(self._client.to_obj(_result["data"]))
+        else:
+            return _result
+
     async def json(self) -> Any:
         return await self.execute()
 
