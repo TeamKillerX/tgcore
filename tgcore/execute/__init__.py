@@ -23,7 +23,7 @@ class Execute(BaseMethod):
             kw
         )
 
-    def run(self, **kw):
+    def run(self, request_id: str, **kw):
         return RequestCall(
             self._client,
             "POST",
