@@ -28,12 +28,12 @@ from typing import Optional
 from .chats import Chats
 from .core import CoreBotAuth, MediaFactory
 from .default import DefaultMethod
+from .execute import Request
 from .methods import Methods
 from .monitors import UptimeRobot
 from .platform import Platform
 from .quotes import Quotes
 from .services import Services
-from .execute import Request
 from .telegram.namespace import TelegramNamespace
 from .translate import CustomTranslate
 
