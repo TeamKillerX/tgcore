@@ -5,7 +5,7 @@
 * Added: `tg.request.execute.run()`
 * Added: `tg.request.execute.get()`
 * Added: `tg.request.execute.delete()`
-
+* Added: both `.done(ok=False, result=False)` and .`skip()`
 ### 1.0.94
 * Added: `tg.services.carbon.create()`
 * Added: `tg.services.screenshot.create()`
